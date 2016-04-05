@@ -7,36 +7,38 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-/*
+
 import org.hn.stage.entities.base.BaseEntity;
 import org.hn.stage.entities.typeDemandes.PrerequisTypeDemande;
 
 
 @Entity
-@Table(name="prq_Type_dmd")
+@Table(name="prq_dmd")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "prd_clef")) })
 public class PrerequisDemade extends BaseEntity{
 
     
 	private static final long serialVersionUID = 2332737171236259159L;
-
+	@ManyToOne
+	@JoinColumn(name="prd_dmd_clef",referencedColumnName="dmd_clef")  
+    private Demande demande ;
+	@ManyToOne  
+	@JoinColumn(name="prd_prq_clef",referencedColumnName="prq_clef")
+    private PrerequisTypeDemande prerequisTypeDemande ;
 	@Column(name="prd_libelle")
     private String libelle;
-    @ManyToOne
-    @Column(name="prd_prq_clef")
-	@JoinColumn(name="prq_clef")    
-    private PrerequisTypeDemande prerequisTypeDemande ;
-    @ManyToOne
-    @Column(name="prd_dmd_clef")
-	@JoinColumn(name="dmd_clef")    
-    private Demande demande ;
 
-	public String getLibelle() {
-		return libelle;
+	public PrerequisDemade() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public Demande getDemande() {
+		return demande;
+	}
+
+	public void setDemande(Demande demande) {
+		this.demande = demande;
 	}
 
 	public PrerequisTypeDemande getPrerequisTypeDemande() {
@@ -47,14 +49,19 @@ public class PrerequisDemade extends BaseEntity{
 		this.prerequisTypeDemande = prerequisTypeDemande;
 	}
 
-	public Demande getDemande() {
-		return demande;
+	public String getLibelle() {
+		return libelle;
 	}
 
-	public void setDemande(Demande demande) {
-		this.demande = demande;
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
+
+	
     
+	
+
+
     
 }
-*/
+

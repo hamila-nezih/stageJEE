@@ -2,7 +2,7 @@ package org.hn.stage.entities.typeDemandes;
 
 import java.util.ArrayList;
 import java.util.Collection;
-/*
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -10,8 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hn.stage.entities.Service;
 import org.hn.stage.entities.base.BaseEntity;
-import org.hn.stage.entitiesAll.Demande;
+import org.hn.stage.entities.demandes.Demande;
 
 
 @Entity
@@ -22,27 +23,20 @@ public class TypeDemande extends BaseEntity{
  
 	private static final long serialVersionUID = -7082899346892779685L;
 	
+	@OneToMany(mappedBy="id")
+	private Collection<Demande> demandes = new ArrayList<Demande>();
+	@OneToMany(mappedBy="id")
+   	private Collection<DocumentTypeDemande> documentTypeDemandes = new ArrayList<DocumentTypeDemande>();
+    @OneToMany(mappedBy="id")
+   	private Collection<PrerequisTypeDemande> prerequisTypeDemandes = new ArrayList<PrerequisTypeDemande>();
 	@Column(name="tyd_libelle")
     private String libelle;    
-  //  @Column(name="tyd_srv_clef")
-    //private Service service;
-    @OneToMany(mappedBy="dmd_clef")
-	private Collection<Demande> demandes = new ArrayList<Demande>();
-    @OneToMany(mappedBy="dtd_clef")
-   	private Collection<DocumentTypeDemande> documentTypeDemandes = new ArrayList<DocumentTypeDemande>();
-    @OneToMany(mappedBy="prq_clef")
-   	private Collection<PrerequisTypeDemande> prerequisTypeDemandes = new ArrayList<PrerequisTypeDemande>();
-    
-
-	public String getLibelle() {
-		return libelle;
+    @Column(name="tyd_srv_clef")
+    private Service service;
+	public TypeDemande() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-
-
 
 	public Collection<Demande> getDemandes() {
 		return demandes;
@@ -67,6 +61,21 @@ public class TypeDemande extends BaseEntity{
 	public void setPrerequisTypeDemandes(Collection<PrerequisTypeDemande> prerequisTypeDemandes) {
 		this.prerequisTypeDemandes = prerequisTypeDemandes;
 	}
-    
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
+	}   
 	
-}*/
+}

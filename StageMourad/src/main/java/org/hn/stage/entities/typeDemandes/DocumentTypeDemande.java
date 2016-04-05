@@ -1,5 +1,5 @@
 package org.hn.stage.entities.typeDemandes;
-/*
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -22,17 +22,28 @@ public class DocumentTypeDemande extends BaseEntity{
 
 	
 	private static final long serialVersionUID = 6980861635976314154L;
-	
-    @Column(name="dtd_libelle")
-    private String libelle;    
-    @Column(name="dtd_obligatoire")
-    private Boolean obligatoire; 
-    @ManyToOne
-    @Column(name="dtd_tyd_clef")
-	@JoinColumn(name="tyd_clef")
-    private TypeDemande typeDemande;
-    @OneToMany(mappedBy="dod_clef")
-   	private Collection<DocumentDemande> documentDemandes = new ArrayList<DocumentDemande>();
+	@ManyToOne
+	@JoinColumn(name="dtd_tyd_clef",referencedColumnName="tyd_clef")
+	private TypeDemande typeDemande;
+	@Column(name="dtd_libelle")
+	private String libelle;    
+	@Column(name="dtd_obligatoire")
+	private Boolean obligatoire;
+	@OneToMany(mappedBy="id")
+    private Collection<DocumentDemande> documentDemandes = new ArrayList<DocumentDemande>();
+
+	public DocumentTypeDemande() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public TypeDemande getTypeDemande() {
+		return typeDemande;
+	}
+
+	public void setTypeDemande(TypeDemande typeDemande) {
+		this.typeDemande = typeDemande;
+	}
 
 	public String getLibelle() {
 		return libelle;
@@ -50,15 +61,15 @@ public class DocumentTypeDemande extends BaseEntity{
 		this.obligatoire = obligatoire;
 	}
 
-	public TypeDemande getTypeDemande() {
-		return typeDemande;
+	public Collection<DocumentDemande> getDocumentDemandes() {
+		return documentDemandes;
 	}
 
-	public void setTypeDemande(TypeDemande typeDemande) {
-		this.typeDemande = typeDemande;
+	public void setDocumentDemandes(Collection<DocumentDemande> documentDemandes) {
+		this.documentDemandes = documentDemandes;
 	}
-    
-    
+	
+  
+
 }
 
-*/

@@ -1,5 +1,5 @@
-package org.hn.stage.entities.historisations;
-/*
+package org.hn.stage.entities.historisationsDemande;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import org.hn.stage.entities.Utilisateur;
 import org.hn.stage.entities.demandes.Demande;
 
-
+/*
 
 @Entity
 public class HistoriqueDemande implements Serializable {
@@ -52,5 +52,6 @@ public class HistoriqueDemande implements Serializable {
 	}
     
 }
-*/
 
+
+*/

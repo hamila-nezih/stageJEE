@@ -1,15 +1,18 @@
 package org.hn.stage.entities.demandes;
-/*
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hn.stage.entities.base.BaseEntity;
 import org.hn.stage.entities.typeDemandes.DocumentTypeDemande;
+
+import com.mysql.jdbc.log.Log;
 
 @Entity
 @Table(name="document_dmd")
@@ -17,55 +20,24 @@ import org.hn.stage.entities.typeDemandes.DocumentTypeDemande;
 public class DocumentDemande extends BaseEntity{
 
 	private static final long serialVersionUID = 3731906924467527265L;
-
+	@ManyToOne
+	@JoinColumn(name="dod_dmd_clef",referencedColumnName="dmd_clef")  
+    private Demande demande ;
+	@ManyToOne
+	@JoinColumn(name="dod_dtd_clef",referencedColumnName="dtd_clef") 
+	private DocumentTypeDemande documentTypeDemandes ;
 	@Column(name="dod_libelle")
     private String libelle;    
     @Column(name="dod_nom_fichier")
     private String nomFichier ;
-    
-    // terminer le type de fichier pour enregistrer dans la base de donner 
-    @Column(name="dod_contenue")
-    private String contenue ;
-    @ManyToOne
-    @Column(name="dod_dtd_clef")
-	@JoinColumn(name="dtd_clef")    
-    private DocumentTypeDemande documentTypeDemandes ;
-    @ManyToOne
-    @Column(name="dod_dmd_clef")
-	@JoinColumn(name="dmd_clef")    
-    private Demande demande ;
+  //  terminer le type de fichier pour enregistrer dans la base de donner 
+    @Lob
+    @Column(name="dod_contenue",length=10000000)   
+	private Log contenue ;
 
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-
-	
-	public String getNomFichier() {
-		return nomFichier;
-	}
-
-	public void setNomFichier(String nomFichier) {
-		this.nomFichier = nomFichier;
-	}
-
-	public String getContenue() {
-		return contenue;
-	}
-
-	public void setContenue(String contenue) {
-		this.contenue = contenue;
-	}
-
-	public DocumentTypeDemande getDocumentTypeDemandes() {
-		return documentTypeDemandes;
-	}
-
-	public void setDocumentTypeDemandes(DocumentTypeDemande documentTypeDemandes) {
-		this.documentTypeDemandes = documentTypeDemandes;
+	public DocumentDemande() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Demande getDemande() {
@@ -76,7 +48,33 @@ public class DocumentDemande extends BaseEntity{
 		this.demande = demande;
 	}
 
-	
+	public DocumentTypeDemande getDocumentTypeDemandes() {
+		return documentTypeDemandes;
+	}
+
+	public void setDocumentTypeDemandes(DocumentTypeDemande documentTypeDemandes) {
+		this.documentTypeDemandes = documentTypeDemandes;
+	}
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public String getNomFichier() {
+		return nomFichier;
+	}
+
+	public void setNomFichier(String nomFichier) {
+		this.nomFichier = nomFichier;
+	}
+
+	public void setContenue(Log contenue) {
+		this.contenue = contenue;
+	}	
     
-}*/
+}
 
