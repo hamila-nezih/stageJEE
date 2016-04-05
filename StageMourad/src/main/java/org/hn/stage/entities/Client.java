@@ -1,0 +1,86 @@
+package org.hn.stage.entities;
+
+import java.util.*;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hn.stage.entities.base.BaseEntity;
+
+@Entity
+@Table(name="clients")
+@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "cli_clef")) })
+public class Client extends BaseEntity{
+
+	private static final long serialVersionUID = 1235750709613679666L;
+	private String nom ;
+	private String prenom ;
+	private Date dateNaissance;
+	private String mail ;
+	@NotEmpty
+	private String login ;
+	@NotEmpty
+	private String motPass ;
+	//@OneToMany(mappedBy="client")
+	//private Collection<Demande> demandes = new ArrayList<Demande>();
+
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getMotPass() {
+		return motPass;
+	}
+	public void setMotPass(String motPass) {
+		this.motPass = motPass;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	public Client(String nom, String prenom, Date dateNaissance, String mail, String login, String motPass) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.mail = mail;
+		this.login = login;
+		this.motPass = motPass;
+	}
+	public Client() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+}
