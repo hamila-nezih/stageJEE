@@ -17,13 +17,20 @@ import org.hn.stage.entities.base.BaseEntity;
 public class Client extends BaseEntity{
 
 	private static final long serialVersionUID = 1235750709613679666L;
+	
+	@Column(name = "cli_nom")
 	private String nom ;
+	@Column(name = "cli_prenom")
 	private String prenom ;
+	@Column(name = "cli_date_naissance")
 	private Date dateNaissance;
+	@Column(name = "cli_mail")
 	private String mail ;
 	@NotEmpty
+	@Column(name = "cli_login")
 	private String login ;
 	@NotEmpty
+	@Column(name = "cli_mot_passe")
 	private String motPass ;
 	//@OneToMany(mappedBy="client")
 	//private Collection<Demande> demandes = new ArrayList<Demande>();

@@ -13,11 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hn.stage.entities.base.BaseEntity;
-import org.hn.stage.entities.demandes.PrerequisDemade;
+import org.hn.stage.entities.demandes.PrerequisDemande;
 
 
 @Entity
-@Table(name="prq_Type_dmd")
+@Table(name="prerequis_Type_dmd")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "prq_clef")) })
 public class PrerequisTypeDemande extends BaseEntity{
 
@@ -27,7 +27,7 @@ public class PrerequisTypeDemande extends BaseEntity{
 	@JoinColumn(name="prq_tyd_clef",referencedColumnName="tyd_clef")
 	private TypeDemande typeDemande;
 	@OneToMany(mappedBy="id")
-	private Collection<PrerequisDemade> prerequisDemades = new ArrayList<PrerequisDemade>();
+	private Collection<PrerequisDemande> prerequisDemades = new ArrayList<PrerequisDemande>();
 	@Column(name="prq_libelle")
     private String libelle;    
     @Column(name="prq_type_data")
@@ -56,13 +56,13 @@ public class PrerequisTypeDemande extends BaseEntity{
 
 
 
-	public Collection<PrerequisDemade> getPrerequisDemades() {
+	public Collection<PrerequisDemande> getPrerequisDemades() {
 		return prerequisDemades;
 	}
 
 
 
-	public void setPrerequisDemades(Collection<PrerequisDemade> prerequisDemades) {
+	public void setPrerequisDemades(Collection<PrerequisDemande> prerequisDemades) {
 		this.prerequisDemades = prerequisDemades;
 	}
 

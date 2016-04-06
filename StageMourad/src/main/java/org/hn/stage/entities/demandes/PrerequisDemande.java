@@ -13,9 +13,9 @@ import org.hn.stage.entities.typeDemandes.PrerequisTypeDemande;
 
 
 @Entity
-@Table(name="prq_dmd")
+@Table(name="prerequis_dmd")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "prd_clef")) })
-public class PrerequisDemade extends BaseEntity{
+public class PrerequisDemande extends BaseEntity{
 
     
 	private static final long serialVersionUID = 2332737171236259159L;
@@ -28,7 +28,7 @@ public class PrerequisDemade extends BaseEntity{
 	@Column(name="prd_libelle")
     private String libelle;
 
-	public PrerequisDemade() {
+	public PrerequisDemande() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

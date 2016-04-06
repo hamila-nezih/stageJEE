@@ -12,4 +12,6 @@ public interface InterfaceDao {
 	public void supprimerClient(Long idClient);
 	public void modifierClient(Client c);
 	
+	
+	
 }

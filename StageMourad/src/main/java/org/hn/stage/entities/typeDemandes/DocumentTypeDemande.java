@@ -16,15 +16,17 @@ import org.hn.stage.entities.base.BaseEntity;
 import org.hn.stage.entities.demandes.DocumentDemande;
 
 @Entity
-@Table(name="Doc_type_dmd")
+@Table(name="Document_type_dmd")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "dtd_clef")) })
 public class DocumentTypeDemande extends BaseEntity{
 
 	
 	private static final long serialVersionUID = 6980861635976314154L;
+	
 	@ManyToOne
 	@JoinColumn(name="dtd_tyd_clef",referencedColumnName="tyd_clef")
 	private TypeDemande typeDemande;
+	
 	@Column(name="dtd_libelle")
 	private String libelle;    
 	@Column(name="dtd_obligatoire")
