@@ -1,4 +1,4 @@
-package org.hn.stage.dao;
+package org.hn.stage.dao.responsable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

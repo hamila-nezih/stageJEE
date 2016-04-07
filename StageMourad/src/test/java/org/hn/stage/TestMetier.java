@@ -1,6 +1,5 @@
 package org.hn.stage;
 
-import static org.junit.Assert.*;
 
 import org.hn.stage.entities.acteurs.Responsable;
 import org.hn.stage.metier.responsable.*;
@@ -20,7 +19,7 @@ public class TestMetier {
 	@Test
 	public void testImpMetierClient(){
 		InterfaceMetierResponsable metierResponsable = (InterfaceMetierResponsable) context.getBean("metierClientllll");
-         metierResponsable.createUser(new Responsable("responsable general", "mourad", "bahloul"));
+         metierResponsable.createResponsable(new Responsable("responsable general", "Bahloul", "Mourad"));
 		
 		
 	}

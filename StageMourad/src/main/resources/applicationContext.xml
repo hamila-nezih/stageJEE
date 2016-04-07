@@ -38,7 +38,7 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 <bean id="metierResponsable" class="org.hn.stage.metier.ImpIntMetierResponsable">
      <property name="dao" ref="dao"></property>
 </bean>
-<bean id="daolll" class="org.hn.stage.dao.ImpDaoResponsable"></bean>
+<bean id="daolll" class="org.hn.stage.dao.responsable.ImpDaoResponsable"></bean>
 
 <bean id="metierClientllll" class="org.hn.stage.metier.responsable.ImpIntMetierResponsable">
      <property name="dao" ref="daolll"></property>

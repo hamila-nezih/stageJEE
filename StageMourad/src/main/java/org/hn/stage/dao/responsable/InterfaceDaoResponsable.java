@@ -1,4 +1,4 @@
-package org.hn.stage.dao;
+package org.hn.stage.dao.responsable;
 
 import org.hn.stage.dao.commune.GenericDao;
 import org.hn.stage.entities.acteurs.Responsable;

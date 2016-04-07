@@ -16,7 +16,7 @@ public interface InterfaceMetierResponsable  {
 	 * @param userEntity
 	 * @return true if success
 	 */
-	boolean createUser(Responsable responsable);
+	boolean createResponsable(Responsable responsable);
 	
 
 }
