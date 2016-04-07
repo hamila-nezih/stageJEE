@@ -1,4 +1,4 @@
-package org.hn.stage.entities;
+package org.hn.stage.entities.acteurs;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -14,16 +14,15 @@ import org.hn.stage.entities.base.BaseEntity;
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "srv_clef")) })
 public class Service extends BaseEntity{
 
-	
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -1781951653776269042L;
 	@Column(name="srv_libelle")
     private String libelle;
+	
 
-
-
+    public Service(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
 	public String getLibelle() {
 		return libelle;
 	}

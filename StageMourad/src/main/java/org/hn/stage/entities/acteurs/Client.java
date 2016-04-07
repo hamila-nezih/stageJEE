@@ -1,4 +1,4 @@
-package org.hn.stage.entities;
+package org.hn.stage.entities.acteurs;
 
 import java.util.*;
 
@@ -30,10 +30,8 @@ public class Client extends BaseEntity{
 	@Column(name = "cli_login")
 	private String login ;
 	@NotEmpty
-	@Column(name = "cli_mot_passe")
-	private String motPass ;
-	//@OneToMany(mappedBy="client")
-	//private Collection<Demande> demandes = new ArrayList<Demande>();
+	@Column(name = "cli_mots_passe")
+	private String motsPasse ;
 
 	public String getMail() {
 		return mail;
@@ -54,10 +52,10 @@ public class Client extends BaseEntity{
 		this.login = login;
 	}
 	public String getMotPass() {
-		return motPass;
+		return motsPasse;
 	}
 	public void setMotPass(String motPass) {
-		this.motPass = motPass;
+		this.motsPasse = motPass;
 	}
 
 	public String getNom() {
@@ -80,7 +78,7 @@ public class Client extends BaseEntity{
 		this.dateNaissance = dateNaissance;
 		this.mail = mail;
 		this.login = login;
-		this.motPass = motPass;
+		this.motsPasse = motPass;
 	}
 	public Client() {
 		super();

@@ -1,4 +1,4 @@
-package org.hn.stage.entities.historisationsTypes;
+package org.hn.stage.entities.historisationsDesTypes;
 
 import java.util.Date;
 
@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hn.stage.entities.Responsable;
+import org.hn.stage.entities.acteurs.Responsable;
 import org.hn.stage.entities.base.BaseEntity;
 import org.hn.stage.entities.typeDemandes.DocumentTypeDemande;
 
@@ -32,6 +32,12 @@ public class HistoriqueTypeDocument extends BaseEntity{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "htdoc_res_clef", nullable = false)
 	private Responsable responsable;
+	public HistoriqueTypeDocument(String typeHist, Date dateHist, String commentaire) {
+		super();
+		this.typeHist = typeHist;
+		this.dateHist = dateHist;
+		this.commentaire = commentaire;
+	}
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "htdoc_dtd_clef", nullable = false)
 	private DocumentTypeDemande documentTypeDemande;

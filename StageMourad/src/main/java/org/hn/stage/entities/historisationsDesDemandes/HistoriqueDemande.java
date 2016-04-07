@@ -1,4 +1,4 @@
-package org.hn.stage.entities.historisationsDemande;
+package org.hn.stage.entities.historisationsDesDemandes;
 
 import java.util.Date;
 
@@ -11,32 +11,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hn.stage.entities.Service;
+import org.hn.stage.entities.acteurs.Client;
 import org.hn.stage.entities.base.BaseEntity;
 import org.hn.stage.entities.demandes.Demande;
 
 @Entity
-@Table(name="historique_ser_dmd")
-@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "hsd_clef")) })
-public class HistoriqueServiceDemande extends BaseEntity{
+@Table(name="historique_dmd")
+@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "hdm_clef")) })
+public class HistoriqueDemande extends BaseEntity{
 
-	public HistoriqueServiceDemande() {
+	public HistoriqueDemande() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	private static final long serialVersionUID = -5066946268928237812L;
-	@Column(name = "hsd_type_hist")
+	private static final long serialVersionUID = -7993255878282588813L;
+	@Column(name="hdm_type_hist")
 	private String typeHist;
-	@Column(name = "hsd_date")
+	@Column(name="hdm_date")
 	private Date dateHist;
-	@Column(name = "hsd_commentaire")
-	private String commentaire;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hsd_svc_clef", nullable = false)	
-	private Service service ;
+	@JoinColumn(name = "hdm_cli_clef", nullable = false)	
+	private Client  client;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hsd_dmd_clef", nullable = false)	
-	private Demande demande ;
+	@JoinColumn(name = "hdm_dmd_clef", nullable = false)	
+	private Demande demande;
 	public String getTypeHist() {
 		return typeHist;
 	}
@@ -49,17 +47,11 @@ public class HistoriqueServiceDemande extends BaseEntity{
 	public void setDateHist(Date dateHist) {
 		this.dateHist = dateHist;
 	}
-	public String getCommentaire() {
-		return commentaire;
+	public Client  getResponsable() {
+		return client;
 	}
-	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
-	}
-	public Service getService() {
-		return service;
-	}
-	public void setService(Service service) {
-		this.service = service;
+	public void setResponsable(Client  responsable) {
+		this.client = responsable;
 	}
 	public Demande getDemande() {
 		return demande;
@@ -67,4 +59,7 @@ public class HistoriqueServiceDemande extends BaseEntity{
 	public void setDemande(Demande demande) {
 		this.demande = demande;
 	}
+    
 }
+
+

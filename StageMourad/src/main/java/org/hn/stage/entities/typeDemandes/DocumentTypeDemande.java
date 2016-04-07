@@ -26,7 +26,6 @@ public class DocumentTypeDemande extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name="dtd_tyd_clef",referencedColumnName="tyd_clef")
 	private TypeDemande typeDemande;
-	
 	@Column(name="dtd_libelle")
 	private String libelle;    
 	@Column(name="dtd_obligatoire")
@@ -34,6 +33,11 @@ public class DocumentTypeDemande extends BaseEntity{
 	@OneToMany(mappedBy="id")
     private Collection<DocumentDemande> documentDemandes = new ArrayList<DocumentDemande>();
 
+	public DocumentTypeDemande(String libelle, Boolean obligatoire) {
+		super();
+		this.libelle = libelle;
+		this.obligatoire = obligatoire;
+	}
 	public DocumentTypeDemande() {
 		super();
 		// TODO Auto-generated constructor stub

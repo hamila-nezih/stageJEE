@@ -23,7 +23,7 @@ public class PrerequisDemande extends BaseEntity{
 	@JoinColumn(name="prd_dmd_clef",referencedColumnName="dmd_clef")  
     private Demande demande ;
 	@ManyToOne  
-	@JoinColumn(name="prd_prq_clef",referencedColumnName="prq_clef")
+	@JoinColumn(name="prd_prq_clef",referencedColumnName="ptd_clef")
     private PrerequisTypeDemande prerequisTypeDemande ;
 	@Column(name="prd_libelle")
     private String libelle;

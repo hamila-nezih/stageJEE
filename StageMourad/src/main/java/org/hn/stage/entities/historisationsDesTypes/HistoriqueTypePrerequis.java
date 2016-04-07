@@ -1,4 +1,4 @@
-package org.hn.stage.entities.historisationsTypes;
+package org.hn.stage.entities.historisationsDesTypes;
 
 import java.util.Date;
 
@@ -11,12 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hn.stage.entities.Responsable;
+import org.hn.stage.entities.acteurs.Responsable;
 import org.hn.stage.entities.base.BaseEntity;
 import org.hn.stage.entities.typeDemandes.PrerequisTypeDemande;
 
 @Entity
-@Table(name="his_typ_pre")
+@Table(name="historique_typ_pre")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "htp_clef")) })
 public class HistoriqueTypePrerequis extends BaseEntity{
 
@@ -33,6 +33,12 @@ public class HistoriqueTypePrerequis extends BaseEntity{
 	public HistoriqueTypePrerequis() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public HistoriqueTypePrerequis(String typeHist, Date dateHist, String commentaire) {
+		super();
+		this.typeHist = typeHist;
+		this.dateHist = dateHist;
+		this.commentaire = commentaire;
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "htp_res_clef", nullable = false)

@@ -1,4 +1,4 @@
-package org.hn.stage.entities;
+package org.hn.stage.entities.acteurs;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -25,8 +25,20 @@ public class Responsable extends BaseEntity{
     private String libelle;
     @Column(name="res_nom")
     private String nom;
-    @Column(name="res_prenom")
+    public Responsable() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Column(name="res_prenom")
     private String prenom;
+
+	public Responsable(String libelle, String nom, String prenom) {
+		super();
+		this.libelle = libelle;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
 
 	public String getLibelle() {
 		return libelle;

@@ -29,7 +29,12 @@ public class TypeDemande extends BaseEntity{
    // @Column(name="tyd_srv_clef")
    // private Service service;
 	
-    public TypeDemande() {
+    public TypeDemande(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+
+	public TypeDemande() {
 		super();
 		
 	}
