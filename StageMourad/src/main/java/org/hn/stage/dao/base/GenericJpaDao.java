@@ -1,4 +1,4 @@
-package org.hn.stage.dao.commune;
+package org.hn.stage.dao.base;
 
 import java.io.Serializable;
 import java.util.List;
@@ -53,7 +53,7 @@ public abstract class GenericJpaDao<T, ID extends Serializable> implements Gener
 			.getResultList();
 	}
 	
-	public T save(T entity) {
+	public T ajouter(T entity) {
 		em.persist(entity);
 		return entity;
 	}

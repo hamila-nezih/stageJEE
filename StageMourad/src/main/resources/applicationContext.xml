@@ -33,14 +33,41 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 </bean> 
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<context:annotation-config></context:annotation-config>
-<bean id="dao" class="org.hn.stage.dao.ImpDao"></bean>
+<bean id="daoRes" class="org.hn.stage.dao.acteurs.ImpDaoResponsable"></bean>
+<bean id="daoUti" class="org.hn.stage.dao.acteurs.ImpDaoUtilisateur"></bean>
+<bean id="daoTyd" class="org.hn.stage.dao.typeDemandes.ImpDaoTypDemande"></bean>
+<bean id="daoDTD" class="org.hn.stage.dao.typeDemandes.ImpDaoDocTypDemande"></bean>
+<bean id="daoPTD" class="org.hn.stage.dao.typeDemandes.ImpDaoPreTypDemande"></bean>
+<bean id="daoHTP" class="org.hn.stage.dao.historiqueDesTypesDeDemandes.ImpDaoHistTypPrerequis"></bean>
+<bean id="daoHTD" class="org.hn.stage.dao.historiqueDesTypesDeDemandes.ImpDaoHistTypDemande"></bean>
+<bean id="daoHTDoc" class="org.hn.stage.dao.historiqueDesTypesDeDemandes.ImpDaoHistTypDocument"></bean>
 
-<bean id="metierResponsable" class="org.hn.stage.metier.ImpIntMetierResponsable">
-     <property name="dao" ref="dao"></property>
+<bean id="metierResponsable" class="org.hn.stage.metier.responsable.ImpIntMetierResponsable">
+     <property name="daoRes" ref="daoRes"></property>
+     <property name="daoTyd" ref="daoTyd"></property>
+     <property name="daoDTD" ref="daoDTD"></property>
+     <property name="daoPTD" ref="daoPTD"></property>
+     <property name="daoUti" ref="daoUti"></property>
+     <property name="daoHTD" ref="daoHTD"></property>
+     <property name="daoHTDoc" ref="daoHTDoc"></property>
+     <property name="daoHTP" ref="daoHTP"></property>
 </bean>
-<bean id="daolll" class="org.hn.stage.dao.responsable.ImpDaoResponsable"></bean>
-
-<bean id="metierClientllll" class="org.hn.stage.metier.responsable.ImpIntMetierResponsable">
-     <property name="dao" ref="daolll"></property>
+<bean id="daoClient" class="org.hn.stage.dao.acteurs.ImpDaoClient"></bean>
+<bean id="daoDemande" class="org.hn.stage.dao.demades.ImpDaoDemande"></bean>
+<bean id="daoHisDemande" class="org.hn.stage.dao.historiqueDesDemandes.ImpDaoHisDemande"></bean>
+<bean id="daoDocumentDemande" class="org.hn.stage.dao.demades.ImpDaoDocumentDemande"></bean>
+<bean id="daoHisDocDemande" class="org.hn.stage.dao.historiqueDesDemandes.ImpDaoHisDocDemande"></bean>
+<bean id="daoPrerequisDemande" class="org.hn.stage.dao.demades.ImpDaoPrerequisDemande"></bean>
+<bean id="daoHisPrerDemande" class="org.hn.stage.dao.historiqueDesDemandes.ImpDaoHisPrerDemande"></bean>
+<bean id="" class="org.hn.stage.dao.typeDemandes.ImpDaoTypDemande"></bean>
+<bean id="metierClient" class="org.hn.stage.metier.Client.ImpIntMetierClient">
+     <property name="daoTyd" ref="daoTyd"></property>
+     <property name="daoClient" ref="daoClient"></property>
+     <property name="daoDemande" ref="daoDemande"></property>
+     <property name="daoHisDemande" ref="daoHisDemande"></property>
+     <property name="daoDocumentDemande" ref="daoDocumentDemande"></property>
+     <property name="daoHisDocDemande" ref="daoHisDocDemande"></property>
+     <property name="daoPrerequisDemande" ref="daoPrerequisDemande"></property>
+     <property name="daoHisPrerDemande" ref="daoHisPrerDemande"></property>
 </bean>
 </beans>

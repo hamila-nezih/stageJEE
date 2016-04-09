@@ -1,9 +1,9 @@
-package org.hn.stage.dao.responsable;
+package org.hn.stage.dao.acteurs;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hn.stage.dao.commune.*;
+import org.hn.stage.dao.base.*;
 import org.hn.stage.entities.acteurs.Responsable;
 
 public class ImpDaoResponsable extends GenericJpaDao<Responsable, Long> implements InterfaceDaoResponsable{

@@ -32,8 +32,9 @@ public class PrerequisTypeDemande extends BaseEntity{
     @Column(name="ptd_obligatoire")
     private Boolean obligatoire;
 
-    public PrerequisTypeDemande(String libelle,Boolean obligatoire) {
+    public PrerequisTypeDemande(String libelle,Boolean obligatoire, TypeDemande typeDemande) {
 		super();
+		this.typeDemande = typeDemande ;
 		this.libelle = libelle;
 		this.obligatoire = obligatoire;
 	}
@@ -61,6 +62,9 @@ public class PrerequisTypeDemande extends BaseEntity{
 	}
 	public void setObligatoire(Boolean obligatoire) {
 		this.obligatoire = obligatoire;
+	}
+	public Boolean getObligatoire() {
+		return obligatoire;
 	}   
     
 }

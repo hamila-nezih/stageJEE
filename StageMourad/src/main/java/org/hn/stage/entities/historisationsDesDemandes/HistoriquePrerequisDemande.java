@@ -38,6 +38,13 @@ public class HistoriquePrerequisDemande extends BaseEntity {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public HistoriquePrerequisDemande(String typeHist, Date dateHist) {
+		super();
+		this.typeHist = typeHist;
+		this.dateHist = dateHist;
+	}
+
 	public String getTypeHist() {
 		return typeHist;
 	}
@@ -55,5 +62,13 @@ public class HistoriquePrerequisDemande extends BaseEntity {
 	}
 	public void setPrerequisDemande(PrerequisDemande prerequisDemande) {
 		this.prerequisDemande = prerequisDemande;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 }

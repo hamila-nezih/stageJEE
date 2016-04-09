@@ -40,6 +40,11 @@ public class HistoriqueDocumentDemande extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
+	public HistoriqueDocumentDemande(String typeHist, Date date) {
+		this.typeHist = typeHist;
+		this.dateHist = date;
+	}
+
 	public String getTypeHist() {
 		return typeHist;
 	}
@@ -57,5 +62,13 @@ public class HistoriqueDocumentDemande extends BaseEntity {
 	}
 	public void setDocumentDemande(DocumentDemande documentDemande) {
 		this.documentDemande = documentDemande;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 }

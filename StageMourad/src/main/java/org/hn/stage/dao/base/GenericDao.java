@@ -1,11 +1,11 @@
-package org.hn.stage.dao.commune;
+package org.hn.stage.dao.base;
 
 import java.io.Serializable;
 import java.util.List;
 
 public interface GenericDao<T, ID extends Serializable> {
 	
-	T save(T entity);
+	T ajouter(T entity);
 	T update(T entity);
 	void delete(T entity);
 	T findById(ID id);

@@ -35,6 +35,11 @@ public class HistoriqueDemande extends BaseEntity{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "hdm_dmd_clef", nullable = false)	
 	private Demande demande;
+	public HistoriqueDemande(String typeHist, Date dateHist) {
+		super();
+		this.typeHist = typeHist;
+		this.dateHist = dateHist;
+	}
 	public String getTypeHist() {
 		return typeHist;
 	}
@@ -47,11 +52,11 @@ public class HistoriqueDemande extends BaseEntity{
 	public void setDateHist(Date dateHist) {
 		this.dateHist = dateHist;
 	}
-	public Client  getResponsable() {
+	public Client  getClient() {
 		return client;
 	}
-	public void setResponsable(Client  responsable) {
-		this.client = responsable;
+	public void setClient(Client  client) {
+		this.client = client;
 	}
 	public Demande getDemande() {
 		return demande;

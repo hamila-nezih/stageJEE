@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hn.stage.entities.acteurs.Service;
+import org.hn.stage.entities.acteurs.Utilisateur;
 import org.hn.stage.entities.base.BaseEntity;
 import org.hn.stage.entities.demandes.Demande;
 
@@ -33,7 +33,7 @@ public class HistoriqueServiceDemande extends BaseEntity{
 	private String commentaire;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "hsd_svc_clef", nullable = false)	
-	private Service service ;
+	private Utilisateur service ;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "hsd_dmd_clef", nullable = false)	
 	private Demande demande ;
@@ -55,10 +55,10 @@ public class HistoriqueServiceDemande extends BaseEntity{
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
-	public Service getService() {
+	public Utilisateur getService() {
 		return service;
 	}
-	public void setService(Service service) {
+	public void setService(Utilisateur service) {
 		this.service = service;
 	}
 	public Demande getDemande() {

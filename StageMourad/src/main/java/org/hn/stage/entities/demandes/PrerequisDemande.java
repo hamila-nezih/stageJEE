@@ -4,6 +4,7 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,14 +20,19 @@ public class PrerequisDemande extends BaseEntity{
 
     
 	private static final long serialVersionUID = 2332737171236259159L;
-	@ManyToOne
-	@JoinColumn(name="prd_dmd_clef",referencedColumnName="dmd_clef")  
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "prd_dmd_clef", nullable = false)
     private Demande demande ;
-	@ManyToOne  
-	@JoinColumn(name="prd_prq_clef",referencedColumnName="ptd_clef")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "prd_prq_clef", nullable = false)
     private PrerequisTypeDemande prerequisTypeDemande ;
 	@Column(name="prd_libelle")
     private String libelle;
+
+	public PrerequisDemande(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
 
 	public PrerequisDemande() {
 		super();

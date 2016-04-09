@@ -1,4 +1,4 @@
-package org.hn.stage.entities.historisationsDesTypes;
+package org.hn.stage.entities.historisationsDesTypesDeDemandes;
 
 import java.util.Date;
 
@@ -13,39 +13,39 @@ import javax.persistence.Table;
 
 import org.hn.stage.entities.acteurs.Responsable;
 import org.hn.stage.entities.base.BaseEntity;
-import org.hn.stage.entities.typeDemandes.PrerequisTypeDemande;
+import org.hn.stage.entities.typeDemandes.DocumentTypeDemande;
 
 @Entity
-@Table(name="historique_typ_pre")
-@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "htp_clef")) })
-public class HistoriqueTypePrerequis extends BaseEntity{
-
-
-	private static final long serialVersionUID = -8471639229760708841L;
+@Table(name="historique_typ_doc")
+@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "htdoc_clef")) })
+public class HistoriqueTypeDocument extends BaseEntity{
 	
-	@Column(name = "htp_type_hist")
+	private static final long serialVersionUID = 5490262890186626008L;
+	
+	
+	@Column(name = "htdoc_type_hist")
 	private String typeHist;
-	@Column(name = "htp_date")
+	@Column(name = "htdoc_date")
 	private Date dateHist;
-	@Column(name = "htp_commentaire")
+	@Column(name = "htdoc_commentaire")
 	private String commentaire;
-	
-	public HistoriqueTypePrerequis() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public HistoriqueTypePrerequis(String typeHist, Date dateHist, String commentaire) {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "htdoc_res_clef", nullable = false)
+	private Responsable responsable;
+	public HistoriqueTypeDocument(String typeHist, Date dateHist, String commentaire) {
 		super();
 		this.typeHist = typeHist;
 		this.dateHist = dateHist;
 		this.commentaire = commentaire;
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "htp_res_clef", nullable = false)
-	private Responsable responsable;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "htp_ptd_clef", nullable = false)
-	private PrerequisTypeDemande prerequisTypeDemande;
+	@JoinColumn(name = "htdoc_dtd_clef", nullable = false)
+	private DocumentTypeDemande documentTypeDemande;
+	
+	public HistoriqueTypeDocument() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getTypeHist() {
 		return typeHist;
 	}
@@ -70,12 +70,11 @@ public class HistoriqueTypePrerequis extends BaseEntity{
 	public void setResponsable(Responsable responsable) {
 		this.responsable = responsable;
 	}
-	public PrerequisTypeDemande getPrerequisTypeDemande() {
-		return prerequisTypeDemande;
+	public DocumentTypeDemande getDocumentTypeDemande() {
+		return documentTypeDemande;
 	}
-	public void setPrerequisTypeDemande(PrerequisTypeDemande prerequisTypeDemande) {
-		this.prerequisTypeDemande = prerequisTypeDemande;
+	public void setDocumentTypeDemande(DocumentTypeDemande documentTypeDemande) {
+		this.documentTypeDemande = documentTypeDemande;
 	}
-
 
 }

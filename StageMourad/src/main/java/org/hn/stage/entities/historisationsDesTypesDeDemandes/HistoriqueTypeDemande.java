@@ -1,4 +1,4 @@
-package org.hn.stage.entities.historisationsDesTypes;
+package org.hn.stage.entities.historisationsDesTypesDeDemandes;
 
 import java.util.Date;
 

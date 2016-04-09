@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hn.stage.entities.acteurs.Client;
 import org.hn.stage.entities.acteurs.Responsable;
-import org.hn.stage.entities.acteurs.Service;
+import org.hn.stage.entities.acteurs.Utilisateur;
 import org.hn.stage.entities.demandes.Demande;
 import org.hn.stage.entities.demandes.DocumentDemande;
 import org.hn.stage.entities.demandes.PrerequisDemande;
@@ -12,9 +12,9 @@ import org.hn.stage.entities.historisationsDesDemandes.HistoriqueDemande;
 import org.hn.stage.entities.historisationsDesDemandes.HistoriqueDocumentDemande;
 import org.hn.stage.entities.historisationsDesDemandes.HistoriquePrerequisDemande;
 import org.hn.stage.entities.historisationsDesDemandes.HistoriqueServiceDemande;
-import org.hn.stage.entities.historisationsDesTypes.HistoriqueTypeDemande;
-import org.hn.stage.entities.historisationsDesTypes.HistoriqueTypeDocument;
-import org.hn.stage.entities.historisationsDesTypes.HistoriqueTypePrerequis;
+import org.hn.stage.entities.historisationsDesTypesDeDemandes.HistoriqueTypeDemande;
+import org.hn.stage.entities.historisationsDesTypesDeDemandes.HistoriqueTypeDocument;
+import org.hn.stage.entities.historisationsDesTypesDeDemandes.HistoriqueTypePrerequis;
 import org.hn.stage.entities.typeDemandes.DocumentTypeDemande;
 import org.hn.stage.entities.typeDemandes.PrerequisTypeDemande;
 import org.hn.stage.entities.typeDemandes.TypeDemande;
@@ -41,11 +41,11 @@ public interface InterfaceDao {
 		
 				/******** Service  *********/
 	
-	public Long ajouterService(Service r);
-	public List<Service> listService() ;
-	public Service getService(Long idService);
+	public Long ajouterService(Utilisateur r);
+	public List<Utilisateur> listService() ;
+	public Utilisateur getService(Long idService);
 	public void supprimerService(Long idService);
-	public void modifierService(Service r);
+	public void modifierService(Utilisateur r);
 	
 	/******************* org.hn.stage.entities.historisationsDesTypes *******************/
 

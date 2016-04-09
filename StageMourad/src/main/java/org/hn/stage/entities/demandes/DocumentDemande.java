@@ -4,6 +4,7 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -20,11 +21,12 @@ import com.mysql.jdbc.log.Log;
 public class DocumentDemande extends BaseEntity{
 
 	private static final long serialVersionUID = 3731906924467527265L;
-	@ManyToOne
-	@JoinColumn(name="dod_dmd_clef",referencedColumnName="dmd_clef")  
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "dod_dmd_clef", nullable = false) 
     private Demande demande ;
-	@ManyToOne
-	@JoinColumn(name="dod_dtd_clef",referencedColumnName="dtd_clef") 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "dod_dtd_clef", nullable = false)
 	private DocumentTypeDemande documentTypeDemandes ;
 	@Column(name="dod_libelle")
     private String libelle;    
@@ -34,6 +36,11 @@ public class DocumentDemande extends BaseEntity{
     @Lob
     @Column(name="dod_contenue",length=10000000)   
 	private Log contenue ;
+	
+	public DocumentDemande(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
 
 	public DocumentDemande() {
 		super();

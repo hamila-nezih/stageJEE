@@ -33,8 +33,9 @@ public class DocumentTypeDemande extends BaseEntity{
 	@OneToMany(mappedBy="id")
     private Collection<DocumentDemande> documentDemandes = new ArrayList<DocumentDemande>();
 
-	public DocumentTypeDemande(String libelle, Boolean obligatoire) {
+	public DocumentTypeDemande(String libelle, Boolean obligatoire,TypeDemande typeDemande) {
 		super();
+		this.typeDemande = typeDemande;
 		this.libelle = libelle;
 		this.obligatoire = obligatoire;
 	}

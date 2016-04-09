@@ -1,22 +1,21 @@
 package org.hn.stage.metier.responsable;
 
 import org.hn.stage.entities.acteurs.Responsable;
+import org.hn.stage.entities.acteurs.Utilisateur;
+import org.hn.stage.entities.typeDemandes.DocumentTypeDemande;
+import org.hn.stage.entities.typeDemandes.PrerequisTypeDemande;
+import org.hn.stage.entities.typeDemandes.TypeDemande;
 
 public interface InterfaceMetierResponsable  {
-	/**
-	 * requetes database for Responsable nom valable
-	 * 
-	 * @param nom
-	 * @return true if valable
-	 */
-	boolean checkAvailable(String nom);
-	/**
-	 * Create user - persist to database
-	 * 
-	 * @param userEntity
-	 * @return true if success
-	 */
-	boolean createResponsable(Responsable responsable);
+	
+	public Long ajouterNouveauTypeDemande(TypeDemande tyD, Responsable responsable);
+	public Long AjouterNouveauTypeDocumentDemande(DocumentTypeDemande dTD, Responsable responsable);
+	public Long AjouterNouveauTypePrerequis(PrerequisTypeDemande pTD, Responsable responsable);
+	
+	public Long ajouterNouveauResponsable(Responsable res);
+	public Long ajouterNouveauUtilisateur(Utilisateur uti);
+
+	
 	
 
 }

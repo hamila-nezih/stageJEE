@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 import org.hn.stage.entities.acteurs.Client;
 import org.hn.stage.entities.acteurs.Responsable;
-import org.hn.stage.entities.acteurs.Service;
+import org.hn.stage.entities.acteurs.Utilisateur;
 import org.hn.stage.entities.demandes.Demande;
 import org.hn.stage.entities.demandes.DocumentDemande;
 import org.hn.stage.entities.demandes.PrerequisDemande;
@@ -14,9 +14,9 @@ import org.hn.stage.entities.historisationsDesDemandes.HistoriqueDemande;
 import org.hn.stage.entities.historisationsDesDemandes.HistoriqueDocumentDemande;
 import org.hn.stage.entities.historisationsDesDemandes.HistoriquePrerequisDemande;
 import org.hn.stage.entities.historisationsDesDemandes.HistoriqueServiceDemande;
-import org.hn.stage.entities.historisationsDesTypes.HistoriqueTypeDemande;
-import org.hn.stage.entities.historisationsDesTypes.HistoriqueTypeDocument;
-import org.hn.stage.entities.historisationsDesTypes.HistoriqueTypePrerequis;
+import org.hn.stage.entities.historisationsDesTypesDeDemandes.HistoriqueTypeDemande;
+import org.hn.stage.entities.historisationsDesTypesDeDemandes.HistoriqueTypeDocument;
+import org.hn.stage.entities.historisationsDesTypesDeDemandes.HistoriqueTypePrerequis;
 import org.hn.stage.entities.typeDemandes.DocumentTypeDemande;
 import org.hn.stage.entities.typeDemandes.PrerequisTypeDemande;
 import org.hn.stage.entities.typeDemandes.TypeDemande;
@@ -94,32 +94,32 @@ public class ImpDao implements InterfaceDao{
 				/************* Service  ***************/
 	
 	@Override
-	public Long ajouterService(Service r) {
+	public Long ajouterService(Utilisateur r) {
 		em.persist(r);
 		return r.getId();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Service> listService() {
+	public List<Utilisateur> listService() {
 		Query req=em.createQuery("select c from Service c");
         return req.getResultList();
 	}
 
 	@Override
-	public Service getService(Long idService) {
-		return em.find(Service.class, idService);
+	public Utilisateur getService(Long idService) {
+		return em.find(Utilisateur.class, idService);
 	}
 
 	@Override
 	public void supprimerService(Long idService) {
-		Service c=  em.find(Service.class, idService);
+		Utilisateur c=  em.find(Utilisateur.class, idService);
 		 em.remove(c);
 		
 	}
 
 	@Override
-	public void modifierService(Service r) {
+	public void modifierService(Utilisateur r) {
 		em.merge(r);	
 		
 	}

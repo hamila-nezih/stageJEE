@@ -1,6 +1,6 @@
-package org.hn.stage.dao.responsable;
+package org.hn.stage.dao.acteurs;
 
-import org.hn.stage.dao.commune.GenericDao;
+import org.hn.stage.dao.base.GenericDao;
 import org.hn.stage.entities.acteurs.Responsable;
 
 public interface InterfaceDaoResponsable extends GenericDao<Responsable, Long> {
