@@ -30,6 +30,11 @@ public class Utilisateur extends BaseEntity{
 		this.prenom = prenom;
 	}
 
+	public Utilisateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getLibelle() {
 		return libelle;
 	}

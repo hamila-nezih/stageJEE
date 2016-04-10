@@ -1,13 +1,5 @@
 package org.hn.stage.entities.demandes;
 
-
-
-
-
-
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -15,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hn.stage.entities.base.BaseEntity;
