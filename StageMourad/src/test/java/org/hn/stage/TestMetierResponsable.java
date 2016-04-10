@@ -1,13 +1,12 @@
 package org.hn.stage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
-import org.hn.stage.entities.acteurs.Responsable;
-import org.hn.stage.entities.acteurs.Utilisateur;
-import org.hn.stage.entities.typeDemandes.DocumentTypeDemande;
-import org.hn.stage.entities.typeDemandes.PrerequisTypeDemande;
-import org.hn.stage.entities.typeDemandes.TypeDemande;
-import org.hn.stage.metier.responsable.InterfaceMetierResponsable;
+import org.hc.stage.entities.acteurs.Utilisateur;
+import org.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
+import org.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
+import org.hc.stage.entities.types.typesDeDemandes.TypeDemande;
+import org.hc.stage.metier.responsable.InterfaceMetierUtilisateur;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,35 +22,30 @@ public class TestMetierResponsable {
 	@Test
 	public void testImpMetierResponsable() {
 		try{
-			InterfaceMetierResponsable metierResponsable = (InterfaceMetierResponsable) context.getBean("metierResponsable");
+			InterfaceMetierUtilisateur metierResponsable = (InterfaceMetierUtilisateur) context.getBean("metierResponsable");
 			
 			/************ ajouter responsable ***********/
 			
-			Responsable responsable = new Responsable("responsable","BAHLOUL","Mourad");
-			Long idRes = metierResponsable.ajouterNouveauResponsable(responsable);	
-			responsable.setId(idRes);
+			Utilisateur utilisateur = new Utilisateur("responsable","BAHLOUL","Mourad");
+			Long idRes = metierResponsable.ajouterNouveauResponsable(utilisateur);	
+			utilisateur.setId(idRes);
 			
-			/************ ajouter responsable ***********/
-			
-			Utilisateur utilisateur = new Utilisateur("sous directeur","hamila","nazih");
-			metierResponsable.ajouterNouveauUtilisateur(utilisateur);	
-			responsable.setId(idRes);
 			
            /************ test ajouter type demande avec l'historique ***********/
 			
 		    TypeDemande typeDemande = new TypeDemande("passeport");			
-			metierResponsable.ajouterNouveauTypeDemande(typeDemande, responsable);	
-			responsable.setId(idRes);
+			metierResponsable.ajouterNouveauTypeDemande(typeDemande, utilisateur);	
+			utilisateur.setId(idRes);
 			
 			/************ test ajouter type document avec l'historique***********/
 			
 			DocumentTypeDemande documentTypeDemande = new DocumentTypeDemande("photocopie de carte d'identitier",true,typeDemande);
-			metierResponsable.AjouterNouveauTypeDocumentDemande(documentTypeDemande, responsable);	
+			metierResponsable.AjouterNouveauTypeDocumentDemande(documentTypeDemande, utilisateur);	
 			
 			/************ test ajout type prerequis avec l'historique ***********/
 			
 			PrerequisTypeDemande prerequisTypeDemande = new PrerequisTypeDemande("nom",true,typeDemande);
-			metierResponsable.AjouterNouveauTypePrerequis(prerequisTypeDemande, responsable);
+			metierResponsable.AjouterNouveauTypePrerequis(prerequisTypeDemande, utilisateur);
 			
 		     assertTrue(true);
 			 		
@@ -59,6 +53,6 @@ public class TestMetierResponsable {
 		 {
 			 assertTrue(e.getMessage(),false);
 		 }
-		}
+	}
 
 }
