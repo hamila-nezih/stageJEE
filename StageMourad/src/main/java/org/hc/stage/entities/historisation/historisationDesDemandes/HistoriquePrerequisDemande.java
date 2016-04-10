@@ -16,7 +16,7 @@ import org.hc.stage.entities.base.BaseEntity;
 import org.hc.stage.entities.demandes.PrerequisDeDemande;
 
 @Entity
-@Table(name="historique_prq")
+@Table(name="historique_prq_demandes")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "hpd_clef")) })
 public class HistoriquePrerequisDemande extends BaseEntity {
 	

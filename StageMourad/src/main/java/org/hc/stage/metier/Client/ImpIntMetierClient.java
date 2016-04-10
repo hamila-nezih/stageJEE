@@ -28,7 +28,7 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 	private InterfaceDaoHisDocDemande daoHisDocDemande ;
 	private InterfaceDaoPrerequisDemande daoPrerequisDemande;
 	private InterfaceDaoHisPrerDemande daoHisPrerDemande;
-	private InterfaceDaoTypDemande daoTyd;
+	private InterfaceDaoTypDemande daoTypDemande;
 
 	
 	public Long ajouterNouveauClient(Client client){
@@ -38,7 +38,7 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 	@Override
 	public Long creerNouvelleDemande(Demande demande, Client client,String id ) {
 		
-		TypeDemande typeDemande = daoTyd.findById(Long.parseLong(id));
+		TypeDemande typeDemande = daoTypDemande.findById(Long.parseLong(id));
 		demande.setTypeDemande(typeDemande);
 		Long idDmd = daoDemande.ajouter(demande).getId();
 		demande.setId(idDmd);
@@ -111,8 +111,8 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 		this.daoHisDemande = daoHisDemande;
 	}
 
-	public void setDaoTyd(InterfaceDaoTypDemande daoTyd) {
-		this.daoTyd = daoTyd;
+	public void setDaoTypDemande(InterfaceDaoTypDemande daoTypDemande) {
+		this.daoTypDemande = daoTypDemande;
 	}
 
 }

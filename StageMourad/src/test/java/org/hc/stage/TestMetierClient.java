@@ -1,14 +1,11 @@
-package org.hn.stage;
+package org.hc.stage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.hc.stage.entities.acteurs.Client;
-import org.hc.stage.entities.demandes.Demande;
-import org.hc.stage.entities.demandes.DocumentDeDemande;
-import org.hc.stage.entities.demandes.PrerequisDeDemande;
 import org.hc.stage.metier.Client.InterfaceMetierClient;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -38,8 +35,8 @@ public class TestMetierClient {
 			
 			/************ ajouter demande ***********/
 			
-			Demande demande = new Demande();
-			metierClient.creerNouvelleDemande(demande, client,"2");
+		//	Demande demande = new Demande();
+		//	metierClient.creerNouvelleDemande(demande, client,"1");
 			
 			
            /************ test ajouter type demande avec l'historique ***********/

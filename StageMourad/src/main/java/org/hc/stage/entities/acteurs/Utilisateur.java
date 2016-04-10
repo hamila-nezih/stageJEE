@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.hc.stage.entities.base.BaseEntity;
 
 @Entity
-@Table(name="responsables")
+@Table(name="utilisateurs")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "res_clef")) })
 public class Utilisateur extends BaseEntity{
 	

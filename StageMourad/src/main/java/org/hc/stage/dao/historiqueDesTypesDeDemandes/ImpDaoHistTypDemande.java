@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.hc.stage.dao.base.GenericJpaDao;
 import org.hc.stage.entities.historisation.historisationDesTypesDeDemandes.HistoriqueTypeDemande;
 
-public class ImpDaoHistTypDemande extends GenericJpaDao<HistoriqueTypeDemande, Long> implements InterfaceDaoHistTypDemande{
+public class ImpDaoHistTypDemande extends GenericJpaDao<HistoriqueTypeDemande, Long> implements InterfaceDaoHistoriqueTypeDemande{
 
 	@PersistenceContext
 	private EntityManager em ;

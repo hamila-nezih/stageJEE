@@ -1,4 +1,4 @@
-package org.hc.stage.metier.responsable;
+package org.hc.stage.metier.utilisateur;
 
 import org.hc.stage.entities.acteurs.Utilisateur;
 import org.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
@@ -11,8 +11,7 @@ public interface InterfaceMetierUtilisateur  {
 	public Long AjouterNouveauTypeDocumentDemande(DocumentTypeDemande dTD, Utilisateur utilisateur);
 	public Long AjouterNouveauTypePrerequis(PrerequisTypeDemande pTD, Utilisateur utilisateur);
 	
-	public Long ajouterNouveauResponsable(Utilisateur res);
-	public Long ajouterNouveauUtilisateur(Utilisateur uti);
+	public Long ajouterNouvelUtilisateur(Utilisateur uti);
 
 	
 	

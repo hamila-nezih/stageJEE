@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="org.hn.stage">
+	<logger name="org.hc.stage">
 		<level value="info" />
 	</logger>
 	

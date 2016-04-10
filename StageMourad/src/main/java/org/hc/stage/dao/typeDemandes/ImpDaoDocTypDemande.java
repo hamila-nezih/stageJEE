@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.hc.stage.dao.base.GenericJpaDao;
 import org.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
 
-public class ImpDaoDocTypDemande extends GenericJpaDao<DocumentTypeDemande, Long> implements InterfaceDaoDocTypDemande{
+public class ImpDaoDocTypDemande extends GenericJpaDao<DocumentTypeDemande, Long> implements InterfaceDaoDocumentTypeDemande{
 
 	@PersistenceContext
 	private EntityManager em ;

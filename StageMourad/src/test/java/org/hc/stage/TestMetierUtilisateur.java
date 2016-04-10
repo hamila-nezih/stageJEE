@@ -1,4 +1,4 @@
-package org.hn.stage;
+package org.hc.stage;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,11 +6,11 @@ import org.hc.stage.entities.acteurs.Utilisateur;
 import org.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
 import org.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import org.hc.stage.entities.types.typesDeDemandes.TypeDemande;
-import org.hc.stage.metier.responsable.InterfaceMetierUtilisateur;
+import org.hc.stage.metier.utilisateur.InterfaceMetierUtilisateur;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class TestMetierResponsable {
+public class TestMetierUtilisateur {
 	ClassPathXmlApplicationContext context ;
 	@org.junit.Before
 	public void setUp() throws Exception
@@ -20,32 +20,32 @@ public class TestMetierResponsable {
 						 new String[]{"applicationContext.xml"});
 	}	
 	@Test
-	public void testImpMetierResponsable() {
+	public void testImpMetierUtilisateur() {
 		try{
-			InterfaceMetierUtilisateur metierResponsable = (InterfaceMetierUtilisateur) context.getBean("metierResponsable");
+			InterfaceMetierUtilisateur metierUtilisateur = (InterfaceMetierUtilisateur) context.getBean("metierUtilisateur");
 			
-			/************ ajouter responsable ***********/
+			/************ ajouter utilisateur ***********/
 			
-			Utilisateur utilisateur = new Utilisateur("responsable","BAHLOUL","Mourad");
-			Long idRes = metierResponsable.ajouterNouveauResponsable(utilisateur);	
+			Utilisateur utilisateur = new Utilisateur("utilisateur","BAHLOUL","Mourad");
+			Long idRes = metierUtilisateur.ajouterNouvelUtilisateur(utilisateur);	
 			utilisateur.setId(idRes);
 			
 			
            /************ test ajouter type demande avec l'historique ***********/
 			
 		    TypeDemande typeDemande = new TypeDemande("passeport");			
-			metierResponsable.ajouterNouveauTypeDemande(typeDemande, utilisateur);	
+			metierUtilisateur.ajouterNouveauTypeDemande(typeDemande, utilisateur);	
 			utilisateur.setId(idRes);
 			
 			/************ test ajouter type document avec l'historique***********/
 			
 			DocumentTypeDemande documentTypeDemande = new DocumentTypeDemande("photocopie de carte d'identitier",true,typeDemande);
-			metierResponsable.AjouterNouveauTypeDocumentDemande(documentTypeDemande, utilisateur);	
+			metierUtilisateur.AjouterNouveauTypeDocumentDemande(documentTypeDemande, utilisateur);	
 			
 			/************ test ajout type prerequis avec l'historique ***********/
 			
 			PrerequisTypeDemande prerequisTypeDemande = new PrerequisTypeDemande("nom",true,typeDemande);
-			metierResponsable.AjouterNouveauTypePrerequis(prerequisTypeDemande, utilisateur);
+			metierUtilisateur.AjouterNouveauTypePrerequis(prerequisTypeDemande, utilisateur);
 			
 		     assertTrue(true);
 			 		

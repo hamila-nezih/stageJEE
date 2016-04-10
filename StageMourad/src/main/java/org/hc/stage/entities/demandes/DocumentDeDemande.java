@@ -16,7 +16,7 @@ import org.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
 import com.mysql.jdbc.log.Log;
 
 @Entity
-@Table(name="document_dmd")
+@Table(name="documents_demandes")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "dod_clef")) })
 public class DocumentDeDemande extends BaseEntity{
 

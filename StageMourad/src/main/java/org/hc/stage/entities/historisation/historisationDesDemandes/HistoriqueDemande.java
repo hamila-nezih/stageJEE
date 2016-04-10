@@ -16,7 +16,7 @@ import org.hc.stage.entities.base.BaseEntity;
 import org.hc.stage.entities.demandes.Demande;
 
 @Entity
-@Table(name="historique_dmd")
+@Table(name="historique_demandes")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "hdm_clef")) })
 public class HistoriqueDemande extends BaseEntity{
 

@@ -17,14 +17,14 @@ import org.hc.stage.entities.demandes.DocumentDeDemande;
 
 
 @Entity
-@Table(name="historique_doc_demande")
+@Table(name="historique_doc_demandes")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "hdd_clef")) })
 public class HistoriqueDocumentDemande extends BaseEntity {
 	
 	private static final long serialVersionUID = -8090461535242541173L;
 	
 	
-	@Column(name = "hdd_type_hist")
+	@Column(name = "hdd_type_historique")
 	private String typeHist;
 	@Column(name = "hdd_date")
 	private Date dateHist;

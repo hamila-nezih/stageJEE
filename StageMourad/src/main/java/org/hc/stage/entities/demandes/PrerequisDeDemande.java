@@ -14,7 +14,7 @@ import org.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 
 
 @Entity
-@Table(name="prerequis_dmd")
+@Table(name="prerequis_demandes")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "prd_clef")) })
 public class PrerequisDeDemande extends BaseEntity{
 

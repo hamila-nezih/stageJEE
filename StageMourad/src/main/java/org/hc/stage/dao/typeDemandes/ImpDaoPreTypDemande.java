@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.hc.stage.dao.base.GenericJpaDao;
 import org.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 
-public class ImpDaoPreTypDemande  extends GenericJpaDao<PrerequisTypeDemande, Long> implements InterfaceDaoPreTypDemande{
+public class ImpDaoPreTypDemande  extends GenericJpaDao<PrerequisTypeDemande, Long> implements InterfaceDaoPrerequisTypeDemande{
 
 	@PersistenceContext
 	private EntityManager em ;
