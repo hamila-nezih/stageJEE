@@ -1,5 +1,7 @@
 package org.hc.stage.entities.demandes;
 
+import java.util.Date;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -29,6 +31,9 @@ public class DocumentDeDemande extends BaseEntity{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "dtd_clef", nullable = false)
 	private DocumentTypeDemande documentTypeDemandes;
+	
+	@Column(name="dod_date_creation")
+	private Date dateCreation;
 	
 	@Column(name="dod_libelle")
     private String libelle;
@@ -85,6 +90,18 @@ public class DocumentDeDemande extends BaseEntity{
 
 	public void setContenue(Log contenue) {
 		this.contenue = contenue;
+	}
+
+	public Date getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(Date dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+
+	public Log getContenue() {
+		return contenue;
 	}	
     
 }

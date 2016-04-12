@@ -19,18 +19,8 @@ public class TypeDemande extends BaseEntity{
 	@Column(name="tyd_libelle")
     private String libelle;
 	
-	
 	@Column(name="tyd_actif")
 	private Boolean actif;
-
-
-   // @Column(name="tyd_srv_clef")
-   // private Service service;
-	
-    public TypeDemande(String libelle) {
-		super();
-		this.libelle = libelle;
-	}
 
 	public TypeDemande() {
 		super();
@@ -51,6 +41,13 @@ public class TypeDemande extends BaseEntity{
 	}
 
 	public void setActif(Boolean actif) {
+		this.actif = actif;
+	}
+
+
+	public TypeDemande(String libelle, Boolean actif) {
+		super();
+		this.libelle = libelle;
 		this.actif = actif;
 	}
 

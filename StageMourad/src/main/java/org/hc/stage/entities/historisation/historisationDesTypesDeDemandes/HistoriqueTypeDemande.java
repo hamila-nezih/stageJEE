@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hc.stage.entities.acteurs.Utilisateur;
 import org.hc.stage.entities.base.BaseEntity;
 import org.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 @Entity
@@ -24,8 +25,12 @@ public class HistoriqueTypeDemande extends BaseEntity{
 	@JoinColumn(name = "tyd_clef", nullable = false)
 	private TypeDemande typeDemande;
 	
-	@Column(name = "htd_date_modif")
-	private Date dateModification;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "uti_clef", nullable = false)
+	private Utilisateur utilisateur;
+	
+	@Column(name = "htd_date")
+	private Date dateHistorique;
 	
 	@Column(name = "htd_commentaire")
 	private String commentaire;
@@ -38,20 +43,33 @@ public class HistoriqueTypeDemande extends BaseEntity{
 		this.typeDemande = typeDemande;
 	}
 
-	public Date getDateModification() {
-		return dateModification;
-	}
-
-	public void setDateModification(Date dateModification) {
-		this.dateModification = dateModification;
-	}
-
 	public String getCommentaire() {
 		return commentaire;
 	}
 
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
+	}
+
+	public HistoriqueTypeDemande() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Date getDateHistorique() {
+		return dateHistorique;
+	}
+
+	public void setDateHistorique(Date dateHistorique) {
+		this.dateHistorique = dateHistorique;
 	}
 	
 

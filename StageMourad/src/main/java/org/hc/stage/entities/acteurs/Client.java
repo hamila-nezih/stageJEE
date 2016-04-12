@@ -1,6 +1,6 @@
 package org.hc.stage.entities.acteurs;
 
-import java.util.*;
+import java.util.Date;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -82,7 +82,6 @@ public class Client extends BaseEntity{
 	}
 	public Client() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

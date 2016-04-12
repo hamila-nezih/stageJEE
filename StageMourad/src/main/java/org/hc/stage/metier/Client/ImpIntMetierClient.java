@@ -12,9 +12,6 @@ import org.hc.stage.entities.acteurs.Client;
 import org.hc.stage.entities.demandes.Demande;
 import org.hc.stage.entities.demandes.DocumentDeDemande;
 import org.hc.stage.entities.demandes.PrerequisDeDemande;
-import org.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDemande;
-import org.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDocumentDemande;
-import org.hc.stage.entities.historisation.historisationDesDemandes.HistoriquePrerequisDemande;
 import org.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,10 +42,10 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 		java.util.Date date = new java.util.Date();
 
         //Date date = dateFormat.parse(dateSysteme);
-		HistoriqueDemande historiqueDemande = new HistoriqueDemande("ajouter",date);
-		historiqueDemande.setDemande(demande);
+		//HistoriqueDemande historiqueDemande = new HistoriqueDemande("ajouter",date);
+		/*historiqueDemande.setDemande(demande);
 		historiqueDemande.setClient(client);
-		daoHisDemande.ajouter(historiqueDemande);
+		daoHisDemande.ajouter(historiqueDemande);*/
 		return idDmd ;	
 		
 	}
@@ -60,10 +57,10 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 		doD.setId(idDocDmd);
 		java.util.Date date = new java.util.Date();
         //Date date = dateFormat.parse(dateSysteme);
-		HistoriqueDocumentDemande historiqueDocumentDemande = new HistoriqueDocumentDemande("ajouter",date);
+		/*HistoriqueDocumentDemande historiqueDocumentDemande = new HistoriqueDocumentDemande("ajouter",date);
 		historiqueDocumentDemande.setDocumentDemande(doD);
 		historiqueDocumentDemande.setClient(client);
-		daoHisDocDemande.ajouter(historiqueDocumentDemande);
+		daoHisDocDemande.ajouter(historiqueDocumentDemande);*/
 		return idDocDmd ;	
 	}
 
@@ -72,10 +69,10 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 		Long idPD = daoPrerequisDemande.ajouter(prD).getId();
 		prD.setId(idPD);
 		java.util.Date date = new java.util.Date();
-		HistoriquePrerequisDemande historiquePrerequisDemande = new HistoriquePrerequisDemande("ajouter",date);
+		/*HistoriquePrerequisDemande historiquePrerequisDemande = new HistoriquePrerequisDemande("ajouter",date);
 		historiquePrerequisDemande.setClient(client);
 		historiquePrerequisDemande.setPrerequisDemande(prD);
-		daoHisPrerDemande.ajouter(historiquePrerequisDemande);
+		daoHisPrerDemande.ajouter(historiquePrerequisDemande);*/
 		return idPD ;	
 	}
 

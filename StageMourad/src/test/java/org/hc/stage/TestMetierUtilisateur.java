@@ -33,16 +33,16 @@ public class TestMetierUtilisateur {
 			
            /************ test ajouter type demande avec l'historique ***********/
 			
-		    TypeDemande typeDemande = new TypeDemande("passeport");			
+		    TypeDemande typeDemande = new TypeDemande("passeport",true);	
 			metierUtilisateur.ajouterNouveauTypeDemande(typeDemande, utilisateur);	
 			utilisateur.setId(idRes);
 			
-			/************ test ajouter type document avec l'historique***********/
+			/************ test ajouter type document ***********/
 			
 			DocumentTypeDemande documentTypeDemande = new DocumentTypeDemande("photocopie de carte d'identitier",true,typeDemande);
 			metierUtilisateur.AjouterNouveauTypeDocumentDemande(documentTypeDemande, utilisateur);	
 			
-			/************ test ajout type prerequis avec l'historique ***********/
+			/************ test ajout type prerequis ***********/
 			
 			PrerequisTypeDemande prerequisTypeDemande = new PrerequisTypeDemande("nom",true,typeDemande);
 			metierUtilisateur.AjouterNouveauTypePrerequis(prerequisTypeDemande, utilisateur);

@@ -1,7 +1,5 @@
 package org.hc.stage.entities.historisation.historisationDesDemandes;
 
-import java.util.Date;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -11,9 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hc.stage.entities.acteurs.Client;
 import org.hc.stage.entities.base.BaseEntity;
-import org.hc.stage.entities.demandes.PrerequisDeDemande;
+import org.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 
 @Entity
 @Table(name="historique_prq_demandes")
@@ -23,52 +20,56 @@ public class HistoriquePrerequisDemande extends BaseEntity {
 	private static final long serialVersionUID = -3970526048311749802L;
 	
 	
-	@Column(name = "hpd_type_hist")
-	private String typeHist;
-	@Column(name = "hpd_date")
-	private Date dateHist;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hpd_cli_clef", nullable = false)	
-	private Client  client;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hpd_prd_clef", nullable = false)	
-	private PrerequisDeDemande prerequisDemande;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "hdm_clef", nullable = false)	
+	private HistoriqueDemande  historiqueDemande;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ptd_clef", nullable = false)	
+	private PrerequisTypeDemande prerequisTypeDemande;
+		
+	@Column(name="prd_contenue")   
+    private String contenue ;
+
+	public HistoriquePrerequisDemande(HistoriqueDemande historiqueDemande, PrerequisTypeDemande prerequisTypeDemande,
+			String contenue) {
+		super();
+		this.historiqueDemande = historiqueDemande;
+		this.prerequisTypeDemande = prerequisTypeDemande;
+		this.contenue = contenue;
+	}
+
 	public HistoriquePrerequisDemande() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public HistoriqueDemande getHistoriqueDemande() {
+		return historiqueDemande;
+	}
+
+	public void setHistoriqueDemande(HistoriqueDemande historiqueDemande) {
+		this.historiqueDemande = historiqueDemande;
+	}
+
+	public PrerequisTypeDemande getPrerequisTypeDemande() {
+		return prerequisTypeDemande;
+	}
+
+	public void setPrerequisTypeDemande(PrerequisTypeDemande prerequisTypeDemande) {
+		this.prerequisTypeDemande = prerequisTypeDemande;
+	}
+
+	public String getContenue() {
+		return contenue;
+	}
+
+	public void setContenue(String contenue) {
+		this.contenue = contenue;
+	}
 	
-	public HistoriquePrerequisDemande(String typeHist, Date dateHist) {
-		super();
-		this.typeHist = typeHist;
-		this.dateHist = dateHist;
-	}
-
-	public String getTypeHist() {
-		return typeHist;
-	}
-	public void setTypeHist(String typeHist) {
-		this.typeHist = typeHist;
-	}
-	public Date getDateHist() {
-		return dateHist;
-	}
-	public void setDateHist(Date dateHist) {
-		this.dateHist = dateHist;
-	}
-	public PrerequisDeDemande getPrerequisDemande() {
-		return prerequisDemande;
-	}
-	public void setPrerequisDemande(PrerequisDeDemande prerequisDemande) {
-		this.prerequisDemande = prerequisDemande;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
+	 
+	
+	
 }

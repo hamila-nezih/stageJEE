@@ -1,5 +1,7 @@
 package org.hc.stage.entities.demandes;
 
+import java.util.Date;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -28,6 +30,9 @@ public class PrerequisDeDemande extends BaseEntity{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "prq_clef", nullable = false)
     private PrerequisTypeDemande prerequisTypeDemande ;
+	
+	@Column(name="prq_date_creation")
+	private Date dateCreation;
 	
 	@Column(name="prd_libelle")
     private String libelle;
@@ -63,6 +68,14 @@ public class PrerequisDeDemande extends BaseEntity{
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	public Date getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(Date dateCreation) {
+		this.dateCreation = dateCreation;
 	}
     
 }

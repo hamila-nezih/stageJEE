@@ -4,10 +4,12 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hc.stage.entities.acteurs.Utilisateur;
 import org.hc.stage.entities.base.BaseEntity;
 
 
@@ -17,12 +19,17 @@ import org.hc.stage.entities.base.BaseEntity;
 public class PrerequisTypeDemande extends BaseEntity{
 
 	private static final long serialVersionUID = 7012500035049546462L;
+	
 	@ManyToOne
 	@JoinColumn(name="tyd_clef",referencedColumnName="tyd_clef")
 	private TypeDemande typeDemande;
 
 	@Column(name="ptd_libelle")
     private String libelle;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "uti_clef", nullable = false)
+	private Utilisateur utilisateur;
 	
     @Column(name="ptd_obligatoire")
     private Boolean obligatoire;
@@ -56,6 +63,12 @@ public class PrerequisTypeDemande extends BaseEntity{
 	}
 	public Boolean getObligatoire() {
 		return obligatoire;
+	}
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}   
     
 }

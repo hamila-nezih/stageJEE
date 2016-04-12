@@ -4,10 +4,12 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hc.stage.entities.acteurs.Utilisateur;
 import org.hc.stage.entities.base.BaseEntity;
 
 @Entity
@@ -24,6 +26,10 @@ public class DocumentTypeDemande extends BaseEntity{
 	
 	@Column(name="dtd_libelle")
 	private String libelle;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "uti_clef", nullable = false)
+	private Utilisateur utilisateur;
 	
 	@Column(name="dtd_obligatoire")
 	private Boolean obligatoire;
@@ -61,6 +67,20 @@ public class DocumentTypeDemande extends BaseEntity{
 	}
 
 	public void setObligatoire(Boolean obligatoire) {
+		this.obligatoire = obligatoire;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public DocumentTypeDemande(String libelle, Boolean obligatoire) {
+		super();
+		this.libelle = libelle;
 		this.obligatoire = obligatoire;
 	}
 }

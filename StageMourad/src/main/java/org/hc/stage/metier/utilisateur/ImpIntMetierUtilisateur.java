@@ -6,6 +6,7 @@ import org.hc.stage.dao.typeDemandes.InterfaceDaoDocumentTypeDemande;
 import org.hc.stage.dao.typeDemandes.InterfaceDaoPrerequisTypeDemande;
 import org.hc.stage.dao.typeDemandes.InterfaceDaoTypDemande;
 import org.hc.stage.entities.acteurs.Utilisateur;
+import org.hc.stage.entities.historisation.historisationDesTypesDeDemandes.HistoriqueTypeDemande;
 import org.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
 import org.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import org.hc.stage.entities.types.typesDeDemandes.TypeDemande;
@@ -17,10 +18,7 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 	private InterfaceDaoTypDemande daoTypDemande;
 	private InterfaceDaoDocumentTypeDemande daoDocumentTypeDemande;
 	private InterfaceDaoPrerequisTypeDemande daoPrerequisTypeDemande;
-	private InterfaceDaoHistoriqueTypeDemande daoHistoriqueTypeDemande;
-	
-   
-	
+	private InterfaceDaoHistoriqueTypeDemande daoHistoriqueTypeDemande; 
 	
 	public void setDaoUtilisateur(InterfaceDaoUtilisateur daoUtilisateur) {
 		this.daoUtilisateur = daoUtilisateur;
@@ -41,20 +39,30 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 	public void setDaoHistoriqueTypeDemande(InterfaceDaoHistoriqueTypeDemande daoHistoriqueTypeDemande) {
 		this.daoHistoriqueTypeDemande = daoHistoriqueTypeDemande;
 	}
-
+	
 	public Long ajouterNouveauTypeDemande(TypeDemande tyD,Utilisateur utilisateur){
+		
 		Long idTyD = daoTypDemande.ajouter(tyD).getId();
 	    tyD.setId(idTyD);
+	    HistoriqueTypeDemande historiqueTypeDemande = new HistoriqueTypeDemande();
+	    historiqueTypeDemande.setCommentaire("premier ajout ");
+	    historiqueTypeDemande.setTypeDemande(tyD);
+	    historiqueTypeDemande.setUtilisateur(utilisateur);
+	    daoHistoriqueTypeDemande.ajouter(historiqueTypeDemande);
 	    return idTyD ;
 	}
 	
 	public Long AjouterNouveauTypeDocumentDemande(DocumentTypeDemande dTD, Utilisateur utilisateur){
+		
+		dTD.setUtilisateur(utilisateur);
 		Long idTyDoc = daoDocumentTypeDemande.ajouter(dTD).getId();
 		dTD.setId(idTyDoc);
 	    return idTyDoc ;
 	}
 	
 	public Long AjouterNouveauTypePrerequis(PrerequisTypeDemande pTD, Utilisateur utilisateur){
+		
+		pTD.setUtilisateur(utilisateur);
 		Long idTyP = daoPrerequisTypeDemande.ajouter(pTD).getId();
 		pTD.setId(idTyP);
 	    return idTyP ;
@@ -63,7 +71,5 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 	public Long ajouterNouvelUtilisateur(Utilisateur uti){
 		return daoUtilisateur.ajouter(uti).getId();
 	}
-	
-	
 
 }
