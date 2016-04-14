@@ -5,10 +5,11 @@ import static org.junit.Assert.assertTrue;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.hc.stage.entities.acteurs.Client;
-import org.hc.stage.metier.Client.InterfaceMetierClient;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.hc.stage.entities.acteurs.Client;
+import com.hc.stage.metier.Client.InterfaceMetierClient;
 
 public class TestMetierClient {
 	ClassPathXmlApplicationContext context ;

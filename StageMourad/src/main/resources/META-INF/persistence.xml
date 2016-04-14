@@ -4,19 +4,19 @@
   <persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
    
    <provider>org.hibernate.ejb.HibernatePersistence</provider>
-   <class>org.hc.stage.entities.acteurs.Client</class>
-   <class>org.hc.stage.entities.acteurs.Utilisateur</class>
-   <class>org.hc.stage.entities.base.BaseEntity</class>
-   <class>org.hc.stage.entities.demandes.Demande</class>
-   <class>org.hc.stage.entities.demandes.DocumentDeDemande</class>
-   <class>org.hc.stage.entities.demandes.PrerequisDeDemande</class>
-   <class>org.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDemande</class>
-   <class>org.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDocumentDemande</class>
-   <class>org.hc.stage.entities.historisation.historisationDesDemandes.HistoriquePrerequisDemande</class>
-   <class>org.hc.stage.entities.historisation.historisationDesTypesDeDemandes.HistoriqueTypeDemande</class>
-   <class>org.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande</class>
-   <class>org.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande</class>
-   <class>   org.hc.stage.entities.types.typesDeDemandes.TypeDemande</class>      
+   <class>com.hc.stage.entities.acteurs.Client</class>
+   <class>com.hc.stage.entities.acteurs.Utilisateur</class>
+   <class>com.hc.stage.entities.base.BaseEntity</class>
+   <class>com.hc.stage.entities.demandes.Demande</class>
+   <class>com.hc.stage.entities.demandes.DocumentDeDemande</class>
+   <class>com.hc.stage.entities.demandes.PrerequisDeDemande</class>
+   <class>com.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDemande</class>
+   <class>com.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDocumentDemande</class>
+   <class>com.hc.stage.entities.historisation.historisationDesDemandes.HistoriquePrerequisDemande</class>
+   <class>com.hc.stage.entities.historisation.historisationDesTypesDeDemandes.HistoriqueTypeDemande</class>
+   <class>com.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande</class>
+   <class>com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande</class>
+   <class>com.hc.stage.entities.types.typesDeDemandes.TypeDemande</class>
   <properties>
         <property name="hibernate.show.sql" value="true"/>
         <property name="hibernate.hbm2ddl.auto" value="update"/>

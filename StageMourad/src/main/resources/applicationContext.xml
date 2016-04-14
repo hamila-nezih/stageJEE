@@ -36,13 +36,13 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<context:annotation-config></context:annotation-config>
 	
 	
-<bean id="daoUtilisateur" class="org.hc.stage.dao.acteurs.ImpDaoUtilisateur"></bean>
-<bean id="daoTypDemande" class="org.hc.stage.dao.typeDemandes.ImpDaoTypDemande"></bean>
-<bean id="daoDocumentTypeDemande" class="org.hc.stage.dao.typeDemandes.ImpDaoDocTypDemande"></bean>
-<bean id="daoPrerequisTypeDemande" class="org.hc.stage.dao.typeDemandes.ImpDaoPreTypDemande"></bean>
-<bean id="daoHistoriqueTypeDemande" class="org.hc.stage.dao.historiqueDesTypesDeDemandes.ImpDaoHistTypDemande"></bean>
+<bean id="daoUtilisateur" class="com.hc.stage.dao.acteurs.ImpDaoUtilisateur"></bean>
+<bean id="daoTypDemande" class="com.hc.stage.dao.typeDemandes.ImpDaoTypDemande"></bean>
+<bean id="daoDocumentTypeDemande" class="com.hc.stage.dao.typeDemandes.ImpDaoDocTypDemande"></bean>
+<bean id="daoPrerequisTypeDemande" class="com.hc.stage.dao.typeDemandes.ImpDaoPreTypDemande"></bean>
+<bean id="daoHistoriqueTypeDemande" class="com.hc.stage.dao.historiqueDesTypesDeDemandes.ImpDaoHistTypDemande"></bean>
 	
-<bean id="metierUtilisateur" class="org.hc.stage.metier.utilisateur.ImpIntMetierUtilisateur">
+<bean id="metierUtilisateur" class="com.hc.stage.metier.utilisateur.ImpIntMetierUtilisateur">
      <property name="daoUtilisateur" ref="daoUtilisateur"></property>
      <property name="daoTypDemande" ref="daoTypDemande"></property>
      <property name="daoDocumentTypeDemande" ref="daoDocumentTypeDemande"></property>
@@ -51,15 +51,15 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 </bean>
 
 
-<bean id="daoClient" class="org.hc.stage.dao.acteurs.ImpDaoClient"></bean>
-<bean id="daoDemande" class="org.hc.stage.dao.demades.ImpDaoDemande"></bean>
-<bean id="daoHisDemande" class="org.hc.stage.dao.historiqueDesDemandes.ImpDaoHisDemande"></bean>
-<bean id="daoDocumentDemande" class="org.hc.stage.dao.demades.ImpDaoDocumentDemande"></bean>
-<bean id="daoHisDocDemande" class="org.hc.stage.dao.historiqueDesDemandes.ImpDaoHisDocDemande"></bean>
-<bean id="daoPrerequisDemande" class="org.hc.stage.dao.demades.ImpDaoPrerequisDemande"></bean>
-<bean id="daoHisPrerDemande" class="org.hc.stage.dao.historiqueDesDemandes.ImpDaoHisPrerDemande"></bean>
-<bean id="" class="org.hc.stage.dao.typeDemandes.ImpDaoTypDemande"></bean>
-<bean id="metierClient" class="org.hc.stage.metier.Client.ImpIntMetierClient">
+<bean id="daoClient" class="com.hc.stage.dao.acteurs.ImpDaoClient"></bean>
+<bean id="daoDemande" class="com.hc.stage.dao.demades.ImpDaoDemande"></bean>
+<bean id="daoHisDemande" class="com.hc.stage.dao.historiqueDesDemandes.ImpDaoHisDemande"></bean>
+<bean id="daoDocumentDemande" class="com.hc.stage.dao.demades.ImpDaoDocumentDemande"></bean>
+<bean id="daoHisDocDemande" class="com.hc.stage.dao.historiqueDesDemandes.ImpDaoHisDocDemande"></bean>
+<bean id="daoPrerequisDemande" class="com.hc.stage.dao.demades.ImpDaoPrerequisDemande"></bean>
+<bean id="daoHisPrerDemande" class="com.hc.stage.dao.historiqueDesDemandes.ImpDaoHisPrerDemande"></bean>
+<bean id="" class="com.hc.stage.dao.typeDemandes.ImpDaoTypDemande"></bean>
+<bean id="metierClient" class="com.hc.stage.metier.Client.ImpIntMetierClient">
      <property name="daoTypDemande" ref="daoTypDemande"></property>
      <property name="daoClient" ref="daoClient"></property>
      <property name="daoDemande" ref="daoDemande"></property>

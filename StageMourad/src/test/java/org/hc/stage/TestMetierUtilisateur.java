@@ -2,13 +2,14 @@ package org.hc.stage;
 
 import static org.junit.Assert.assertTrue;
 
-import org.hc.stage.entities.acteurs.Utilisateur;
-import org.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
-import org.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
-import org.hc.stage.entities.types.typesDeDemandes.TypeDemande;
-import org.hc.stage.metier.utilisateur.InterfaceMetierUtilisateur;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.hc.stage.entities.acteurs.Utilisateur;
+import com.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
+import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
+import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
+import com.hc.stage.metier.utilisateur.InterfaceMetierUtilisateur;
 
 public class TestMetierUtilisateur {
 	ClassPathXmlApplicationContext context ;
