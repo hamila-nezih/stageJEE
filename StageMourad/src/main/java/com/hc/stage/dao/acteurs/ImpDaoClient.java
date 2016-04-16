@@ -18,6 +18,7 @@ public class ImpDaoClient extends GenericJpaDao<Client, Long> implements Interfa
 		super(persistentClass);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
 
 }

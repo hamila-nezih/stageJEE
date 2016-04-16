@@ -17,6 +17,7 @@ public class ImpDaoPreTypDemande  extends GenericJpaDao<PrerequisTypeDemande, Lo
 	public ImpDaoPreTypDemande(Class<PrerequisTypeDemande> persistentClass) {
 		super(persistentClass);
 		// TODO Auto-generated constructor stub
-	} 
+	}
+	
 
 }

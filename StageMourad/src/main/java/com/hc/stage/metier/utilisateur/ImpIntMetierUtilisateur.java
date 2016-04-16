@@ -75,9 +75,33 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 		return daoUtilisateur.ajouter(uti).getId();
 	}
 
-	public List<Utilisateur> selectTous(){
+	public List<Utilisateur> getTousUtl(){
 		
 		return daoUtilisateur.select();
 		 
+	}
+
+	@Override
+	public Utilisateur getUtilisateur(Long id) {
+		
+		return daoUtilisateur.findById(id);
+	}
+
+	@Override
+	public void supprimierUtl(Long id) {
+
+		Utilisateur utilisateur = daoUtilisateur.findById(id);
+		daoUtilisateur.delete(utilisateur);;
+		
+	}
+
+	@Override
+	public Utilisateur upDateUtl(Long id, String libelle, String nom, String prenom) {
+		
+		Utilisateur utilisateur = daoUtilisateur.findById(id);
+		utilisateur.setLibelle(libelle);
+		utilisateur.setNom(nom);
+		utilisateur.setPrenom(prenom);
+		return daoUtilisateur.update(null);
 	}
 }

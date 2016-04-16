@@ -17,7 +17,8 @@ public class ImpDaoHistTypDemande extends GenericJpaDao<HistoriqueTypeDemande, L
 	public ImpDaoHistTypDemande(Class<HistoriqueTypeDemande> persistentClass) {
 		super(persistentClass);
 		// TODO Auto-generated constructor stub
-	} 
+	}
+	
 
 
 }

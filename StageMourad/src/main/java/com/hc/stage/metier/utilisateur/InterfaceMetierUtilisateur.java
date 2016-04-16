@@ -9,12 +9,18 @@ import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 
 public interface InterfaceMetierUtilisateur  {
 	
-	public Long ajouterNouveauTypeDemande(TypeDemande tyD, Utilisateur utilisateur);
+	public Long ajouterNouvelUtilisateur(Utilisateur uti);
+	public Utilisateur getUtilisateur(Long id);
+	public List<Utilisateur> getTousUtl();
+	public void supprimierUtl(Long id);
+	public Utilisateur upDateUtl(Long id, String labelle, String nom, String prenom);
+	
+	
 	public Long AjouterNouveauTypeDocumentDemande(DocumentTypeDemande dTD, Utilisateur utilisateur);
 	public Long AjouterNouveauTypePrerequis(PrerequisTypeDemande pTD, Utilisateur utilisateur);
-	public Long ajouterNouvelUtilisateur(Utilisateur uti);
+	public Long ajouterNouveauTypeDemande(TypeDemande tyD, Utilisateur utilisateur);
 	
-	public List<Utilisateur> selectTous();
+	
 	
 	
 

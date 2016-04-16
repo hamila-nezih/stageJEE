@@ -17,6 +17,7 @@ public class ImpDaoDocTypDemande extends GenericJpaDao<DocumentTypeDemande, Long
 	public ImpDaoDocTypDemande(Class<DocumentTypeDemande> persistentClass) {
 		super(persistentClass);
 		// TODO Auto-generated constructor stub
-	} 
+	}
+	
 
 }

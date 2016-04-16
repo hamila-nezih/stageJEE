@@ -18,5 +18,6 @@ public class ImpDaoDemande extends GenericJpaDao<Demande, Long> implements Inter
 		super(persistentClass);
 		// TODO Auto-generated constructor stub
 	}
+	
 
 }
