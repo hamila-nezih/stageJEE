@@ -1,14 +1,17 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<html>
+<!DOCTYPE html>
+<html ng-app>
 <head>
-	<title>Home</title>
+    <title>Hello World, AngularJS - ViralPatel.net</title>
+    <script type="text/javascript"
+        src="classpath*:static/angularjs/angular.min.js"></script>
+ 
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+     
+    Write some text in textbox:
+    <input type="text" ng-model="sometext" />
+ 
+    <h1 ng-show="sometext">Hello {{ sometext }}</h1>
+     
 </body>
 </html>

@@ -13,7 +13,16 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	<!-- Cross-Origin Resource Sharing (CORS) -->
+	 <filter>
+          <filter-name>cors</filter-name>
+     <filter-class>com.hc.stage.controller.CorsFilter</filter-class>
+     </filter>
+    <filter-mapping>
+     <filter-name>cors</filter-name>
+     <url-pattern>/*</url-pattern>
+     </filter-mapping>
+	<!-- Cross-Origin Resource Sharing (CORS)  -->
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
@@ -24,7 +33,6 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
