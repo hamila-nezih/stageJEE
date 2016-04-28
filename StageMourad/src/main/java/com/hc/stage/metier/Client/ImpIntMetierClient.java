@@ -1,5 +1,7 @@
 package com.hc.stage.metier.Client;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hc.stage.dao.acteurs.InterfaceDaoClient;
@@ -9,11 +11,14 @@ import com.hc.stage.dao.demades.InterfaceDaoPrerequisDemande;
 import com.hc.stage.dao.historiqueDesDemandes.InterfaceDaoHisDemande;
 import com.hc.stage.dao.historiqueDesDemandes.InterfaceDaoHisDocDemande;
 import com.hc.stage.dao.historiqueDesDemandes.InterfaceDaoHisPrerDemande;
+import com.hc.stage.dao.typeDemandes.InterfaceDaoPrerequisTypeDemande;
 import com.hc.stage.dao.typeDemandes.InterfaceDaoTypDemande;
 import com.hc.stage.entities.acteurs.Client;
+import com.hc.stage.entities.acteurs.Utilisateur;
 import com.hc.stage.entities.demandes.Demande;
 import com.hc.stage.entities.demandes.DocumentDeDemande;
 import com.hc.stage.entities.demandes.PrerequisDeDemande;
+import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 
 @Transactional
@@ -27,7 +32,21 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 	private InterfaceDaoPrerequisDemande daoPrerequisDemande;
 //	private InterfaceDaoHisPrerDemande daoHisPrerDemande;
 	private InterfaceDaoTypDemande daoTypDemande;
+	private InterfaceDaoPrerequisTypeDemande daoPrerequisTypeDemande;
 
+	
+	@Override
+	public TypeDemande getTypeDemande(Long id) {         
+		return daoTypDemande.findById(id);		
+	}
+
+
+	@Override
+	public List<PrerequisTypeDemande> getPrerequisTypeDemande(Long id) {
+
+		return daoPrerequisTypeDemande.getPrerequisTypeDemande(id);
+	}
+	
 	
 	public Long ajouterNouveauClient(Client client){
 		return daoClient.ajouter(client).getId();
@@ -76,6 +95,10 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 		daoHisPrerDemande.ajouter(historiquePrerequisDemande);*/
 		return idPD ;	
 	}
+	
+	public void setDaoPrerequisTypeDemande(InterfaceDaoPrerequisTypeDemande daoPrerequisTypeDemande) {
+		this.daoPrerequisTypeDemande = daoPrerequisTypeDemande;
+	}
 
 	public InterfaceDaoHisDemande getDaoHisDemande() {
 		return daoHisDemande;
@@ -113,4 +136,29 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 		this.daoTypDemande = daoTypDemande;
 	}
 
+
+	@Override
+	public List<PrerequisDeDemande> getPrerequisDemande(Long id) {
+
+		daoPrerequisDemande.getPrerequisDemande(id);
+		return null;
+	}
+	@Override
+    public List<PrerequisTypeDemande> getTousPreTD(){
+		
+    	
+		return daoPrerequisTypeDemande.select();
+		 
+	}
+
+
+	
+
+
+
+
+
+	
+
+	
 }

@@ -20,14 +20,14 @@ public class PrerequisTypeDemande extends BaseEntity{
 
 	private static final long serialVersionUID = 7012500035049546462L;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="tyd_clef",referencedColumnName="tyd_clef")
 	private TypeDemande typeDemande;
 
 	@Column(name="ptd_libelle")
     private String libelle;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "uti_clef", nullable = false)
 	private Utilisateur utilisateur;
 	

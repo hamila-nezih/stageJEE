@@ -20,7 +20,7 @@ public interface InterfaceMetierUtilisateur  {
 	public Long AjouterNouveauTypePrerequis(PrerequisTypeDemande pTD, Utilisateur utilisateur);
 	public Long ajouterNouveauTypeDemande(TypeDemande tyD, Utilisateur utilisateur);
 	
-	
+	public List<PrerequisTypeDemande> getTypePrerequisD(Long id);
 	
 	
 

@@ -10,12 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hc.stage.entities.base.BaseEntity;
 
-/**
- * Provides generic common implementation of GenericDao interface persistence methods.
- * Extend this abstract class to implement DAO for your specific needs.
- * 
- * @author Arthur Vin
- */
+
 @Transactional
 public abstract class GenericJpaDao<T, ID extends Serializable> implements GenericDao<T, ID> {
 	@PersistenceContext

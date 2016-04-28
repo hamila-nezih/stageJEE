@@ -58,8 +58,11 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 <bean id="daoHisDocDemande" class="com.hc.stage.dao.historiqueDesDemandes.ImpDaoHisDocDemande"></bean>
 <bean id="daoPrerequisDemande" class="com.hc.stage.dao.demades.ImpDaoPrerequisDemande"></bean>
 <bean id="daoHisPrerDemande" class="com.hc.stage.dao.historiqueDesDemandes.ImpDaoHisPrerDemande"></bean>
-<bean id="" class="com.hc.stage.dao.typeDemandes.ImpDaoTypDemande"></bean>
+
+
+
 <bean id="metierClient" class="com.hc.stage.metier.Client.ImpIntMetierClient">
+     <property name="daoPrerequisTypeDemande" ref="daoPrerequisTypeDemande"></property>
      <property name="daoTypDemande" ref="daoTypDemande"></property>
      <property name="daoClient" ref="daoClient"></property>
      <property name="daoDemande" ref="daoDemande"></property>

@@ -23,6 +23,11 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 	private InterfaceDaoPrerequisTypeDemande daoPrerequisTypeDemande;
 	private InterfaceDaoHistoriqueTypeDemande daoHistoriqueTypeDemande; 
 	
+	public List<PrerequisTypeDemande>getTypePrerequisD(Long id){
+		
+		return daoPrerequisTypeDemande.getPrerequisTypeDemande(id);
+	}
+	
 	public void setDaoUtilisateur(InterfaceDaoUtilisateur daoUtilisateur) {
 		this.daoUtilisateur = daoUtilisateur;
 	}
