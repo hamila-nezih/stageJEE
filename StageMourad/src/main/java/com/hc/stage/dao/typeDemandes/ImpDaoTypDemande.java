@@ -22,10 +22,10 @@ public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implement
 	
 	public TypeDemande getFullTypeDemande(Long id){
 		
-		Query req=em.createQuery("select t from TypeDemande t    left join   t.prerequisTypeDemandes left join   t.documentsTypeDemandes where t.id=:x");	
-	     req.setParameter("x",id);
+		Query req=em.createQuery("select t from TypeDemande t    left join fetch   t.prerequisTypeDemandes left join fetch   t.documentsTypeDemandes where t.id=1");	
+	    // req.setParameter("x",id);
 	//System.out.println(req.getResultList().toString());
-	     return (TypeDemande) req.getResultList();
+	     return (TypeDemande) req.getResultList().get(0);
 		
 	}
 
