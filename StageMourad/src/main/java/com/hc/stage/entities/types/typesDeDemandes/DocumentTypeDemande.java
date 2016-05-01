@@ -13,37 +13,35 @@ import com.hc.stage.entities.acteurs.Utilisateur;
 import com.hc.stage.entities.base.BaseEntity;
 
 @Entity
-@Table(name="types_documents")
-@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "dtd_clef")) })
-public class DocumentTypeDemande extends BaseEntity{
+@Table(name = "types_documents")
+@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "dtd_clef")) })
+public class DocumentTypeDemande extends BaseEntity {
 
-	
 	private static final long serialVersionUID = 6980861635976314154L;
-	
+
 	@ManyToOne
-	@JoinColumn(name="tyd_clef",referencedColumnName="tyd_clef")
+	@JoinColumn(name = "tyd_clef", referencedColumnName = "tyd_clef")
 	private TypeDemande typeDemande;
-	
-	@Column(name="dtd_libelle")
+
+	@Column(name = "dtd_libelle")
 	private String libelle;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "uti_clef", nullable = false)
 	private Utilisateur utilisateur;
-	
-	@Column(name="dtd_obligatoire")
+
+	@Column(name = "dtd_obligatoire")
 	private Boolean obligatoire;
-	
-	public DocumentTypeDemande(String libelle, Boolean obligatoire,TypeDemande typeDemande) {
+
+	public DocumentTypeDemande(String libelle, Boolean obligatoire, TypeDemande typeDemande) {
 		super();
 		this.typeDemande = typeDemande;
 		this.libelle = libelle;
 		this.obligatoire = obligatoire;
 	}
-	
+
 	public DocumentTypeDemande() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public TypeDemande getTypeDemande() {
@@ -84,4 +82,3 @@ public class DocumentTypeDemande extends BaseEntity{
 		this.obligatoire = obligatoire;
 	}
 }
-

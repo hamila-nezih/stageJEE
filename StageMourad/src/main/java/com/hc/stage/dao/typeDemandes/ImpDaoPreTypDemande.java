@@ -28,15 +28,12 @@ public class ImpDaoPreTypDemande  extends GenericJpaDao<PrerequisTypeDemande, Lo
 	@Override
 	public List<PrerequisTypeDemande> getPrerequisTypeDemande(Long id) {
 		
-		//Query req=em.createQuery("select p.id, p.libelle, p.obligatoire, p.typeDemande.id from "
-			//	+ "PrerequisTypeDemande p");
-		Query req=em.createQuery("select p from "
-					+ "PrerequisTypeDemande p where p.libelle=:status");
-		
-		
-		req.setParameter("status","nom");
+		Query req=em.createQuery("select p.id from PrerequisTypeDemande p left join fetch  p.typeDemande left join fetch  p.utilisateur");
+			//	+ " where p.typeDemande.id=:x");	
+		//req.setParameter("x",id);
+		System.out.println(req.getResultList().toString());
 		return req.getResultList();
-     
+		
 		
 	}
 	

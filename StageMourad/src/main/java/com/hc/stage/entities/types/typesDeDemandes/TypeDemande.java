@@ -1,9 +1,14 @@
 package com.hc.stage.entities.types.typesDeDemandes;
 
+import java.util.Collection;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.hc.stage.entities.base.BaseEntity;
@@ -22,11 +27,20 @@ public class TypeDemande extends BaseEntity{
 	@Column(name="tyd_actif")
 	private Boolean actif;
 
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name="ptd_clef")
+	private Collection<PrerequisTypeDemande>prerequisTypeDemandes;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name="dtd_clef")
+	private Collection<DocumentTypeDemande>documentsTypeDemandes;
+	
 	public TypeDemande() {
 		super();
 		
 	}
 
+	
 
 	public String getLibelle() {
 		return libelle;
@@ -50,6 +64,31 @@ public class TypeDemande extends BaseEntity{
 		this.libelle = libelle;
 		this.actif = actif;
 	}
+
+
+	public Collection<PrerequisTypeDemande> getPrerequisTypeDemandes() {
+		return prerequisTypeDemandes;
+	}
+
+
+	public void setPrerequisTypeDemandes(Collection<PrerequisTypeDemande> prerequisTypeDemandes) {
+		this.prerequisTypeDemandes = prerequisTypeDemandes;
+	}
+
+
+
+	public Collection<DocumentTypeDemande> getDocumentsTypeDemandes() {
+		return documentsTypeDemandes;
+	}
+
+
+
+	public void setDocumentsTypeDemandes(Collection<DocumentTypeDemande> documentsTypeDemandes) {
+		this.documentsTypeDemandes = documentsTypeDemandes;
+	}
+
+
+	
 
 	
 	

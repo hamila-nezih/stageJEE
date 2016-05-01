@@ -20,14 +20,17 @@ public class PrerequisTypeDemande extends BaseEntity{
 
 	private static final long serialVersionUID = 7012500035049546462L;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="tyd_clef",referencedColumnName="tyd_clef")
 	private TypeDemande typeDemande;
 
 	@Column(name="ptd_libelle")
     private String libelle;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@Column(name="ptd_ordre")
+    private String ordre;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "uti_clef", nullable = false)
 	private Utilisateur utilisateur;
 	
@@ -69,6 +72,12 @@ public class PrerequisTypeDemande extends BaseEntity{
 	}
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
+	}
+	public String getOrdre() {
+		return ordre;
+	}
+	public void setOrdre(String ordre) {
+		this.ordre = ordre;
 	}   
     
 }

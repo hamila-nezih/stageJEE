@@ -37,7 +37,7 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 	
 	@Override
 	public TypeDemande getTypeDemande(Long id) {         
-		return daoTypDemande.findById(id);		
+		return daoTypDemande.getFullTypeDemande(id);		
 	}
 
 
