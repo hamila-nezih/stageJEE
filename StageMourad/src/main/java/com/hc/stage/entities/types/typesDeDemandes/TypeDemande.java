@@ -27,12 +27,10 @@ public class TypeDemande extends BaseEntity{
 	@Column(name="tyd_actif")
 	private Boolean actif;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="ptd_clef")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeDemande")
 	private Collection<PrerequisTypeDemande>prerequisTypeDemandes;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="dtd_clef")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeDemande")
 	private Collection<DocumentTypeDemande>documentsTypeDemandes;
 	
 	public TypeDemande() {

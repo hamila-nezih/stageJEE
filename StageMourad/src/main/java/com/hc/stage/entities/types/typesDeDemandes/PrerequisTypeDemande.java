@@ -30,9 +30,9 @@ public class PrerequisTypeDemande extends BaseEntity{
 	@Column(name="ptd_ordre")
     private String ordre;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "uti_clef", nullable = false)
-	private Utilisateur utilisateur;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "uti_clef", nullable = false)
+//	private Utilisateur utilisateur;
 	
     @Column(name="ptd_obligatoire")
     private Boolean obligatoire;
@@ -67,15 +67,7 @@ public class PrerequisTypeDemande extends BaseEntity{
 	public Boolean getObligatoire() {
 		return obligatoire;
 	}
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
-	}
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
-	}
-	public String getOrdre() {
-		return ordre;
-	}
+	
 	public void setOrdre(String ordre) {
 		this.ordre = ordre;
 	}   

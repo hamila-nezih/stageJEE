@@ -62,7 +62,6 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 	
 	public Long AjouterNouveauTypeDocumentDemande(DocumentTypeDemande dTD, Utilisateur utilisateur){
 		
-		dTD.setUtilisateur(utilisateur);
 		Long idTyDoc = daoDocumentTypeDemande.ajouter(dTD).getId();
 		dTD.setId(idTyDoc);
 	    return idTyDoc ;
@@ -70,7 +69,6 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 	
 	public Long AjouterNouveauTypePrerequis(PrerequisTypeDemande pTD, Utilisateur utilisateur){
 		
-		pTD.setUtilisateur(utilisateur);
 		Long idTyP = daoPrerequisTypeDemande.ajouter(pTD).getId();
 		pTD.setId(idTyP);
 	    return idTyP ;

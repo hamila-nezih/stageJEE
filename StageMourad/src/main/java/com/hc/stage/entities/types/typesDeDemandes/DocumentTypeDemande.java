@@ -26,9 +26,9 @@ public class DocumentTypeDemande extends BaseEntity {
 	@Column(name = "dtd_libelle")
 	private String libelle;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "uti_clef", nullable = false)
-	private Utilisateur utilisateur;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "uti_clef", nullable = false)
+//	private Utilisateur utilisateur;
 
 	@Column(name = "dtd_obligatoire")
 	private Boolean obligatoire;
@@ -68,14 +68,7 @@ public class DocumentTypeDemande extends BaseEntity {
 		this.obligatoire = obligatoire;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
-	}
-
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
-	}
-
+	
 	public DocumentTypeDemande(String libelle, Boolean obligatoire) {
 		super();
 		this.libelle = libelle;
