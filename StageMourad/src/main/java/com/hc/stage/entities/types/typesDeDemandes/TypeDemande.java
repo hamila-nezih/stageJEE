@@ -1,18 +1,21 @@
 package com.hc.stage.entities.types.typesDeDemandes;
 
-import java.util.Collection;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.hc.stage.entities.base.BaseEntity;
 
+/**
+ * @author mourad
+ *
+ */
 @Entity
 @Table(name="types_demandes")
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "tyd_clef")) })
@@ -28,10 +31,10 @@ public class TypeDemande extends BaseEntity{
 	private Boolean actif;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeDemande")
-	private Collection<PrerequisTypeDemande>prerequisTypeDemandes;
+	private Set<PrerequisTypeDemande>prerequisTypeDemandes;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeDemande")
-	private Collection<DocumentTypeDemande>documentsTypeDemandes;
+	private Set<DocumentTypeDemande>documentsTypeDemandes;
 	
 	public TypeDemande() {
 		super();
@@ -64,30 +67,28 @@ public class TypeDemande extends BaseEntity{
 	}
 
 
-	public Collection<PrerequisTypeDemande> getPrerequisTypeDemandes() {
+
+	public Set<PrerequisTypeDemande> getPrerequisTypeDemandes() {
 		return prerequisTypeDemandes;
 	}
 
 
-	public void setPrerequisTypeDemandes(Collection<PrerequisTypeDemande> prerequisTypeDemandes) {
+
+	public void setPrerequisTypeDemandes(Set<PrerequisTypeDemande> prerequisTypeDemandes) {
 		this.prerequisTypeDemandes = prerequisTypeDemandes;
 	}
 
 
 
-	public Collection<DocumentTypeDemande> getDocumentsTypeDemandes() {
+	public Set<DocumentTypeDemande> getDocumentsTypeDemandes() {
 		return documentsTypeDemandes;
 	}
 
 
 
-	public void setDocumentsTypeDemandes(Collection<DocumentTypeDemande> documentsTypeDemandes) {
+	public void setDocumentsTypeDemandes(Set<DocumentTypeDemande> documentsTypeDemandes) {
 		this.documentsTypeDemandes = documentsTypeDemandes;
 	}
 
 
-	
-
-	
-	
 }

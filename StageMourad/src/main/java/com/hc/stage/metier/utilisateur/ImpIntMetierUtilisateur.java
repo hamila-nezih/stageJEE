@@ -105,6 +105,6 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 		utilisateur.setLibelle(libelle);
 		utilisateur.setNom(nom);
 		utilisateur.setPrenom(prenom);
-		return daoUtilisateur.update(null);
+		return daoUtilisateur.update(utilisateur);
 	}
 }

@@ -10,28 +10,27 @@ import javax.persistence.Table;
 import com.hc.stage.entities.base.BaseEntity;
 
 @Entity
-@Table(name="utilisateurs")
-@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "res_clef")) })
-public class Utilisateur extends BaseEntity{
-	
+@Table(name = "utilisateurs")
+@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "res_clef")) })
+public class Utilisateur extends BaseEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1551981328753707775L;
 
-	
-    @Column(name="res_libelle")
-    private String libelle;
-    @Column(name="res_nom")
-    private String nom;
-    public Utilisateur() {
+	@Column(name = "res_libelle")
+	private String libelle;
+	@Column(name = "res_nom")
+	private String nom;
+
+	@Column(name = "res_prenom")
+	private String prenom;
+
+	public Utilisateur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	@Column(name="res_prenom")
-    private String prenom;
 
 	public Utilisateur(String libelle, String nom, String prenom) {
 		super();
@@ -64,7 +63,4 @@ public class Utilisateur extends BaseEntity{
 		this.prenom = prenom;
 	}
 
-
-    
 }
-

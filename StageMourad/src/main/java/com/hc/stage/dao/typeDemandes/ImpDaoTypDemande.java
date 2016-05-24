@@ -7,26 +7,27 @@ import javax.persistence.Query;
 import com.hc.stage.dao.base.GenericJpaDao;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 
-public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implements InterfaceDaoTypDemande{
+public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implements InterfaceDaoTypDemande {
 
 	@PersistenceContext
-	private EntityManager em ;
-	
+	private EntityManager em;
+
 	public ImpDaoTypDemande() {
 		super(TypeDemande.class);
 	}
+
 	public ImpDaoTypDemande(Class<TypeDemande> persistentClass) {
 		super(persistentClass);
-		// TODO Auto-generated constructor stub
 	}
-	
-	public TypeDemande getFullTypeDemande(Long id){
-		
-		Query req=em.createQuery("select t from TypeDemande t    left join fetch   t.prerequisTypeDemandes left join fetch   t.documentsTypeDemandes where t.id=1");	
-	    // req.setParameter("x",id);
-	//System.out.println(req.getResultList().toString());
-	     return (TypeDemande) req.getResultList().get(0);
-		
+
+	public TypeDemande getFullTypeDemande(Long id) {
+
+		Query req = em.createQuery("select t from TypeDemande t  "
+				+ "  left join fetch   t.prerequisTypeDemandes left join fetch   t.documentsTypeDemandes"
+				+ " where t.id=:x");
+		req.setParameter("x", id);
+		return (TypeDemande) req.getResultList().get(0);
+
 	}
 
 }

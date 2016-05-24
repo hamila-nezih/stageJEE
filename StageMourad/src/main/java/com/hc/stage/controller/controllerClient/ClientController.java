@@ -28,7 +28,7 @@ public class ClientController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	
-	public @ResponseBody TypeDemande selectALL(@PathVariable String id){		
+	public @ResponseBody TypeDemande selectFullTypeDemande(@PathVariable String id){		
 		
 		return iMetierClient.getTypeDemande(Long.parseLong(id));		
 	}
