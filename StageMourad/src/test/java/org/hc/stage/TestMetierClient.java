@@ -28,11 +28,11 @@ public class TestMetierClient {
 			
 			/************ ajouter client ***********/
 			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			Date date = dateFormat.parse("20-02-1990");
-			Client client = new Client("hamila","nazih",date,"hamila-nezih@gmail.com","hamila","hamila");
-			Long idCli = metierClient.ajouterNouveauClient(client);	
-			client.setId(idCli);
+//			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//			Date date = dateFormat.parse("20-02-1990");
+//			Client client = new Client("hamila","nazih",date,"hamila-nezih@gmail.com","hamila","hamila");
+//			Long idCli = metierClient.ajouterNouveauClient(client);	
+//			client.setId(idCli);
 			
 			/************ ajouter demande ***********/
 			

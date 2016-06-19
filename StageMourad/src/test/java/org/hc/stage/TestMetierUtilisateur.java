@@ -34,7 +34,7 @@ public class TestMetierUtilisateur {
 			
            /************ test ajouter type demande avec l'historique ***********/
 			
-		    TypeDemande typeDemande = new TypeDemande("passeport",true);	
+		    TypeDemande typeDemande = new TypeDemande("eeee","passeport",true);	
 			metierUtilisateur.ajouterNouveauTypeDemande(typeDemande, utilisateur);	
 			utilisateur.setId(idRes);
 			

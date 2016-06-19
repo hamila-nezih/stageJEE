@@ -1,5 +1,7 @@
 package com.hc.stage.dao.typeDemandes;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -20,6 +22,7 @@ public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implement
 		super(persistentClass);
 	}
 
+
 	public TypeDemande getFullTypeDemande(Long id) {
 
 		Query req = em.createQuery("select t from TypeDemande t  "
@@ -30,4 +33,14 @@ public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implement
 
 	}
 
+	@Override
+	public List<TypeDemande> getAllTypeDemande() {
+		
+		Query req = em.createQuery("select t from TypeDemande t");
+		System.out.println(req.getResultList().size());
+		return req.getResultList();
+	
+	}
+
+	
 }

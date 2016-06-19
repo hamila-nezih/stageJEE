@@ -14,7 +14,6 @@ import com.hc.stage.dao.historiqueDesDemandes.InterfaceDaoHisPrerDemande;
 import com.hc.stage.dao.typeDemandes.InterfaceDaoPrerequisTypeDemande;
 import com.hc.stage.dao.typeDemandes.InterfaceDaoTypDemande;
 import com.hc.stage.entities.acteurs.Client;
-import com.hc.stage.entities.acteurs.Utilisateur;
 import com.hc.stage.entities.demandes.Demande;
 import com.hc.stage.entities.demandes.DocumentDeDemande;
 import com.hc.stage.entities.demandes.PrerequisDeDemande;
@@ -149,6 +148,19 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
     	
 		return daoPrerequisTypeDemande.select();
 		 
+	}
+
+
+	@Override
+	public List<TypeDemande> getAllTypeDemande() {
+	
+		return daoTypDemande.getAllTypeDemande();
+	}
+
+
+	@Override
+	public Client findClientId(Long id) {
+		return daoClient.findById(id);
 	}
 
 

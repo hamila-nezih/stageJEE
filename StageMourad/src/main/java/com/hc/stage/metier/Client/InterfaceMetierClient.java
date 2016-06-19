@@ -10,12 +10,15 @@ import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 public interface InterfaceMetierClient {
 	
-	public TypeDemande getTypeDemande(Long id);
+	public List<TypeDemande> getAllTypeDemande();
 	public List<PrerequisTypeDemande> getPrerequisTypeDemande(Long id);
 	public List<PrerequisDeDemande> getPrerequisDemande(Long id);
 	public List<PrerequisTypeDemande> getTousPreTD();
 	
+	public TypeDemande getTypeDemande(Long id);
+	
 	public Long ajouterNouveauClient(Client client);
+	public Client findClientId(Long id);
 	public Long creerNouvelleDemande(Demande demande, Client client, String id);
 	public Long AjouterNouveauDocumentDemande(DocumentDeDemande doD, Client client);
 	public Long AjouterNouveauPrerequi(PrerequisDeDemande prD, Client client);
