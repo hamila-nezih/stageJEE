@@ -19,6 +19,8 @@ public class upload extends BaseEntity{
 	 */
 	private static final long serialVersionUID = -606240146830956140L;
 	
+	 @Column(name="nom_fichier")
+	    private String nomFichier ;
 
 	@Column(name="photo",columnDefinition = "LONGBLOB")
 	private byte [] photo ;
@@ -31,14 +33,25 @@ public class upload extends BaseEntity{
 		this.photo = photo;
 	}
 
-	public upload(byte[] photo) {
-		super();
-		this.photo = photo;
-	}
+	
 
 	public upload() {
 		super();
 		
+	}
+
+	public String getNomFichier() {
+		return nomFichier;
+	}
+
+	public void setNomFichier(String nomFichier) {
+		this.nomFichier = nomFichier;
+	}
+
+	public upload(String nomFichier, byte[] photo) {
+		super();
+		this.nomFichier = nomFichier;
+		this.photo = photo;
 	} 
 
 	

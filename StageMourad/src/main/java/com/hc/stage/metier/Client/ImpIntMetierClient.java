@@ -52,20 +52,14 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 	}
 
 	@Override
-	public Long creerNouvelleDemande(Demande demande, Client client,String id ) {
+	public Long creerNouvelleDemande(Demande demande, Long idC,Long idTDemande ) {
 		
-		TypeDemande typeDemande = daoTypDemande.findById(Long.parseLong(id));
+		TypeDemande typeDemande = daoTypDemande.findById(idTDemande);
 		demande.setTypeDemande(typeDemande);
-		Long idDmd = daoDemande.ajouter(demande).getId();
-		demande.setId(idDmd);
-//		java.util.Date date = new java.util.Date();
-
-        //Date date = dateFormat.parse(dateSysteme);
-		//HistoriqueDemande historiqueDemande = new HistoriqueDemande("ajouter",date);
-		/*historiqueDemande.setDemande(demande);
-		historiqueDemande.setClient(client);
-		daoHisDemande.ajouter(historiqueDemande);*/
-		return idDmd ;	
+		Client client = daoClient.findById(idC);
+		demande.setClient(client);
+		 demande = daoDemande.ajouter(demande);
+		return demande.getId() ;	
 		
 	}
 
@@ -161,6 +155,33 @@ public class ImpIntMetierClient implements InterfaceMetierClient{
 	@Override
 	public Client findClientId(Long id) {
 		return daoClient.findById(id);
+	}
+
+
+	@Override
+	public void creerNouveauPrerequis(PrerequisDeDemande prerequisDeDemande) {
+		daoPrerequisDemande.ajouter(prerequisDeDemande);
+		
+	}
+
+
+	@Override
+	public void creerNouveauDocument(DocumentDeDemande documentDeDemande) {
+		daoDocumentDemande.ajouter(documentDeDemande);
+		
+	}
+
+
+	@Override
+	public List<Demande> getDemandes(Long idC) {
+		
+		return daoDemande.getDemandes(idC);
+	}
+
+
+	@Override
+	public List<PrerequisDeDemande>  getPrerequis(Long idDmd) {
+		return daoPrerequisDemande.getPrerequis(idDmd);
 	}
 
 

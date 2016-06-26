@@ -40,14 +40,13 @@ public class UploadController {
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
 	public @ResponseBody
 	void uploadFileHandler(
-			@RequestParam("file") MultipartFile file) {
-		String name="dd";
+			@RequestParam("file") MultipartFile file ,@RequestParam("name") String name) {
 		if (!file.isEmpty()) {
 			try {
 				byte[] bytes = file.getBytes();
 
 				 upload jetUpload =new upload();
-				 
+				 jetUpload.setNomFichier(name);
 				 jetUpload.setPhoto(bytes);
 				 iMetierUpload.ajouterNouvelleFichier(jetUpload);
 

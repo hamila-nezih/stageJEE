@@ -1,10 +1,14 @@
 package com.hc.stage.dao.demades;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.hc.stage.dao.base.GenericJpaDao;
 import com.hc.stage.entities.demandes.Demande;
+import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 
 public class ImpDaoDemande extends GenericJpaDao<Demande, Long> implements InterfaceDaoDemande{
 
@@ -15,8 +19,15 @@ public class ImpDaoDemande extends GenericJpaDao<Demande, Long> implements Inter
 		super(Demande.class);
 	}
 	public ImpDaoDemande(Class<Demande> persistentClass) {
-		super(persistentClass);
-		// TODO Auto-generated constructor stub
+		super(persistentClass);		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Demande> getDemandes(Long idC){
+		Query req = em.createQuery("select d.typeDemande.titre, d.etat, d.dateCreation, d.id  from Demande d  "
+				+ " where d.client.id=:x");
+		req.setParameter("x", idC);
+		return req.getResultList();
 	}
 	
 

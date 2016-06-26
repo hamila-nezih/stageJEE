@@ -24,6 +24,9 @@ public class PrerequisTypeDemande extends BaseEntity {
 	@JoinColumn(name = "tyd_clef", referencedColumnName = "tyd_clef")
 	private TypeDemande typeDemande;
 
+	@Column(name = "ptd_type_varibale")
+	private String tybeVariable;
+	
 	@Column(name = "ptd_libelle")
 	private String libelle;
 
@@ -46,7 +49,6 @@ public class PrerequisTypeDemande extends BaseEntity {
 
 	public PrerequisTypeDemande() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public TypeDemande getTypeDemande() {
@@ -79,6 +81,14 @@ public class PrerequisTypeDemande extends BaseEntity {
 
 	public String getOrdre() {
 		return ordre;
+	}
+
+	public String getTybeVariable() {
+		return tybeVariable;
+	}
+
+	public void setTybeVariable(String tybeVariable) {
+		this.tybeVariable = tybeVariable;
 	}
 
 }

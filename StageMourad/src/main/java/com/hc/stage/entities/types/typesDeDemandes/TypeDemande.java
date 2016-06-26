@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hc.stage.entities.base.BaseEntity;
 
 /**
@@ -20,9 +19,7 @@ import com.hc.stage.entities.base.BaseEntity;
 @Entity
 @Table(name = "types_demandes")
 @AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "tyd_clef")) })
-@JsonIgnoreProperties({ "prerequisTypeDemandes" ,"documentsTypeDemandes"})
 public class TypeDemande extends BaseEntity {
-
 	private static final long serialVersionUID = -7082899346892779685L;
 
 	@Column(name = "tyd_titre")

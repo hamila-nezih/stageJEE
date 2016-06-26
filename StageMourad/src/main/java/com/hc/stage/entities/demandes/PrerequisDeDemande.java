@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hc.stage.entities.base.BaseEntity;
 import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 

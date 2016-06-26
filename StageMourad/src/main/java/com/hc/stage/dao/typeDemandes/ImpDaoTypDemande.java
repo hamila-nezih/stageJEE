@@ -33,11 +33,11 @@ public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implement
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<TypeDemande> getAllTypeDemande() {
 		
-		Query req = em.createQuery("select t from TypeDemande t");
-		System.out.println(req.getResultList().size());
+		Query req = em.createQuery("select t.id, t.titre, t.actif from TypeDemande t");
 		return req.getResultList();
 	
 	}

@@ -16,45 +16,43 @@ import com.hc.stage.entities.base.BaseEntity;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 
 @Entity
-@Table(name="demandes")
-@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "dmd_clef")) })
-public class Demande extends BaseEntity{
+@Table(name = "demandes")
+@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "dmd_clef")) })
+public class Demande extends BaseEntity {
 
-	
 	private static final long serialVersionUID = 1023047869904794715L;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "tyd_clef", nullable = false)	
+	@JoinColumn(name = "tyd_clef", nullable = false)
 	private TypeDemande typeDemande;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cli_clef", nullable = false)	
+	@JoinColumn(name = "cli_clef", nullable = false)
 	private Client client;
-	
-	@Column(name="dmd_commentaire")
+
+	@Column(name = "dmd_commentaire")
 	private String commentaire;
-	
-	@Column(name="dmd_etat")
+
+	@Column(name = "dmd_etat")
 	private String etat; // en cours , en attente... // lien vers etape workflow
-	
-	@Column(name="dmd_date_creation")
+
+	@Column(name = "dmd_date_creation")
 	private Date dateCreation;
-	
-	@Column(name="dmd_date_modification")
+
+	@Column(name = "dmd_date_modification")
 	private Date dateModification;
-	
+
 	// sous-demandes... en cas de plusieurs sous-demandes...
-	
-	
+
 	public Demande() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void setTypeDemande(TypeDemande typeDemande) {
 		this.typeDemande = typeDemande;
 	}
-	
+
 	public TypeDemande getTypeDemande() {
 		return typeDemande;
 	}

@@ -8,13 +8,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.hc.stage.entities.base.BaseEntity;
 import com.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
-import com.mysql.jdbc.log.Log;
 
 @Entity
 @Table(name="documents_demandes")
@@ -42,9 +40,9 @@ public class DocumentDeDemande extends BaseEntity{
     
     
     // TODO vérifier s'il existe un type générique pour les autres bases 
-    @Lob
-    @Column(name="dod_contenue",length=10000000)   
-	private Log contenue ;
+    
+    @Column(name="dod_contenue",columnDefinition = "LONGBLOB")   
+	private byte [] contenue ;
 	
 	public DocumentDeDemande(String libelle) {
 		super();
@@ -87,10 +85,7 @@ public class DocumentDeDemande extends BaseEntity{
 		this.nomFichier = nomFichier;
 	}
 
-	public void setContenue(Log contenue) {
-		this.contenue = contenue;
-	}
-
+	
 	public Date getDateCreation() {
 		return dateCreation;
 	}
@@ -99,9 +94,14 @@ public class DocumentDeDemande extends BaseEntity{
 		this.dateCreation = dateCreation;
 	}
 
-	public Log getContenue() {
+	public byte[] getContenue() {
 		return contenue;
-	}	
-    
+	}
+
+	public void setContenue(byte[] contenue) {
+		this.contenue = contenue;
+	}
+
+	
 }
 

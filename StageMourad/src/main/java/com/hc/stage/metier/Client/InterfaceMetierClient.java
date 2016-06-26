@@ -19,7 +19,16 @@ public interface InterfaceMetierClient {
 	
 	public Long ajouterNouveauClient(Client client);
 	public Client findClientId(Long id);
-	public Long creerNouvelleDemande(Demande demande, Client client, String id);
+	
+	public Long creerNouvelleDemande(Demande demande, Long idC, Long idTDemande);
+	public void creerNouveauPrerequis(PrerequisDeDemande prerequisDeDemande);
+	public void creerNouveauDocument(DocumentDeDemande documentDeDemande);
+	
+	 public  List<PrerequisDeDemande>  getPrerequis(Long idDmd);
+		
+	
+	public List<Demande> getDemandes(Long idC);
+	
 	public Long AjouterNouveauDocumentDemande(DocumentDeDemande doD, Client client);
 	public Long AjouterNouveauPrerequi(PrerequisDeDemande prD, Client client);
 }

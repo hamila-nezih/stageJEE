@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import com.hc.stage.dao.base.GenericJpaDao;
 import com.hc.stage.entities.demandes.PrerequisDeDemande;
+import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 
 public class ImpDaoPrerequisDemande  extends GenericJpaDao<PrerequisDeDemande, Long> implements InterfaceDaoPrerequisDemande{
 
@@ -25,10 +26,21 @@ public class ImpDaoPrerequisDemande  extends GenericJpaDao<PrerequisDeDemande, L
 	@Override
 	public List<PrerequisDeDemande> getPrerequisDemande(Long id){
 
-        Query req=em.createQuery("select p from PrerequisDeDemande p");
-        //req.setParameter("x",id);
-		
+        Query req=em.createQuery("select p from PrerequisDeDemande p");		
 		return req.getResultList();
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PrerequisDeDemande>  getPrerequis(Long idDmd) {
+		Query req = em.createQuery("select p.id, p.libelle, p.prerequisTypeDemande.libelle, p.prerequisTypeDemande.obligatoire"
+				+ " , p.prerequisTypeDemande.tybeVariable,p.prerequisTypeDemande.ordre "
+				+ "  from PrerequisDeDemande p  "
+				+ " where p.demande.id=:x order by  p.prerequisTypeDemande.ordre");
+		req.setParameter("x", idDmd);
+		System.out.println(req.getResultList().get(0));
+		return  req.getResultList();
+
+		
 	}
 	
 	

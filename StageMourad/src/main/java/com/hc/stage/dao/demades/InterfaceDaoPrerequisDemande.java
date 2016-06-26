@@ -8,6 +8,7 @@ import com.hc.stage.entities.demandes.PrerequisDeDemande;
 public interface InterfaceDaoPrerequisDemande extends GenericDao<PrerequisDeDemande, Long>{
 	
 	 public List<PrerequisDeDemande> getPrerequisDemande(Long id);
+	 public  List<PrerequisDeDemande>  getPrerequis(Long idDmd);
 	
 
 }
