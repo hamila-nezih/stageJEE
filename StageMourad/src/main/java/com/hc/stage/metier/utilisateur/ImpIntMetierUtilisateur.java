@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hc.stage.dao.acteurs.InterfaceDaoUtilisateur;
+import com.hc.stage.dao.demades.InterfaceDaoDemande;
 import com.hc.stage.dao.historiqueDesTypesDeDemandes.InterfaceDaoHistoriqueTypeDemande;
 import com.hc.stage.dao.typeDemandes.InterfaceDaoDocumentTypeDemande;
 import com.hc.stage.dao.typeDemandes.InterfaceDaoPrerequisTypeDemande;
 import com.hc.stage.dao.typeDemandes.InterfaceDaoTypDemande;
 import com.hc.stage.entities.acteurs.Utilisateur;
+import com.hc.stage.entities.demandes.Demande;
 import com.hc.stage.entities.historisation.historisationDesTypesDeDemandes.HistoriqueTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
@@ -19,6 +21,7 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 
 	private InterfaceDaoUtilisateur daoUtilisateur;
 	private InterfaceDaoTypDemande daoTypDemande;
+
 	private InterfaceDaoDocumentTypeDemande daoDocumentTypeDemande;
 	private InterfaceDaoPrerequisTypeDemande daoPrerequisTypeDemande;
 	private InterfaceDaoHistoriqueTypeDemande daoHistoriqueTypeDemande; 
@@ -48,6 +51,7 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 		this.daoHistoriqueTypeDemande = daoHistoriqueTypeDemande;
 	}
 	
+
 	public Long ajouterNouveauTypeDemande(TypeDemande tyD,Utilisateur utilisateur){
 		
 		Long idTyD = daoTypDemande.ajouter(tyD).getId();
@@ -83,6 +87,7 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 		return daoUtilisateur.select();
 		 
 	}
+	
 
 	@Override
 	public Utilisateur getUtilisateur(Long id) {
@@ -107,4 +112,7 @@ public class ImpIntMetierUtilisateur implements InterfaceMetierUtilisateur{
 		utilisateur.setPrenom(prenom);
 		return daoUtilisateur.update(utilisateur);
 	}
+
+	
+	
 }

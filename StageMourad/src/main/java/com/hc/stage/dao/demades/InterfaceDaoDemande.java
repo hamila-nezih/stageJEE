@@ -7,5 +7,8 @@ import com.hc.stage.entities.demandes.Demande;
 
 public interface InterfaceDaoDemande extends GenericDao<Demande, Long> {
 	public List<Demande> getDemandes(Long idC);
+	public List<Demande> getDemandesCloture(Long idC);
+	public List<Demande> getDemandeHistorique(Long idDemande);
+
 
 }

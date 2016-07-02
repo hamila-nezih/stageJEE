@@ -1,5 +1,7 @@
 package com.hc.stage.entities.types.typesDeDemandes;
 
+import java.util.Set;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -7,10 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hc.stage.entities.base.BaseEntity;
+import com.hc.stage.entities.demandes.PrerequisDeDemande;
 
 @Entity
 @Table(name = "types_prerequis")
@@ -33,10 +37,7 @@ public class PrerequisTypeDemande extends BaseEntity {
 	@Column(name = "ptd_ordre")
 	private String ordre;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "uti_clef", nullable = false)
-	// private Utilisateur utilisateur;
-
+	
 	@Column(name = "ptd_obligatoire")
 	private Boolean obligatoire;
 
@@ -90,5 +91,7 @@ public class PrerequisTypeDemande extends BaseEntity {
 	public void setTybeVariable(String tybeVariable) {
 		this.tybeVariable = tybeVariable;
 	}
+
+
 
 }

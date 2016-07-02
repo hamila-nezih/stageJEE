@@ -84,7 +84,7 @@
 	</bean>
 	 <!-- Bean spring security -->
 		<security:http auto-config="true" >
-		   <security:intercept-url pattern="/utilisateurErreur/**"
+		   <security:intercept-url pattern="/utilisateurlll/**"
 			access="ROLE_FORMATEUR" />
 			<security:form-login login-processing-url="/login" username-parameter="name"
 			 password-parameter="password"  

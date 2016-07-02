@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.hc.stage.entities.base.BaseEntity;
+import com.hc.stage.entities.demandes.PrerequisDeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 
 @Entity
@@ -26,19 +27,11 @@ public class HistoriquePrerequisDemande extends BaseEntity {
 	private HistoriqueDemande  historiqueDemande;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ptd_clef", nullable = false)	
-	private PrerequisTypeDemande prerequisTypeDemande;
+	@JoinColumn(name = "pdm_clef", nullable = false)	
+	private  PrerequisDeDemande prerequisDeDemande;
 		
 	@Column(name="prd_contenue")   
     private String contenue ;
-
-	public HistoriquePrerequisDemande(HistoriqueDemande historiqueDemande, PrerequisTypeDemande prerequisTypeDemande,
-			String contenue) {
-		super();
-		this.historiqueDemande = historiqueDemande;
-		this.prerequisTypeDemande = prerequisTypeDemande;
-		this.contenue = contenue;
-	}
 
 	public HistoriquePrerequisDemande() {
 		super();
@@ -53,20 +46,26 @@ public class HistoriquePrerequisDemande extends BaseEntity {
 		this.historiqueDemande = historiqueDemande;
 	}
 
-	public PrerequisTypeDemande getPrerequisTypeDemande() {
-		return prerequisTypeDemande;
-	}
-
-	public void setPrerequisTypeDemande(PrerequisTypeDemande prerequisTypeDemande) {
-		this.prerequisTypeDemande = prerequisTypeDemande;
-	}
-
 	public String getContenue() {
 		return contenue;
 	}
 
 	public void setContenue(String contenue) {
 		this.contenue = contenue;
+	}
+
+	public PrerequisDeDemande getPrerequisDeDemande() {
+		return prerequisDeDemande;
+	}
+
+	public void setPrerequisDeDemande(PrerequisDeDemande prerequisDeDemande) {
+		this.prerequisDeDemande = prerequisDeDemande;
+	}
+
+	public HistoriquePrerequisDemande(HistoriqueDemande historiqueDemande, PrerequisDeDemande prerequisDeDemande) {
+		super();
+		this.historiqueDemande = historiqueDemande;
+		this.prerequisDeDemande = prerequisDeDemande;
 	}
 	
 	 

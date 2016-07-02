@@ -3,6 +3,7 @@ package com.hc.stage.metier.utilisateur;
 import java.util.List;
 
 import com.hc.stage.entities.acteurs.Utilisateur;
+import com.hc.stage.entities.demandes.Demande;
 import com.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
@@ -21,6 +22,8 @@ public interface InterfaceMetierUtilisateur  {
 	public Long ajouterNouveauTypeDemande(TypeDemande tyD, Utilisateur utilisateur);
 	
 	public List<PrerequisTypeDemande> getTypePrerequisD(Long id);
+	
+
 	
 	
 

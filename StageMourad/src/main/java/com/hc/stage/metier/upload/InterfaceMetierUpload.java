@@ -5,6 +5,7 @@ import com.hc.stage.entities.upload.upload;
 public interface InterfaceMetierUpload  {
 	
 	public Long ajouterNouvelleFichier(upload up );
+	public upload getFichier();
 //	public Utilisateur getUtilisateur(Long id);
 //	public List<Utilisateur> getTousUtl();
 //	public void supprimierUtl(Long id);

@@ -16,7 +16,6 @@ public class CorsFilter extends OncePerRequestFilter {
                                     throws ServletException, IOException {
 
         response.addHeader("Access-Control-Allow-Origin", "*");
-
         if (request.getHeader("Access-Control-Request-Method") != null && "OPTIONS".equals(request.getMethod())) {
             // CORS "pre-flight" request
             response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");

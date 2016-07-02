@@ -4,6 +4,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,5 +60,17 @@ public class UploadController {
 			//return "You failed to upload " + name
 				//	+ " because the file was empty.";
 		}
+	}
+	
+/*
+ * download 
+ */
+	@RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
+	public @ResponseBody byte[] getOpenedEventsInPdf(HttpServletResponse response) {
+	    response.setHeader("Content-Disposition", "inline; filename=file.pdf");
+	    response.setContentType("application/pdf");
+	// get file in bytearray from my custom service in backend
+	    byte[] file = iMetierUpload.getFichier().getPhoto();
+	    return file;
 	}
 }

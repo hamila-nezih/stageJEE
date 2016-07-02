@@ -20,6 +20,12 @@ public class ImpIntMetierUpload implements InterfaceMetierUpload {
 		return null;
 	}
 
+	@Override
+	public upload getFichier() {
+		//daoUpload.findById(Long.parseLong("32"));
+		return daoUpload.findById(Long.parseLong("32"));
+	}
+
 	// private InterfaceDaoUtilisateur daoUtilisateur;
 	// private InterfaceDaoTypDemande daoTypDemande;
 	// private InterfaceDaoDocumentTypeDemande daoDocumentTypeDemande;

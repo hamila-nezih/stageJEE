@@ -9,6 +9,7 @@ public interface InterfaceDaoPrerequisDemande extends GenericDao<PrerequisDeDema
 	
 	 public List<PrerequisDeDemande> getPrerequisDemande(Long id);
 	 public  List<PrerequisDeDemande>  getPrerequis(Long idDmd);
+	List<PrerequisDeDemande> getPrerequisHist(Long idDmd);
 	
 
 }

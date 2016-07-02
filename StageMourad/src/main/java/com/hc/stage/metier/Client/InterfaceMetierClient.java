@@ -6,8 +6,12 @@ import com.hc.stage.entities.acteurs.Client;
 import com.hc.stage.entities.demandes.Demande;
 import com.hc.stage.entities.demandes.DocumentDeDemande;
 import com.hc.stage.entities.demandes.PrerequisDeDemande;
+import com.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDemande;
+import com.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDocumentDemande;
+import com.hc.stage.entities.historisation.historisationDesDemandes.HistoriquePrerequisDemande;
 import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
+import com.hc.stage.entities.upload.upload;
 public interface InterfaceMetierClient {
 	
 	public List<TypeDemande> getAllTypeDemande();
@@ -24,11 +28,23 @@ public interface InterfaceMetierClient {
 	public void creerNouveauPrerequis(PrerequisDeDemande prerequisDeDemande);
 	public void creerNouveauDocument(DocumentDeDemande documentDeDemande);
 	
+	public HistoriqueDemande creerHistoriqueDemande(HistoriqueDemande demande);
+	public void creerHistoriquePrerequis(HistoriquePrerequisDemande historiquePrerequisDemande);
+	public void creerHistoriqueDocument(HistoriqueDocumentDemande historiqueDocumentDemande);
+	
 	 public  List<PrerequisDeDemande>  getPrerequis(Long idDmd);
+	 public  List<DocumentDeDemande>  getDocuments(Long idDmd);
+	 
+	 public DocumentDeDemande download(Long idDocument);
 		
 	
+	public List<Demande> getDemandeHistorique(Long idDemande);
 	public List<Demande> getDemandes(Long idC);
+	public List<Demande> getDemandesCloture(Long idC);
 	
 	public Long AjouterNouveauDocumentDemande(DocumentDeDemande doD, Client client);
 	public Long AjouterNouveauPrerequi(PrerequisDeDemande prD, Client client);
+	public List<PrerequisDeDemande> getPrerequisHist(Long idDmd);
+	public List<DocumentDeDemande> getDocumentsHist(Long idDmd);
+	public void updateDemande(Demande demande);
 }

@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.hc.stage.entities.base.BaseEntity;
+import com.hc.stage.entities.demandes.DocumentDeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
 import com.mysql.jdbc.log.Log;
 
@@ -27,8 +28,8 @@ public class HistoriqueDocumentDemande extends BaseEntity {
 	private HistoriqueDemande  historiqueDemande;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "dtd_clef", nullable = false)	
-	private DocumentTypeDemande documentTypeDemande;
+	@JoinColumn(name = "doc_clef", nullable = false)	
+	private DocumentDeDemande documentDeDemande;
 	
 	 @Lob
 	 @Column(name="dod_contenue",length=10000000)   
@@ -46,13 +47,7 @@ public class HistoriqueDocumentDemande extends BaseEntity {
 		this.historiqueDemande = historiqueDemande;
 	 }
 
-	 public DocumentTypeDemande getDocumentTypeDemande() {
-		return documentTypeDemande;
-     }
-
-	 public void setDocumentTypeDemande(DocumentTypeDemande documentTypeDemande) {
-		this.documentTypeDemande = documentTypeDemande;
-	 }
+	
 
 	 public Log getContenue() {
 		return contenue;
@@ -62,13 +57,23 @@ public class HistoriqueDocumentDemande extends BaseEntity {
 		this.contenue = contenue;
 	 }
 
-	 public HistoriqueDocumentDemande(HistoriqueDemande historiqueDemande, DocumentTypeDemande documentTypeDemande,
+	public HistoriqueDocumentDemande(HistoriqueDemande historiqueDemande, DocumentDeDemande documentDeDemande,
 			Log contenue) {
 		super();
 		this.historiqueDemande = historiqueDemande;
-		this.documentTypeDemande = documentTypeDemande;
+		this.documentDeDemande = documentDeDemande;
 		this.contenue = contenue;
-	 }
+	}
+
+	public DocumentDeDemande getDocumentDeDemande() {
+		return documentDeDemande;
+	}
+
+	public void setDocumentDeDemande(DocumentDeDemande documentDeDemande) {
+		this.documentDeDemande = documentDeDemande;
+	}
+
+	
 	 
 	
 }

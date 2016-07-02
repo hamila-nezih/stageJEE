@@ -26,8 +26,10 @@ public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implement
 	public TypeDemande getFullTypeDemande(Long id) {
 
 		Query req = em.createQuery("select t from TypeDemande t  "
-				+ "  left join fetch   t.prerequisTypeDemandes left join fetch   t.documentsTypeDemandes"
-				+ " where t.id=:x");
+				+ "  left join fetch   t.prerequisTypeDemandes p left join fetch   t.documentsTypeDemandes"
+				+ " where t.id=:x "
+				+ "and p.typeDemande.id not in (select histPrq.prerequisDeDemande.id from HistoriquePrerequisDemande histPrq) "
+               );
 		req.setParameter("x", id);
 		return (TypeDemande) req.getResultList().get(0);
 

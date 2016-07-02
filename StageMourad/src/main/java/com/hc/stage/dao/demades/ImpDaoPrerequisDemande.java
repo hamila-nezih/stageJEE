@@ -33,14 +33,27 @@ public class ImpDaoPrerequisDemande  extends GenericJpaDao<PrerequisDeDemande, L
 	@Override
 	public List<PrerequisDeDemande>  getPrerequis(Long idDmd) {
 		Query req = em.createQuery("select p.id, p.libelle, p.prerequisTypeDemande.libelle, p.prerequisTypeDemande.obligatoire"
-				+ " , p.prerequisTypeDemande.tybeVariable,p.prerequisTypeDemande.ordre "
+				+ " , p.prerequisTypeDemande.tybeVariable,p.prerequisTypeDemande.ordre ,p.prerequisTypeDemande.id"
 				+ "  from PrerequisDeDemande p  "
-				+ " where p.demande.id=:x order by  p.prerequisTypeDemande.ordre");
+				+ " where p.demande.id=:x and "
+				+ "p.id not in (select histPrq.prerequisDeDemande.id from HistoriquePrerequisDemande histPrq) "
+				+ "order by  p.prerequisTypeDemande.ordre");
 		req.setParameter("x", idDmd);
-		System.out.println(req.getResultList().get(0));
 		return  req.getResultList();
 
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PrerequisDeDemande>  getPrerequisHist(Long idDmd) {
+		Query req = em.createQuery("select p.libelle, p.prerequisTypeDemande.libelle"
+				+ " , p.dateCreation"
+				+ "  from PrerequisDeDemande p  "
+				+ " where p.demande.id=:x "
+				+ "order by  p.prerequisTypeDemande.ordre");
+		req.setParameter("x", idDmd);
+		return  req.getResultList();
 	}
 	
 	
