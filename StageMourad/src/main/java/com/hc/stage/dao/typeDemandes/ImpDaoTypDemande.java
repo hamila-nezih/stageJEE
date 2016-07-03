@@ -31,7 +31,10 @@ public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implement
 				+ "and p.typeDemande.id not in (select histPrq.prerequisDeDemande.id from HistoriquePrerequisDemande histPrq) "
                );
 		req.setParameter("x", id);
-		return (TypeDemande) req.getResultList().get(0);
+		if(req.getResultList().size() > 0) 
+			return (TypeDemande) req.getResultList().get(0);
+		return null;
+
 
 	}
 
