@@ -239,4 +239,15 @@ public class ImpIntMetierClient implements InterfaceMetierClient {
 		daoDemande.update(dmd);		
 	}
 
+	@Override
+	public List<Client> connexion(String login, String password) {
+		return daoClient.connexion(login, password);
+	}
+
+	@Override
+	public void updateClient(Client client) {
+		daoClient.update(client);
+		
+	}
+
 }

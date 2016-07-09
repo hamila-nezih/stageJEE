@@ -30,10 +30,6 @@ public class DocumentTypeDemande extends BaseEntity {
 	@Column(name = "dtd_libelle")
 	private String libelle;
 
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "uti_clef", nullable = false)
-//	private Utilisateur utilisateur;
-
 	@Column(name = "dtd_obligatoire")
 	private Boolean obligatoire;
 
@@ -77,5 +73,13 @@ public class DocumentTypeDemande extends BaseEntity {
 		super();
 		this.libelle = libelle;
 		this.obligatoire = obligatoire;
+	}
+
+	public String getOrdre() {
+		return ordre;
+	}
+
+	public void setOrdre(String ordre) {
+		this.ordre = ordre;
 	}
 }

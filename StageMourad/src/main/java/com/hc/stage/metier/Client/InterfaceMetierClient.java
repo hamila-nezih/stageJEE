@@ -11,7 +11,6 @@ import com.hc.stage.entities.historisation.historisationDesDemandes.HistoriqueDo
 import com.hc.stage.entities.historisation.historisationDesDemandes.HistoriquePrerequisDemande;
 import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
-import com.hc.stage.entities.upload.upload;
 public interface InterfaceMetierClient {
 	
 	public List<TypeDemande> getAllTypeDemande();
@@ -21,6 +20,8 @@ public interface InterfaceMetierClient {
 	
 	public TypeDemande getTypeDemande(Long id);
 	
+	public List<Client> connexion(String login, String password) ;
+	public void updateClient(Client client);
 	public Long ajouterNouveauClient(Client client);
 	public Client findClientId(Long id);
 	

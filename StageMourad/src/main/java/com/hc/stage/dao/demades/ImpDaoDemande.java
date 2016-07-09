@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 import com.hc.stage.dao.base.GenericJpaDao;
 import com.hc.stage.entities.demandes.Demande;
-import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 
 public class ImpDaoDemande extends GenericJpaDao<Demande, Long> implements InterfaceDaoDemande{
 
@@ -24,9 +23,10 @@ public class ImpDaoDemande extends GenericJpaDao<Demande, Long> implements Inter
 	
 	@SuppressWarnings("unchecked")
 	public List<Demande> getDemandes(Long idC){
-		Query req = em.createQuery("select d.typeDemande.titre, d.etat, d.dateCreation, d.id  from Demande d  "
+		Query req = em.createQuery("select d.typeDemande.titre, d.etat, d.dateCreation, d.id ,d.typeDemande.id from Demande d  "
 				+ " where d.client.id=:x and "
-				+ "(d.etat='En cours de traitement' or d.etat='En attente' or d.etat='Information(s) manquante(s)')");
+				+ "(d.etat='En cours de traitement' or d.etat='En attente' or d.etat='Information(s) manquante(s)')"
+				+ "ORDER BY d.id DESC");
 		req.setParameter("x", idC);
 		return req.getResultList();
 	}
@@ -36,7 +36,7 @@ public class ImpDaoDemande extends GenericJpaDao<Demande, Long> implements Inter
 		Query req = em.createQuery("select d.typeDemande.titre, d.etat, d.dateCreation, d.id, d.dateModification"
 				+ " from Demande d  "
 				+ " where d.client.id=:x and "
-				+ "(d.etat='Accepter' or d.etat='Refuser' or d.etat='Annuler')");
+				+ "(d.etat='Acceptée' or d.etat='Refusée' or d.etat='Annulée')");
 		req.setParameter("x", idC);
 		return req.getResultList();
 	}

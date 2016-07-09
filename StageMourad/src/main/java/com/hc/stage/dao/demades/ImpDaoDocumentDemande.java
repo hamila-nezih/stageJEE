@@ -32,8 +32,8 @@ public class ImpDaoDocumentDemande extends GenericJpaDao<DocumentDeDemande, Long
 				+ "d.id not in (select histDoc.documentDeDemande.id from HistoriqueDocumentDemande histDoc) "
 				+ "order by  d.documentTypeDemandes.ordre");
 		req.setParameter("x", idDmd);
+		System.out.println(req.getResultList().size());		
 		return req.getResultList();
-		// return null;
 	}
 
 	@SuppressWarnings("unchecked")

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.hc.stage.controller.UtilisateurRestURIConstants;
 import com.hc.stage.entities.acteurs.Client;
+import com.hc.stage.entities.acteurs.Utilisateur;
 import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 import com.hc.stage.metier.Client.InterfaceMetierClient;
@@ -23,13 +25,13 @@ public class ClientController {
 
 	@Autowired
 	private InterfaceMetierClient iMetierClient;
-	
+
 	@RequestMapping(value = ClientRestURIConstants.CREER_CLIENT, method = RequestMethod.POST, consumes = "application/json;"
 			+ "charset=UTF-8")
-	public @ResponseBody void creerUtl(@RequestBody Client client) {
+	public @ResponseBody List<Client> creerUtl(@RequestBody Client client) {
 
 		iMetierClient.ajouterNouveauClient(client);
-
+		return iMetierClient.connexion(client.getMail(), client.getMotsPasse());
 	}
 
 	@RequestMapping(value = ClientRestURIConstants.GET_TOUS_TYPE_DEMANDE, method = RequestMethod.GET, produces = {
@@ -70,5 +72,20 @@ public class ClientController {
 	public @ResponseBody Client findClientId(@PathVariable String id) {
 		System.out.println(iMetierClient.findClientId(Long.parseLong(id)).getDateNaissance());
 		return iMetierClient.findClientId(Long.parseLong(id));
+	}
+	
+	
+	@RequestMapping(value = ClientRestURIConstants.GET_CLIENT_CONNEXION, method = RequestMethod.GET, produces = {
+			"application/json" })
+
+	@ResponseStatus(HttpStatus.OK)
+
+	public @ResponseBody List<Client> findClient(@PathVariable String login, @PathVariable String password) {
+		return iMetierClient.connexion(login, password);
+	}
+	
+	@RequestMapping(value = ClientRestURIConstants.UPDATE_CLIENT, method = RequestMethod.PUT)
+	public @ResponseBody void upDateUtl(@RequestBody Client client) {
+		 iMetierClient.updateClient(client);
 	}
 }
