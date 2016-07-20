@@ -29,12 +29,12 @@ public class Demande extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cli_clef", nullable = false)
 	private Client client;
-
+	
 	@Column(name = "dmd_commentaire")
 	private String commentaire;
-
+	
 	@Column(name = "dmd_etat")
-	private String etat; // en cours , en attente... // lien vers etape workflow
+	private String etat;  // lien vers etape workflow
 
 	@Column(name = "dmd_date_creation")
 	private Date dateCreation;

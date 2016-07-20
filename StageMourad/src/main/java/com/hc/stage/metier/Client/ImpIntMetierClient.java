@@ -11,6 +11,8 @@ import com.hc.stage.dao.demades.InterfaceDaoPrerequisDemande;
 import com.hc.stage.dao.historiqueDesDemandes.InterfaceDaoHisDemande;
 import com.hc.stage.dao.historiqueDesDemandes.InterfaceDaoHisDocDemande;
 import com.hc.stage.dao.historiqueDesDemandes.InterfaceDaoHisPrerDemande;
+import com.hc.stage.dao.historiqueDesTypesDeDemandes.InterfaceDaoHistoriqueTypeDemande;
+import com.hc.stage.dao.typeDemandes.InterfaceDaoDocumentTypeDemande;
 import com.hc.stage.dao.typeDemandes.InterfaceDaoPrerequisTypeDemande;
 import com.hc.stage.dao.typeDemandes.InterfaceDaoTypDemande;
 import com.hc.stage.entities.acteurs.Client;
@@ -35,6 +37,8 @@ public class ImpIntMetierClient implements InterfaceMetierClient {
     private InterfaceDaoHisPrerDemande daoHisPrerDemande;
 	private InterfaceDaoTypDemande daoTypDemande;
 	private InterfaceDaoPrerequisTypeDemande daoPrerequisTypeDemande;
+	private InterfaceDaoDocumentTypeDemande daoDocumentTypeDemande;
+	private InterfaceDaoHistoriqueTypeDemande daoHistoriqueTypeDemande ;
 
 	@Override
 	public TypeDemande getTypeDemande(Long id) {
@@ -94,7 +98,13 @@ public class ImpIntMetierClient implements InterfaceMetierClient {
 		 */
 		return idPD;
 	}
+	public void setDaoDocumentTypeDemande(InterfaceDaoDocumentTypeDemande daoDocumentTypeDemande) {
+		this.daoDocumentTypeDemande = daoDocumentTypeDemande;
+	}
 
+	public void setDaoHistoriqueTypeDemande(InterfaceDaoHistoriqueTypeDemande daoHistoriqueTypeDemande) {
+		this.daoHistoriqueTypeDemande = daoHistoriqueTypeDemande;
+	}
 	public void setDaoPrerequisTypeDemande(InterfaceDaoPrerequisTypeDemande daoPrerequisTypeDemande) {
 		this.daoPrerequisTypeDemande = daoPrerequisTypeDemande;
 	}
@@ -236,6 +246,7 @@ public class ImpIntMetierClient implements InterfaceMetierClient {
 		Demande dmd = daoDemande.findById(demande.getId());
 		dmd.setDateModification(demande.getDateModification());
 		dmd.setEtat(demande.getEtat());
+		dmd.setCommentaire(demande.getCommentaire());
 		daoDemande.update(dmd);		
 	}
 
@@ -248,6 +259,27 @@ public class ImpIntMetierClient implements InterfaceMetierClient {
 	public void updateClient(Client client) {
 		daoClient.update(client);
 		
+	}
+
+	@Override
+	public List<Demande> getDemandeParType(Long idType) {
+		
+		return daoDemande.getDemandeType(idType);
+	}
+
+	@Override
+	public void deleteTypeDemande(Long id) {
+		daoPrerequisTypeDemande.deletePrerequisTypeDemande(id);
+		daoDocumentTypeDemande.deleteDocumentTypeDemande(id);
+		daoHistoriqueTypeDemande.deleteHistoriqueTypeDemande(id);
+		daoTypDemande.deleteTypeDemande(id);
+		
+	}
+
+	
+	@Override
+	public List<Demande> getTousDemandesEnAttente() {
+		return daoDemande.getTousDemandesEnAttente();
 	}
 
 }

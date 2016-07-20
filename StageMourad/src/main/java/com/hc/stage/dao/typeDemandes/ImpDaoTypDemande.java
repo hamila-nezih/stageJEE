@@ -46,5 +46,15 @@ public class ImpDaoTypDemande extends GenericJpaDao<TypeDemande, Long> implement
 	
 	}
 
+	@Override
+	public void deleteTypeDemande(Long id) {
+		Query req = em.createQuery(" delete from TypeDemande t where t.id=:x ");
+		req.setParameter("x", id);
+		req.executeUpdate();
+		System.out.println("delete demande" + id);
+		
+	}
+
+	
 	
 }

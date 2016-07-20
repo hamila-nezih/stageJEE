@@ -72,7 +72,7 @@
 
 
 	<bean id="metierClient" class="com.hc.stage.metier.Client.ImpIntMetierClient">
-		<property name="daoPrerequisTypeDemande" ref="daoPrerequisTypeDemande"></property>
+		<property name="daoPrerequisTypeDemande" ref="daoPrerequisTypeDemande"></property>		
 		<property name="daoTypDemande" ref="daoTypDemande"></property>
 		<property name="daoClient" ref="daoClient"></property>
 		<property name="daoDemande" ref="daoDemande"></property>
@@ -81,24 +81,30 @@
 		<property name="daoHisDocDemande" ref="daoHisDocDemande"></property>
 		<property name="daoPrerequisDemande" ref="daoPrerequisDemande"></property>
 		<property name="daoHisPrerDemande" ref="daoHisPrerDemande"></property>
+		<property name="daoDocumentTypeDemande" ref="daoDocumentTypeDemande"></property>
+		<property name="daoHistoriqueTypeDemande" ref="daoHistoriqueTypeDemande"></property>
+		
 	</bean>
 	 <!-- Bean spring security -->
 		<security:http auto-config="true" >
-		   <security:intercept-url pattern="/utilisateurlll/**"
-			access="ROLE_FORMATEUR" />
-			<security:form-login login-processing-url="/login" username-parameter="name"
-			 password-parameter="password"  
-			 default-target-url="/home"
-			 authentication-failure-url="/loginm"/>
-			 <security:logout  logout-success-url="/loginm" />
+		    <security:intercept-url pattern="/rest/**"
+			access="ROLE_CLIENT" /> 
+			<security:form-login login-page="/home.html#/connexion" default-target-url="/home.html"
+			 authentication-failure-url="/home.html#/connexion"/>
+			 <security:logout  logout-success-url="/home.html" />
 	</security:http>
 
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="hamila" password="hamila" authorities="ROLE_FORMATEUR,ROLE_ADMIN" />
+			<!-- <security:user-service>
+				<security:user name="hamila" password="hamila" authorities="ROLE_CLIENT" />
 				<security:user name="morad" password="objis" authorities="ROLE_FORMATEUR" />
-			</security:user-service>
+			</security:user-service>  -->
+			 <security:jdbc-user-service
+				data-source-ref="dataSource"
+				users-by-username-query="SELECT cli_mail as principal, cli_mots_passe as credentails, true FROM clients where cli_mail = ?"
+				authorities-by-username-query="SELECT cli_mail as principal, 'ROLE_CLIENT' as role FROM clients where cli_mail = ?"
+			/> 
 		</security:authentication-provider>
 	</security:authentication-manager>  
 	

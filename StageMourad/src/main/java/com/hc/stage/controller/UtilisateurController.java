@@ -10,10 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.hc.stage.entities.acteurs.Utilisateur;
+import com.hc.stage.entities.demandes.Demande;
+import com.hc.stage.entities.historisation.historisationDesTypesDeDemandes.HistoriqueTypeDemande;
+import com.hc.stage.entities.types.typesDeDemandes.DocumentTypeDemande;
+import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
+import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
+import com.hc.stage.metier.Client.ImpIntMetierClient;
 import com.hc.stage.metier.utilisateur.InterfaceMetierUtilisateur;
 
 @Controller
@@ -66,5 +73,44 @@ public class UtilisateurController {
 		return iMetierUtilisateur.getTousUtl();
 
 	}
+
+	@RequestMapping(value = UtilisateurRestURIConstants.CREER_TYPE_DEMANDE, method = RequestMethod.POST, consumes = "application/json;"
+			+ "charset=UTF-8")
+	public @ResponseBody TypeDemande creerTypeDemande(@RequestBody TypeDemande typeDemande) {
+
+		return iMetierUtilisateur.creerNouveauTypeDemande(typeDemande);
+
+	}
+
+	@RequestMapping(value = UtilisateurRestURIConstants.CREER_TYPE_DOCUMENT, method = RequestMethod.POST)
+	public @ResponseBody void creerTypeDocument(
+			@RequestParam("libelle") String libelle, @RequestParam("ordre") String ordre,
+			@RequestParam("obligatoire") Boolean obligatoire, @RequestParam("id") String id) {
+ 
+		TypeDemande typeDemande = iMetierUtilisateur.getTypeDemande(Long.parseLong(id));
+		DocumentTypeDemande documentTypeDemande = new DocumentTypeDemande(libelle, obligatoire, ordre);
+		documentTypeDemande.setTypeDemande(typeDemande);
+		iMetierUtilisateur.creerNouveauTypeDocumentDemande(documentTypeDemande);
+
+	}
+
+	@RequestMapping(value = UtilisateurRestURIConstants.CREER_TYPE_PREREQUIS, method = RequestMethod.POST)
+	public @ResponseBody void creerPrerequisTypeDemannde(@RequestParam("tybeVariable") String tybeVariable,
+			@RequestParam("libelle") String libelle, @RequestParam("ordre") String ordre,
+			@RequestParam("obligatoire") Boolean obligatoire, @RequestParam("id") String id) {
+
+		TypeDemande typeDemande = iMetierUtilisateur.getTypeDemande(Long.parseLong(id));
+		PrerequisTypeDemande prerequisTypeDemande = new PrerequisTypeDemande(libelle, obligatoire, tybeVariable, ordre);
+		prerequisTypeDemande.setTypeDemande(typeDemande);
+		iMetierUtilisateur.creerNouveauTypePrerequisDemande(prerequisTypeDemande);
+	}
+	
+	@RequestMapping(value = UtilisateurRestURIConstants.GET_ALL_HISTORIQUE_TYPE_DEMANDE, method = RequestMethod.GET)
+	public @ResponseBody List<HistoriqueTypeDemande> getAllHistoriquesTypeDemandes() {
+
+		return iMetierUtilisateur.getAllHistoriqueTypeDemande();
+	}
+	
+	
 
 }

@@ -8,6 +8,12 @@ public class UtilisateurRestURIConstants {
      public static final String SUPPRIMER_UTL = "/utilisateur/supprimer/{id}";
      public static final String UPDATE_UTL = "/utilisateur/update/{id}";
      
-     public static final String CREER_TPrerequis = "/utilisateur/prerequi/{id}";
+     public static final String CREER_TYPE_DEMANDE = "/utilisateur/CreateTypeDemande";
+     public static final String CREER_TYPE_PREREQUIS = "/utilisateur/CreateTypePrerequisDemande";
+     public static final String CREER_TYPE_DOCUMENT = "/utilisateur/CreateTypeDocumentDemande";
+     
+     public static final String GET_ALL_HISTORIQUE_TYPE_DEMANDE = "/utilisateur/getAllHistoriqueTypeDemandes";
+     public static final String GET_ALL_DEMANDE_En_ATTENTE = "/utilisateur/getAllDemandesEnAttente";
+     
 
 }

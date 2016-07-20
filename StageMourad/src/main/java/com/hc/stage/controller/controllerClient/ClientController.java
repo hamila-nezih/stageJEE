@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.hc.stage.controller.UtilisateurRestURIConstants;
 import com.hc.stage.entities.acteurs.Client;
 import com.hc.stage.entities.acteurs.Utilisateur;
+import com.hc.stage.entities.demandes.Demande;
 import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 import com.hc.stage.entities.types.typesDeDemandes.TypeDemande;
 import com.hc.stage.metier.Client.InterfaceMetierClient;
@@ -87,5 +88,10 @@ public class ClientController {
 	@RequestMapping(value = ClientRestURIConstants.UPDATE_CLIENT, method = RequestMethod.PUT)
 	public @ResponseBody void upDateUtl(@RequestBody Client client) {
 		 iMetierClient.updateClient(client);
+	}
+	@RequestMapping(value = ClientRestURIConstants.GET_ALL_DEMANDE_En_ATTENTE, method = RequestMethod.GET)
+	public @ResponseBody List<Demande> getAllDemandesEnAttente() {
+
+		return iMetierClient.getTousDemandesEnAttente() ;
 	}
 }

@@ -33,9 +33,9 @@ public class DocumentTypeDemande extends BaseEntity {
 	@Column(name = "dtd_obligatoire")
 	private Boolean obligatoire;
 
-	public DocumentTypeDemande(String libelle, Boolean obligatoire, TypeDemande typeDemande) {
+	public DocumentTypeDemande(String libelle, Boolean obligatoire, String ordre) {
 		super();
-		this.typeDemande = typeDemande;
+		this.ordre = ordre;
 		this.libelle = libelle;
 		this.obligatoire = obligatoire;
 	}

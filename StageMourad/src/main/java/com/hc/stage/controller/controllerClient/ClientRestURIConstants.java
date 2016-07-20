@@ -10,6 +10,8 @@ public class ClientRestURIConstants {
 	 public static final String GET_DEMANDE = "/client/getTypeDemand/{id}";
 	 public static final String GET_TYPE_PREREQUIS_DEMANDE = "/client/getTPDmd/{id}";
 	 public static final String GET_TOUS_TYPE_DEMANDE = "/client/getTTDmd";
+	 public static final String GET_ALL_DEMANDE_En_ATTENTE = "/utilisateur/getAllDemandesEnAttente";
+     
 	 
 
 

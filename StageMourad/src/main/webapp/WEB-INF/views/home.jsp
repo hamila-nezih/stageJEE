@@ -2,6 +2,6 @@
 <html>
 <body>
 	<h2>messages, whatever</h2>	
-	<a href="stage/j_spring_security_logout" > Logout</a>
+	<a href="stage/rest/j_spring_security_logout" > Logout</a>
 </body>
 </html>

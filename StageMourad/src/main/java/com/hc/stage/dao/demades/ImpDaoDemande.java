@@ -49,6 +49,27 @@ public class ImpDaoDemande extends GenericJpaDao<Demande, Long> implements Inter
 		req.setParameter("x", idDemande);
 		return req.getResultList();
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Demande> getDemandeType(Long idType) {
+		Query req = em.createQuery("select d.typeDemande.titre"
+				+ " from Demande d  "
+				+ " where d.typeDemande.id=:x");
+		req.setParameter("x", idType);
+		return req.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Demande> getTousDemandesEnAttente() {
+		Query req = em.createQuery("select d.typeDemande.libelle, d.typeDemande.titre, d.etat, "
+				+ "d.dateCreation, d.id, d.typeDemande.id, d.client.id"
+				+ " from Demande d  "
+				+ " where (d.etat='En attente' or d.etat='En cours de traitement')");
+		return req.getResultList();
+	}
+	
+	
 	
 
 }

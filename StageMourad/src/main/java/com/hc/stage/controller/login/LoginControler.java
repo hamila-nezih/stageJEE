@@ -19,16 +19,20 @@ public class LoginControler {
 //	public String loginm(){
 //		return "loginm";
 //	}
-//	@RequestMapping(value="/login")
-//	public String login(){
-//		return "loginm";
-//	}
-	@Autowired
-	private InterfaceMetierUtilisateur iMetierUtilisateur;
-	@RequestMapping(value="/home")
-	public @ResponseBody List<Utilisateur> home(){
-		return iMetierUtilisateur.getTousUtl();
+	@RequestMapping(value="/login")
+	public String login(){
+		return "file";
 	}
+	@RequestMapping(value="/home")
+	public String home(){
+		return "home";
+	}
+//	@Autowired
+//	private InterfaceMetierUtilisateur iMetierUtilisateur;
+//	@RequestMapping(value="/home")
+//	public String home(){
+//		return iMetierUtilisateur.getTousUtl();
+//	}
 //	@RequestMapping(value="/logout")
 //	public String logout(){
 //		return "j_spring_security_logout";

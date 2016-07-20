@@ -7,6 +7,6 @@ import com.hc.stage.entities.types.typesDeDemandes.PrerequisTypeDemande;
 
 public interface InterfaceDaoPrerequisTypeDemande extends GenericDao<PrerequisTypeDemande, Long>{
 	
-	 List<PrerequisTypeDemande> getPrerequisTypeDemande(Long id);
-
+	public List<PrerequisTypeDemande> getPrerequisTypeDemande(Long id);
+	public void deletePrerequisTypeDemande(Long id);
 }

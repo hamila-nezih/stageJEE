@@ -48,4 +48,8 @@ public interface InterfaceMetierClient {
 	public List<PrerequisDeDemande> getPrerequisHist(Long idDmd);
 	public List<DocumentDeDemande> getDocumentsHist(Long idDmd);
 	public void updateDemande(Demande demande);
+	public List<Demande> getDemandeParType(Long idType);
+	
+	public void deleteTypeDemande(Long id);
+	public List<Demande> getTousDemandesEnAttente();
 }

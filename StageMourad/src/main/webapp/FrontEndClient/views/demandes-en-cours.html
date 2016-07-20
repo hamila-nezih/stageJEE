@@ -1,0 +1,116 @@
+<link rel="stylesheet" type="text/css" href="FrontEndClient/css/styleDemandesEncours.css">
+
+<header>
+	<!-- 	<meta charset="utf-8">
+ -->
+		<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+
+
+			<div class="collpase navbar-collapse" id="button">
+				<a type="button" class=" pull-right btn btn-info"
+					href="#/" style="margin-top: 15px">Déconnecter <span
+					class="glyphicon glyphicon-log-out"></span></a> <a type="button"
+					class=" pull-right btn btn-info" href="#/gerer-compte" style="margin-top: 15px">gerer-compte
+					<span class="glyphicon glyphicon-cog"></span>
+				</a>
+				<div class="image">
+					<img src="FrontEndClient/images/logo.png" class="   hidden-xs hidden-sm"
+						alt="Cinque Terre">
+
+					<h5 class="titre-nom">Bonjour&nbsp; {{ClientConnecterProperties.prenom}}&nbsp;&nbsp;{{ClientConnecterProperties.nom}} </h5>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<h2 class="titre">
+		Bienvenu sur le site de gestion des demandes<br> Administratives
+	</h2>
+	
+</header>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-md-10">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<div class="container">
+						<div class="row">
+							<div class="btn-group btn-breadcrumb">
+								<a href="#/page-accueil-connecter" class="btn btn-info"><i
+									class="glyphicon glyphicon-home"></i></a> <a
+									href="#/page-accueil-connecter" class="btn btn-info">demandes
+									Administrative</a> <a href="#/demandes-en-cours" class="btn btn-info">
+									Liste de demandes en cours</a>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="panel-body">
+
+					<div>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th style="min-width: 80px;">Type demande</th>
+									<th style="min-width: 80px;">Etat</th>
+									<th style="min-width: 80px;">Date de creation</th>									
+									<th style="width: 20px;">&nbsp;</th>
+									<th style="width: 20px;">&nbsp;</th>
+									<th style="width: 20px;">&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="demandeEncours in demandesEncours |orderBy:'-demandeEncours[3]'">
+									<td>{{ demandeEncours[0]}}</td>
+									<td>{{ demandeEncours[1]}}</td>
+									<td>{{ demandeEncours[2] | date:'MM/dd/yyyy'}}</td>
+									<td><a ng-click="showConfirm(demandeEncours[3],$event)" style="cursor:  pointer;">
+											Historique </a></td>
+									<td><span ng-show="'{{demandeEncours[1]}}'!='En cours de traitement'">
+									<a ng-click="editDemande(demandeEncours[3],demandeEncours[4])" style="cursor:  pointer;">modifier
+									</a></span></td>
+									<td><a ng-click="showConfirm(demandeEncours[3],$event)" style="cursor:  pointer;">
+											Annuler </a></td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br>
+<footer class="hidden-xs">
+
+	<div class="navbar-bottom navbar navbar-default  navbar-inverse">
+
+		<div class="container">
+			<div class="row">
+				<div class="navbar-row1-font col-lg-4">
+					<a class="navbar-row1-font" href="#/page-accueil-connecter">Accueil</a><br> <a
+						class="navbar-row1-font" href="#/page-accueil-connecter">Demandes Administratives</a><br>
+					<a class="navbar-row1-font" href="#/page-accueil-connecter">Mes Demandes</a>
+				</div>
+				<div class="navbar-row2-font col-lg-5">
+					<div ng-repeat="typeDemande in listeDemandeDisponible">
+						<div ng-show="'{{typeDemande[2]}}'=='true'">
+							<a class="navbar-row2-font" href="#/creerDemande/{{typeDemande[0]}}">{{typeDemande[1]}}</a> <br>
+						</div>
+					</div>
+				</div>
+				<div class="navbar-row1-font col-lg-3">
+					<a class="navbar-row1-font " href="#/page-accueil-connecter">Demandes en cours</a><br>
+					<a class="navbar-row1-font" href="#/page-accueil-connecter">Demandes cloturées</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

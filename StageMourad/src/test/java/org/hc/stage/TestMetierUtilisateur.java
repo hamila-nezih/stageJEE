@@ -40,14 +40,11 @@ public class TestMetierUtilisateur {
 			
 			/************ test ajouter type document ***********/
 			
-			DocumentTypeDemande documentTypeDemande = new DocumentTypeDemande("photocopie de carte d'identitier",true,typeDemande);
-			metierUtilisateur.AjouterNouveauTypeDocumentDemande(documentTypeDemande, utilisateur);	
-			
 			/************ test ajout type prerequis ***********/
 			
-			PrerequisTypeDemande prerequisTypeDemande = new PrerequisTypeDemande("nom",true,typeDemande);
-			metierUtilisateur.AjouterNouveauTypePrerequis(prerequisTypeDemande, utilisateur);
-			
+//			PrerequisTypeDemande prerequisTypeDemande = new PrerequisTypeDemande("nom",true,typeDemande);
+//			metierUtilisateur.AjouterNouveauTypePrerequis(prerequisTypeDemande, utilisateur);
+//			
 		     assertTrue(true);
 			 		
 		 }catch(Exception e)

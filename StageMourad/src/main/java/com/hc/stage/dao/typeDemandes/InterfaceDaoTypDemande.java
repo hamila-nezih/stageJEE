@@ -9,4 +9,5 @@ public interface InterfaceDaoTypDemande extends GenericDao<TypeDemande, Long> {
 
 	public TypeDemande getFullTypeDemande(Long id);
 	public List<TypeDemande> getAllTypeDemande();
+	public void deleteTypeDemande(Long id);
 }

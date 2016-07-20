@@ -1,7 +1,5 @@
 package com.hc.stage.entities.types.typesDeDemandes;
 
-import java.util.Set;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -9,12 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.hc.stage.entities.base.BaseEntity;
-import com.hc.stage.entities.demandes.PrerequisDeDemande;
 
 @Entity
 @Table(name = "types_prerequis")
@@ -25,7 +21,7 @@ public class PrerequisTypeDemande extends BaseEntity {
 	private static final long serialVersionUID = 7012500035049546462L;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "tyd_clef", referencedColumnName = "tyd_clef")
+	@JoinColumn(name = "tyd_clef", nullable = false)
 	private TypeDemande typeDemande;
 
 	@Column(name = "ptd_type_varibale")
@@ -41,9 +37,10 @@ public class PrerequisTypeDemande extends BaseEntity {
 	@Column(name = "ptd_obligatoire")
 	private Boolean obligatoire;
 
-	public PrerequisTypeDemande(String libelle, Boolean obligatoire, TypeDemande typeDemande) {
+	public PrerequisTypeDemande(String libelle, Boolean obligatoire, String tybeVariable, String ordre) {
 		super();
-		this.typeDemande = typeDemande;
+		this.ordre = ordre;
+		this.tybeVariable = tybeVariable;
 		this.libelle = libelle;
 		this.obligatoire = obligatoire;
 	}
@@ -52,13 +49,6 @@ public class PrerequisTypeDemande extends BaseEntity {
 		super();
 	}
 
-	public TypeDemande getTypeDemande() {
-		return typeDemande;
-	}
-
-	public void setTypeDemande(TypeDemande typeDemande) {
-		this.typeDemande = typeDemande;
-	}
 
 	public String getLibelle() {
 		return libelle;
@@ -90,6 +80,14 @@ public class PrerequisTypeDemande extends BaseEntity {
 
 	public void setTybeVariable(String tybeVariable) {
 		this.tybeVariable = tybeVariable;
+	}
+
+	public TypeDemande getTypeDemande() {
+		return typeDemande;
+	}
+
+	public void setTypeDemande(TypeDemande typeDemande) {
+		this.typeDemande = typeDemande;
 	}
 
 
