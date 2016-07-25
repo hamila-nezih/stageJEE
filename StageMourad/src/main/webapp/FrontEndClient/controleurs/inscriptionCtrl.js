@@ -4,10 +4,9 @@ app.controller(
 						'MsgConfig',
 						'ClientFactory',
 						'ListeDemandeDisponibleFactory',
-						'$location',
-						'ClientProperties',
+						'$location','$cookieStore','$http' ,
 						function($scope, MsgConfig, ClientFactory, ListeDemandeDisponibleFactory, $location,
-								ClientProperties) {
+								 $cookieStore, $http) {
 							
 							/* recuperation la liste de type de demande disponible */
 							$scope.listeDemandeDisponible = ListeDemandeDisponibleFactory
@@ -23,11 +22,16 @@ app.controller(
 							 * callback for create new client
 							 */
 							$scope.createNewClient = function() {
-								console.log($scope.client.dateNaissance);
 								ClientFactory.create($scope.client, function(data) {
-									ClientProperties.setNom($scope.client.nom);
-									ClientProperties.setPrenom($scope.client.prenom);
-									ClientProperties.setId(data[0]['id']);
+									$cookieStore.put('nom',$scope.client.nom);
+									$cookieStore.put('prenom',$scope.client.prenom);
+									$cookieStore.put('id',data[0]['id']);
+									var data = "j_username="+$scope.client.mail+"&j_password="+$scope.client.motsPasse+"&submit=Login";
+									$http.post('j_spring_security_check', data, {
+										  headers: {
+										    'Content-Type': 'application/x-www-form-urlencoded',
+										  }
+									});
 									$location.path('/page-accueil-connecter');
 								}, function(status) {
 									$location.path('/errors');

@@ -1,5 +1,7 @@
 @CHARSET "ISO-8859-1";
-
+html, body {
+  height : 100%
+}
 .dialogdemoBasicUsage #popupContainer {
   position: relative; }
 
@@ -99,10 +101,6 @@
 .btn-primary {
 	height: 40px;
 	margin-right: 15px;
-	color: #fff;
-	font-size: 18px;
-	font-weight: 30;
-	font-family: "times new roman", times, serif;
 }
 .panel-footer{
 	text-align: center;

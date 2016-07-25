@@ -1,7 +1,5 @@
 package com.hc.stage.controller.controllerDemande;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -209,12 +207,12 @@ public class DemandeController {
 		return iMetierClient.getDocuments(Long.parseLong(idDmd));
 	}
 
-
 	@RequestMapping(value = DemandeRestURIConstants.DELETE_TYPE_DEMANDE, method = RequestMethod.DELETE)
 
 	public @ResponseBody void deleteTypeDemande(@PathVariable String id) {
 
-		 iMetierClient.deleteTypeDemande(Long.parseLong(id));;
+		iMetierClient.deleteTypeDemande(Long.parseLong(id));
+		;
 	}
 
 	@RequestMapping(value = DemandeRestURIConstants.UPDATE_DEMANDE, method = RequestMethod.PUT, consumes = "application/json;"
@@ -237,6 +235,24 @@ public class DemandeController {
 		byte[] file = documentDeDemande.getContenue();
 		return file;
 
+	}
+
+	@RequestMapping(value = DemandeRestURIConstants.GET_DEMANDE_HISTORIQUE_ENCOURS, method = RequestMethod.GET
+			, produces = {"application/json" })
+	@ResponseStatus(HttpStatus.OK)
+
+	public @ResponseBody List<Demande> getDemandeHistEncours(@PathVariable String id) {
+
+		return iMetierClient.getDemandeHistoriqueEncours(Long.parseLong(id));
+	}
+
+	@RequestMapping(value = DemandeRestURIConstants.GET_HISTORIQUE_DEMANDE_ENCOURS, method = RequestMethod.GET
+			, produces = {"application/json" })
+	@ResponseStatus(HttpStatus.OK)
+
+	public @ResponseBody List<HistoriqueDemande> getHistDemandeEncours(@PathVariable String id) {
+
+		return iMetierClient.getHistoriqueDEmandeEncours(Long.parseLong(id));
 	}
 
 }

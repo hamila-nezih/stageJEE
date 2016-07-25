@@ -4,15 +4,15 @@ app.controller('demandesCloturesCtrl', [
 		'ListeDemandeDisponibleFactory',
 		'fileUpload',
 		'$location',
-		'ClientProperties',
-		'$http',
-		function($scope, DemandesCloturesFactory,ListeDemandeDisponibleFactory, fileUpload, $location,	ClientProperties, $http) {
+		'$http','$cookieStore',
+		function($scope, DemandesCloturesFactory,ListeDemandeDisponibleFactory,
+				fileUpload, $location, $http, $cookieStore) {
 
 
 			/* recuperation nom et prenom*/
 			$scope.ClientConnecterProperties ={
-					nom : ClientProperties.getNom(),
-					prenom : ClientProperties.getPrenom()
+					nom : $cookieStore.get('nom'),
+					prenom : $cookieStore.get('prenom')
 			};
 			
 			/* recuperation la liste des demandes disponible*/
@@ -23,7 +23,7 @@ app.controller('demandesCloturesCtrl', [
 			});
 			/* recuperation la liste de demande creer par le client(id=idClient) */
 			$scope.demandesClotures = DemandesCloturesFactory.get({
-				id : ClientProperties.getId()
+				id : $cookieStore.get('id')
 			}, function(data) {
 				// selectionner le bouton radio
 				console.log(data);
@@ -33,7 +33,6 @@ app.controller('demandesCloturesCtrl', [
 
 			/* callback for ng-click 'editDemande': */
 			$scope.historique = function(DemandeId) {
-				console.log(DemandeId);
 				$location.path('/historique-demande/' + DemandeId);
 			};
 

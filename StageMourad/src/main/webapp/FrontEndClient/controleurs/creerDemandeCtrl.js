@@ -10,17 +10,17 @@ app
 						'ListeDemandeDisponibleFactory',
 						'$routeParams',
 						'$location',
-						'ClientProperties',
-						'$http',
+						'$http', '$cookieStore',
 						function($scope, TypeDemandeFactory,
 								CreerDemandeFactory, CreerPrerequisFactory,
-								fileUpload,ListeDemandeDisponibleFactory, $routeParams, $location, ClientProperties, $http) {
+								fileUpload,ListeDemandeDisponibleFactory, $routeParams, 
+								$location, $http, $cookieStore) {
 							
 
 							/* recuperation nom et prenom*/
 							$scope.ClientConnecterProperties ={
-									nom : ClientProperties.getNom(),
-									prenom : ClientProperties.getPrenom()
+									nom : $cookieStore.get('nom'),
+									prenom : $cookieStore.get('prenom')
 							};
 							
 							/* recuperation la liste de type de demande disponible */
@@ -81,7 +81,7 @@ app
 										id : $scope.typeDemande.id
 									},
 									client : {
-										id : ClientProperties.getId()
+										id : $cookieStore.get('id')
 									}
 								};
 								
@@ -163,7 +163,7 @@ app
 														if($scope.code['myFile'+ ((+typeDocument)+(+'1'))]!="vide" ){
 															var file = $scope.code['myFile'+ ((+typeDocument)+(+'1'))];
 															console.dir(file);
-															var uploadUrl = "http://localhost:8081/stage/document/create";
+															var uploadUrl = "http://localhost:8081/stage/rest/document/create";
 															fileUpload.uploadFileToUrl(file, uploadUrl,data.id,
 																	$scope.typeDemande.documentsTypeDemandes[typeDocument].id);
 														

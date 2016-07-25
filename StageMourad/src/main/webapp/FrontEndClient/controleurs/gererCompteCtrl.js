@@ -6,16 +6,15 @@ app
 						'GererCompteFactory',
 						'ListeDemandeDisponibleFactory',
 						'$location',
-						'UpdateClientFactory',
-						'ClientProperties',
+						'UpdateClientFactory','$cookieStore',
 						function($scope, GererCompteFactory,
 								ListeDemandeDisponibleFactory, $location,
-								UpdateClientFactory,ClientProperties) {
+								UpdateClientFactory, $cookieStore) {
 
 							/* recuperation nom et prenom*/
 							$scope.ClientConnecterProperties ={
-									nom : ClientProperties.getNom(),
-									prenom : ClientProperties.getPrenom()
+									nom : $cookieStore.get('nom'),
+									prenom : $cookieStore.get('prenom')
 							};
 							
 							/*
@@ -32,7 +31,7 @@ app
 							$scope.client = GererCompteFactory
 									.get(
 											{
-												id : ClientProperties.getId()
+												id : $cookieStore.get('id')
 											},
 											function(data) {
 												// selectionner le bouton radio
@@ -62,8 +61,8 @@ app
 										if (document.getElementById(nom).value != '') {
 											$scope.ClientConnecterProperties.nom =  document
 											.getElementById(nom).value;
-											ClientProperties.setNom(document
-											.getElementById(nom).value);
+											$cookieStore.put('nom',document
+													.getElementById(nom).value);	
 											$scope.client.nom = document
 													.getElementById(nom).value
 											UpdateClientFactory.update(
@@ -84,8 +83,8 @@ app
 										if (document.getElementById(nom).value != '') {
 											$scope.ClientConnecterProperties.prenom =  document
 											.getElementById(nom).value;
-											ClientProperties.setPrenom(document
-											.getElementById(nom).value);
+											$cookieStore.put('prenom',document
+													.getElementById(nom).value);											
 											$scope.client.prenom = document
 													.getElementById(nom).value
 											UpdateClientFactory.update(

@@ -11,5 +11,5 @@ public interface InterfaceDaoDemande extends GenericDao<Demande, Long> {
 	public List<Demande> getDemandeHistorique(Long idDemande);
 	public List<Demande> getDemandeType(Long idType);
 	public List<Demande> getTousDemandesEnAttente();
-
+	public List<Demande> getDemandeHistoriqueEncours(Long idDemande);
 }

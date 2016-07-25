@@ -9,6 +9,9 @@ app.config(function($routeProvider,$httpProvider) {
 	}).when('/page-accueil-connecter', {
 		templateUrl : 'FrontEndClient/views/page-accueil-connecter.html',
 		controller : 'pageAccueilConnecterCtrl'
+	}).when('/historique-demande-enCours/:id/:idType', {
+		templateUrl : 'FrontEndClient/views/historiqueDemandeEnCours.html',
+		controller : 'historiqueDemandeEnCoursCtrl'
 	}).when('/connexion', {
 		templateUrl : 'FrontEndClient/views/connexion.html',
 		controller : 'connexionCtrl'
@@ -26,6 +29,9 @@ app.config(function($routeProvider,$httpProvider) {
 	}).when('/modifier-demande/:id/:idtype', {
 		templateUrl : 'FrontEndClient/views/modifier-demande.html',
 		controller : 'modifierDemandeCtrl'
+	}).when('/demande/:id/:idtype', {
+		templateUrl : 'FrontEndClient/views/demande.html',
+		controller : 'demandeCtrl'
 	}).when('/demandes-clotures', {
 		templateUrl : 'FrontEndClient/views/demandes-clotures.html',
 		controller : 'demandesCloturesCtrl'

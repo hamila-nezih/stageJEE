@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hc.stage.controller.controllerDemande.DemandeRestURIConstants;
 import com.hc.stage.entities.acteurs.Utilisateur;
+import com.hc.stage.entities.demandes.PrerequisDeDemande;
 import com.hc.stage.metier.utilisateur.InterfaceMetierUtilisateur;
 
 @Controller
@@ -18,7 +21,15 @@ public class LoginControler {
 //	@RequestMapping(value="/loginm")
 //	public String loginm(){
 //		return "loginm";
-//	}
+//	} authentication-failure-url
+	@RequestMapping(value = "authentication-failure-url", consumes = "application/json;"
+			+ "charset=UTF-8", produces = { "application/json" })
+
+	public @ResponseBody List<String> authentificationFailure() {
+
+		return(null);
+
+	}
 	@RequestMapping(value="/login")
 	public String login(){
 		return "file";

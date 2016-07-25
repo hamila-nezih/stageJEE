@@ -28,6 +28,9 @@ public class HistoriqueDemande extends BaseEntity{
 		
 	@Column(name="hdm_date")
 	private Date dateHist;
+	
+	@Column(name = "hdm_commentaire")
+	private String commentaire;
 		
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "hdm_dmd_clef", nullable = false)	

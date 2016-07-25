@@ -282,4 +282,16 @@ public class ImpIntMetierClient implements InterfaceMetierClient {
 		return daoDemande.getTousDemandesEnAttente();
 	}
 
+	@Override
+	public List<Demande> getDemandeHistoriqueEncours(Long idDemande) {
+		
+		return daoDemande.getDemandeHistoriqueEncours(idDemande);
+	}
+
+	@Override
+	public List<HistoriqueDemande> getHistoriqueDEmandeEncours(Long id) {
+		
+		return daoHisDemande.getDemandeHistoriqueEncours(id);
+	}
+
 }

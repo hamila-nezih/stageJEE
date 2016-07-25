@@ -1,0 +1,168 @@
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="FrontEndClient/css/styleCreerDemande.css">
+<header>
+	<!-- 	<meta charset="utf-8">
+ -->
+
+	<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+
+
+			<div class="collpase navbar-collapse" id="button">
+				<a type="button" class=" pull-right btn btn-info"
+					href="#/" style="margin-top: 15px">Déconnecter <span
+					class="glyphicon glyphicon-log-out"></span></a> <a type="button"
+					class=" pull-right btn btn-info" href="#/gerer-compte" style="margin-top: 15px">gerer-compte
+					<span class="glyphicon glyphicon-cog"></span>
+				</a>
+				<div class="image">
+					<img src="FrontEndClient/images/logo.png" class="   hidden-xs hidden-sm"
+						alt="Cinque Terre">
+
+					<h5 class="titre-nom">Bonjour&nbsp; {{ClientConnecterProperties.prenom}}&nbsp;&nbsp;{{ClientConnecterProperties.nom}} </h5>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<h2 class="titre">
+		Bienvenu sur le site de gestion des demandes<br> Administratives
+	</h2>
+</header>
+
+	<div class="container">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="container">
+						<div class="row">
+							<div class="btn-group btn-breadcrumb">
+								<a href="#/page-accueil-connecter" class="btn btn-info"><i
+									class="glyphicon glyphicon-home"></i></a> <a
+									href="#/page-accueil-connecter" class="btn btn-info">demandes
+									Administrative</a> <a href="#/historique-demande-enCours/{{idDemande}}/{{idTyDemande}}" class="btn btn-info">
+									historique de la demande</a>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="row" >
+				<div style="margin-left: 100px; margin-right: 100px;">
+					<div class="panel-body">
+
+						<div>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th style="min-width: 60px; color: #2a6496;">Libellé</th>
+										<th style="min-width: 60px; color: #2a6496;">Etat</th>
+										<th style="min-width: 60px; color: #2a6496;">Date de creation</th>
+										<th style="min-width: 60px; color: #2a6496;">Date de modification</th>
+										<th style="min-width: 120px; color: #2a6496;">commentaire</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{demandeHistorique[0][0]}}</td>
+										<td>{{ demandeHistorique[0][1]}}</td>
+										<td>{{ demandeHistorique[0][2] | date:'dd/MM/yyyy'}}</td>
+										<td>{{ demandeHistorique[0][3] | date:'dd/MM/yyyy'}}</td>
+										<td>{{ demandeHistorique[0][4] }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div style="margin-top: 20px;"></div>
+			<fieldset style="margin-left: 100px; margin-right: 100px;">
+				<legend>Prérequis</legend>
+				<div ng-repeat="prerequis in prerequisDemande">
+				<div class="row">
+					<div class="form-group">
+						<label for="inputfirstname" class="col-md-4 control-label">
+							{{prerequis[2]}} : <span class="asterisque"
+							ng-show={{prerequis[3]}}>*</span> <span class="asterisqueHide"
+							ng-hide={{prerequis[3]}}> </span>
+						</label>
+						<div ng-show="'{{prerequis[2]}}'=='Civilite'" class="col-md-6">
+							<label class="control-label" style="color: #2a6496;">{{prerequis[1]}}</label>
+						</div>
+						<div class="col-md-6" ng-hide="'{{prerequis[2]}}'=='Civilite'">
+							<label class="control-label" style="color: #2a6496;">{{prerequis[1]}}</label>
+
+						</div>
+						</div>
+
+					</div>
+				</div>
+			</fieldset>
+			<div style="margin-top: 20px;"></div>
+			<fieldset style="margin-left: 100px; margin-right: 100px;">
+				<legend>Document</legend>
+				<div ng-repeat="document in DocumentsDemande ">
+					<div class="row">
+						<div class="form-group">
+							<label class="col-md-4 control-label"> {{document[2]}} :
+								<span class="asterisque" ng-show={{document[4]}}>*</span> <span
+								class="asterisqueHide" ng-hide={{document[4]}}> </span>
+							</label>
+							<div class="col-md-8">
+								<label class="col-md-6" style="color: #2a6496;"> {{document[3]}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								<a class="col-md-3" ng-click="download(document[0],document[3])"
+									style="cursor: pointer;">Télécharger </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div style="margin-top: 20px;"></div>
+			<fieldset style="margin-left: 100px; margin-right: 100px;">
+			<legend></legend>
+				<div class="form-group" style="text-align: center;">
+							<div class="espaceMarginA">
+								<input type="button" value="OK" ng-click="ok()"
+									class=" btn-primary btn btn-default "> 
+							</div>
+				</div>
+		</fieldset>
+		</div>
+	</div>
+<footer class="hidden-xs">
+
+	<div class="navbar-bottom navbar navbar-default  navbar-inverse">
+
+		<div class="container">
+			<div class="row">
+				<div class="navbar-row1-font col-lg-4">
+					<a class="navbar-row1-font" href="#/page-accueil-connecter">Accueil</a><br> <a
+						class="navbar-row1-font" href="#/page-accueil-connecter">Demandes Administratives</a><br>
+					<a class="navbar-row1-font" href="#/page-accueil-connecter">Mes Demandes</a>
+				</div>
+				<div class="navbar-row2-font col-lg-5">
+					<div ng-repeat="typeDemande in listeDemandeDisponible">
+						<div ng-show="'{{typeDemande[2]}}'=='true'">
+							<a class="navbar-row2-font" href="#/creerDemande/{{typeDemande[0]}}">{{typeDemande[1]}}</a> <br>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="navbar-row1-font col-lg-3">
+					<a class="navbar-row1-font " href="#/demandes-en-cours">Demandes en cours</a><br>
+					<a class="navbar-row1-font" href="#/demandes-clotures">Demandes Cloturées</a>
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+</footer>

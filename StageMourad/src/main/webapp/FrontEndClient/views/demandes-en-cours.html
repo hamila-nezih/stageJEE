@@ -69,7 +69,7 @@
 									<td>{{ demandeEncours[0]}}</td>
 									<td>{{ demandeEncours[1]}}</td>
 									<td>{{ demandeEncours[2] | date:'MM/dd/yyyy'}}</td>
-									<td><a ng-click="showConfirm(demandeEncours[3],$event)" style="cursor:  pointer;">
+									<td><a ng-click="historique(demandeEncours[3],demandeEncours[4])" style="cursor:  pointer;">
 											Historique </a></td>
 									<td><span ng-show="'{{demandeEncours[1]}}'!='En cours de traitement'">
 									<a ng-click="editDemande(demandeEncours[3],demandeEncours[4])" style="cursor:  pointer;">modifier
@@ -87,11 +87,9 @@
 	</div>
 </div>
 
-<br><br><br><br><br><br><br><br><br>
-<footer class="hidden-xs">
-
+<br><br><br><br><br><br><br>
+<footer class="hidden-xs"  style="position: absolute; width: 100%;">
 	<div class="navbar-bottom navbar navbar-default  navbar-inverse">
-
 		<div class="container">
 			<div class="row">
 				<div class="navbar-row1-font col-lg-4">

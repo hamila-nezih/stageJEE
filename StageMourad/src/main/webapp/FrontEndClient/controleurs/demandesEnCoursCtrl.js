@@ -4,16 +4,15 @@ app.controller('DemandesEnCoursCtrl', [
                            		'ListeDemandeDisponibleFactory',
                            		'UpdateDemandeFactory',
                            		'$location',
-                           		'ClientProperties',
-                           		'$mdDialog', '$mdMedia',
+                           		'$mdDialog', '$mdMedia','$cookieStore',
                            		function($scope, DemandeEncoursFactory,ListeDemandeDisponibleFactory, 
-                           				UpdateDemandeFactory, $location, ClientProperties,$mdDialog, $mdMedia) {
+                           				UpdateDemandeFactory, $location, $mdDialog, $mdMedia,$cookieStore) {
                            			
                            			
                            			/* recuperation nom et prenom*/
         							$scope.ClientConnecterProperties ={
-        									nom : ClientProperties.getNom(),
-        									prenom : ClientProperties.getPrenom()
+        									nom : $cookieStore.get('nom'),
+        									prenom : $cookieStore.get('prenom')
         							};
                            			/* recuperation le date du systeme */
 									var today = new Date();
@@ -51,7 +50,7 @@ app.controller('DemandesEnCoursCtrl', [
 				        										UpdateDemandeFactory.update(demande,function(){
 				        											/* mettre à jourla liste  des demandes encours  */
 				        		                           			$scope.demandesEncours = DemandeEncoursFactory.get({
-				        		                        				id : ClientProperties.getId()
+				        		                        				id : $cookieStore.get('id')
 				        		                        			}, function(data) {
 				        		                        				console.log(data);                        				
 				        		                        			}, function(status) {
@@ -72,7 +71,7 @@ app.controller('DemandesEnCoursCtrl', [
                         			});
                            			/* recuperation la liste  de demande creer par le client(id=idClient) */
                            			$scope.demandesEncours = DemandeEncoursFactory.get({
-                        				id : ClientProperties.getId()
+                        				id : $cookieStore.get('id')
                         			}, function(data) {
                         				console.log(data);                        				
                         			}, function(status) {
@@ -84,7 +83,12 @@ app.controller('DemandesEnCoursCtrl', [
                         				console.log(typeDemandeID);
                         				$location.path('/modifier-demande/' + DemandeId +'/'+typeDemandeID);
                         			};
-                           			
+                        			/* callback for ng-click 'editDemande': */
+                        			$scope.historique = function(DemandeId,typeDemandeID) {
+                        				console.log(typeDemandeID);
+                        				$location.path('/historique-demande-enCours/' + DemandeId +'/'+typeDemandeID);
+                        			};
+                        			
                            				
                            			
 

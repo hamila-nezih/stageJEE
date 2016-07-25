@@ -3,12 +3,10 @@ app.controller('connexionCtrl', [
 		'$location',
 		'ListeDemandeDisponibleFactory',
 		'ConnexionFactory',
-		'MsgConfig',
-		'ClientProperties',
+		'MsgConfig','$http', '$cookieStore',
 		function($scope, $location, ListeDemandeDisponibleFactory,
-				ConnexionFactory, MsgConfig,ClientProperties) {
-			;
-
+				ConnexionFactory, MsgConfig, $http, $cookieStore) {
+		
 			/* recuperation la liste de type de demande disponible */
 			$scope.listeDemandeDisponible = ListeDemandeDisponibleFactory
 					.select({}, function(data) {
@@ -21,26 +19,41 @@ app.controller('connexionCtrl', [
 			$scope.erreur = false;
 			$scope.login = '';
 			$scope.password = '';
+			$cookieStore.remove('prenom');
+			$cookieStore.remove('role');
+			$cookieStore.remove('id');
+			$cookieStore.remove('nom');
 			/*
 			 * callback connexion
 			 */
 			$scope.connexion = function() {
-				ConnexionFactory.get({
-					login : $scope.login,
-					password : $scope.password
-				}, function(data) {
-					if (data.length == 0) {
-						$scope.erreur = true;
-					} else{
-						ClientProperties.setNom(data[0]['nom']);
-						ClientProperties.setPrenom(data[0]['prenom']);
-						ClientProperties.setId(data[0]['id']);
-						$location.path('/page-accueil-connecter');
-					}
-
-				}, function(status) {
-					$location.path('/errors');
-				});
+				var data = "j_username="+$scope.login+"&j_password="+$scope.password+"&submit=Login";
+				$http.post('j_spring_security_check', data, {
+					  headers: {
+					    'Content-Type': 'application/x-www-form-urlencoded',
+					  }
+				}).success(function(data, status, headers, config) {
+					console.log("success", data);
+					ConnexionFactory.get({
+						login : $scope.login,
+						password : $scope.password
+					}, function(data) {
+						if (data.length == 0) {
+							$scope.erreur = true;
+						} else{
+							$cookieStore.put('nom',data[0]['nom']);
+							$cookieStore.put('prenom',data[0]['prenom']);
+							$cookieStore.put('id',data[0]['id']);
+							$location.path('/page-accueil-connecter');
+						}
+					}, function(status) {
+						$location.path('/errors');
+					});
+				}).
+			    error(function(data, status, headers, config){
+			    	console.log("erreur");
+			    	$scope.erreur = true;
+			    });
 			};
 
 		} ]);

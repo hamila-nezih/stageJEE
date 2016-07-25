@@ -1,0 +1,190 @@
+<header>
+	<!-- 	<meta charset="utf-8">
+ -->
+	<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="collpase navbar-collapse" id="button"
+				style="text-align: center;">
+				<a type="button" class=" pull-right btn btn-info" href="#/connexion">Déconnecter
+					<span class="glyphicon glyphicon-log-out"></span>
+				</a>
+				<div class="image">
+					<img src="frontEndUtilisateur/images/logo.png" class="  pull-left hidden-xs hidden-sm"
+						alt="Cinque Terre">
+				</div>
+				<div style="margin-top: 18px;">
+					<h5 class="titre-accueil" style="margin-top: 30px;">{{UtilisateurConnecterProperties.nom}}
+						{{UtilisateurConnecterProperties.prenom}}</h5>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<h2 class="titre">Gestion de demandes</h2>
+	<!--*************************************************************************  -->
+
+	<div Class="marginGD">
+		<div class=" navbar-header hidden-xs">
+
+			<div class="navbar">
+
+				<div class="btn-group btn-group-justified " role="group"
+					aria-label="...">
+					<div class="btn-group" role="group"
+						ng-show="'{{UtilisateurConnecterProperties.role}}' == 'bigBoss' || 
+					'{{UtilisateurConnecterProperties.role}}' == 'administratif'">
+						<button type="button" class="btn btn-primary"
+							ng-click="path('/creation-nouveau-type')">Nouveau type
+							de demande</button>
+					</div>
+					<div class="btn-group" role="group"
+						ng-show="'{{UtilisateurConnecterProperties.role}}' == 'bigBoss' || 
+					'{{UtilisateurConnecterProperties.role}}' == 'administratif'">
+						<button type="button"
+							class="btn btn-primary dropdown-toggle btn-responsive"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+							ng-click="path('/type-demandes-existe')">Type de demande
+							existant</button>
+					</div>
+					<div class="btn-group" role="group"
+						ng-show="'{{UtilisateurConnecterProperties.role}}' == 'bigBoss' || 
+					 '{{UtilisateurConnecterProperties.role}}' == 'Agent'">
+						<button type="button" class="btn btn-primary dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+							ng-click="path('/gerer-demande')">Suivi et Gestion de
+							demande</button>
+					</div>
+					<div class="btn-group bg-primary" role="group">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button"
+									ng-click="viderChampRecheche()">
+									<span class="glyphicon glyphicon-remove-sign"
+										style="color: #3071a9"></span>
+								</button>
+							</span>
+							<div>
+								<input id="champRechecher" type="text"
+									class="form-control dropdown-toggle" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"
+									placeholder="Recherchez" aria-describedby="basic-addon1"
+									ng-model="recherche">
+								<div class="dropdown-menu dropdown-menu1">
+									<div class="dropdown-divider"></div>
+
+									<div ng-repeat="typeDemande in listeDemandeDisponible ">
+										<div>
+											<a class="dropdown-item"
+												href="#/traiter-demande/{{typeDemande[4]}}">
+												{{typeDemande[1]}}</a>
+											<div class="divider"></div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search" style="color: #3071a9"></span>
+								</button>
+							</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="well">
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="container">
+					<div class="row">
+						<div style="text-align: center;">
+							<h2 class="titre3">Listes des demandes</h2>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-lg-1"></div>
+				<div class="col-md-10">
+					<div class="panel-body">
+
+						<div>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th style="min-width: 80px;">Libellé</th>
+										<th style="min-width: 80px;">Titre</th>
+										<th style="min-width: 80px;">Etat</th>
+										<th style="min-width: 80px;">Date de creation</th>
+										<th style="width: 20px;">&nbsp;</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="demande in listeDemandeDisponible">
+										<td>{{ demande[0]}}</td>
+										<td>{{ demande[1]}}</td>
+										<td>{{ demande[2] }}</td>
+										<td>{{ demande[3] | date:'dd/MM/yyyy'}}</td>
+										<td><a
+											ng-click="editDemande(demande[0],demande[1],demande[2],demande[3],demande[4])"
+											style="cursor: pointer;">traiter </a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer class="hidden-xs" style="width : 100%;
+    position: absolute;
+    bottom:0;">
+
+	<div class="navbar-bottom navbar navbar-default  navbar-inverse">
+
+		<div class="container">
+			<div class="row">
+				<div class="navbar-row1-font col-lg-4"
+					ng-show="'{{UtilisateurConnecterProperties.role}}' == 'bigBoss' || 
+					'{{UtilisateurConnecterProperties.role}}' == 'administratif'">
+					<a class="navbar-row1-font" href="#/creation-nouveau-type">Nouveau
+						type de demande</a><br>
+				</div>
+				<div class="navbar-row1-font col-lg-4"
+					ng-show="'{{UtilisateurConnecterProperties.role}}' == 'bigBoss' || 
+					'{{UtilisateurConnecterProperties.role}}' == 'administratif'">
+					<a class="navbar-row1-font" href="#/type-demandes-existe">Type
+						de demande existant</a><br>
+				</div>
+				<div class="navbar-row1-font col-lg-4"
+					ng-show="'{{UtilisateurConnecterProperties.role}}' == 'bigBoss' || 
+					 '{{UtilisateurConnecterProperties.role}}' == 'Agent'">
+					<a class="navbar-row1-font" href="#/gerer-demande">Suivi et
+						Gestion de demande</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

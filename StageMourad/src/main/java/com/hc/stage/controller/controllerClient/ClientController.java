@@ -89,6 +89,7 @@ public class ClientController {
 	public @ResponseBody void upDateUtl(@RequestBody Client client) {
 		 iMetierClient.updateClient(client);
 	}
+	
 	@RequestMapping(value = ClientRestURIConstants.GET_ALL_DEMANDE_En_ATTENTE, method = RequestMethod.GET)
 	public @ResponseBody List<Demande> getAllDemandesEnAttente() {
 

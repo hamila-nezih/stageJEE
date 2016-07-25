@@ -188,22 +188,26 @@
 
 </div>
 <br><br><br><br><br><br><br>
-<footer class="hidden-xs">
+<footer class="hidden-xs" style="width : 100%;
+    position: static;
+    bottom:0px ;">
 
-	<div class="navbar-bottom navbar navbar-default  navbar-inverse">
+	<div class="navbar-bottom navbar    " style="width : 100%;
+    position: static;
+    bottom:0px ;">
 
 		<div class="container">
 			<div class="row">
 				<div class="navbar-row1-font col-lg-4">
-					<a class="navbar-row1-font" href="#/connexion"">Accueil</a><br>
-					<a class="navbar-row1-font" href="#/connexion"">Demandes
+					<a class="navbar-row1-font" href="#/connexion">Accueil</a><br>
+					<a class="navbar-row1-font" href="#/connexion">Demandes
 						Administratives</a><br> <a class="navbar-row1-font"
-						href="#/connexion"">Mes Demandes</a>
+						href="#/connexion">Mes Demandes</a>
 				</div>
 				<div class="navbar-row2-font col-lg-5">
 					<div ng-repeat="typeDemande in listeDemandeDisponible">
 						<div ng-show="'{{typeDemande[2]}}'=='true'">
-							<a class="navbar-row2-font" href="#/connexion"">{{typeDemande[1]}}</a>
+							<a class="navbar-row2-font" href="#/connexion">{{typeDemande[1]}}</a>
 							<br>
 						</div>
 					</div>
@@ -211,8 +215,8 @@
 				</div>
 
 				<div class="navbar-row1-font col-lg-3">
-					<a class="navbar-row1-font " href="#/connexion"">Demandes
-						cloturées</a><br> <a class="navbar-row1-font" href="#/connexion"">Demandes
+					<a class="navbar-row1-font " href="#/connexion">Demandes
+						cloturées</a><br> <a class="navbar-row1-font" href="#/connexion">Demandes
 						cloturées</a>
 				</div>
 			</div>

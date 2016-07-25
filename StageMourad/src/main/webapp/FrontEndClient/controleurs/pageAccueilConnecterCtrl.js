@@ -2,13 +2,13 @@ app.controller('pageAccueilConnecterCtrl', [
 		'$scope',
 		'ListeDemandeDisponibleFactory',
 		'$location',
-		'ClientProperties',
-		function($scope, ListeDemandeDisponibleFactory, $location, ClientProperties) {
+		'$cookieStore',
+		function($scope, ListeDemandeDisponibleFactory, $location,$cookieStore) {
 			
 			/* recuperation nom et prenom*/
 			$scope.ClientConnecterProperties ={
-					nom : ClientProperties.getNom(),
-					prenom : ClientProperties.getPrenom()
+					nom : $cookieStore.get('nom'),
+					prenom : $cookieStore.get('prenom')
 			};
 
 			/* recuperation la liste de type de demande disponible */

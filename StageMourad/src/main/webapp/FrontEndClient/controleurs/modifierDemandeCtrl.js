@@ -15,8 +15,7 @@ app
 						'ListeDemandeDisponibleFactory',
 						'$routeParams',
 						'$location',
-						'ClientProperties',
-						'$http',
+						'$http','$cookieStore',
 						function($scope, TypeDemandeFactory,
 								CreerDemandeFactory, CreerPrerequisFactory,
 								PrerequisFactory, DocumentsFactory, fileUpload,
@@ -24,7 +23,7 @@ app
 								CreerHistoriquePrerequisFactory,
 								CreerHistoriqueDocumentFactory,
 								ListeDemandeDisponibleFactory, $routeParams,
-								$location, ClientProperties, $http) {
+								$location, $http, $cookieStore) {
 
 							/*
 							 * recuperation la liste de type de demande
@@ -38,8 +37,8 @@ app
 
 							/* recuperation nom et prenom */
 							$scope.ClientConnecterProperties = {
-								nom : ClientProperties.getNom(),
-								prenom : ClientProperties.getPrenom()
+									nom : $cookieStore.get('nom'),
+									prenom : $cookieStore.get('prenom')
 							};
 
 							/* recuperation la liste des demandes disponible */
@@ -96,7 +95,7 @@ app
 							 * Download //
 							 */
 							$scope.download = function(idDocument, nameFile) {
-								var url = 'http://localhost:8081/stage/demande/downloadFile/'
+								var url = 'http://localhost:8081/stage/rest/demande/downloadFile/'
 										+ idDocument;
 								$http
 										.get(url, {
@@ -161,9 +160,7 @@ app
 							 * enregistrement la modification de la demande
 							 */
 							$scope.modifierDemande = function() {
-								console
-										.log(document.getElementById("Nom").value);
-
+								
 								/* recuperation le date du systeme */
 								var today = new Date();
 								var dd = today.getDate();
@@ -193,9 +190,7 @@ app
 												function(data) {
 
 													for (var typePrerequis = 0; typePrerequis < $scope.prerequisDemande.length; typePrerequis++) {
-														console
-																.log(document
-																		.getElementById("Nom").value);
+														
 														if (($scope.prerequisDemande[typePrerequis][2] != 'Civilite')
 																&& (document
 																		.getElementById($scope.prerequisDemande[typePrerequis][2]).value != "")) {
@@ -374,7 +369,7 @@ app
 																	+ ((+documentD) + (+'1'))];
 															console.log("e");
 															console.dir(file);
-															var uploadUrl = "http://localhost:8081/stage/document/create";
+															var uploadUrl = "http://localhost:8081/stage/rest/document/create";
 															fileUpload
 																	.uploadFileToUrl(
 																			file,

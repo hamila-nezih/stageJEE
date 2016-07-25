@@ -1,0 +1,51 @@
+dn: ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+dn: ou=roles,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: roles
+
+#Users
+
+dn: uid=bigBoss,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: bigBoss
+userPassword: bigBoss
+
+dn: uid=administratif,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: administratif
+userPassword: administratif
+
+dn: uid=agent,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: agent
+userPassword: agent
+
+#Roles
+
+dn: cn=AGENT,ou=roles,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfNames
+cn: AGENT
+member: uid=agent,ou=people,dc=springframework,dc=org
+member: uid=bigBoss,ou=people,dc=springframework,dc=org
+
+dn: cn=ADMIN,ou=roles,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfNames
+cn: ADMIN
+member: uid=administratif,ou=people,dc=springframework,dc=org
+member: uid=bigBoss,ou=people,dc=springframework,dc=org

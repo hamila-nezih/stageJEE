@@ -88,7 +88,13 @@ public class UtilisateurController {
 			@RequestParam("obligatoire") Boolean obligatoire, @RequestParam("id") String id) {
  
 		TypeDemande typeDemande = iMetierUtilisateur.getTypeDemande(Long.parseLong(id));
-		DocumentTypeDemande documentTypeDemande = new DocumentTypeDemande(libelle, obligatoire, ordre);
+		DocumentTypeDemande documentTypeDemande;
+		if(ordre.length() > 1){
+			documentTypeDemande = new DocumentTypeDemande(libelle, obligatoire,ordre.substring(1));
+		}else{
+			 documentTypeDemande = new DocumentTypeDemande(libelle, obligatoire,ordre);
+
+		}
 		documentTypeDemande.setTypeDemande(typeDemande);
 		iMetierUtilisateur.creerNouveauTypeDocumentDemande(documentTypeDemande);
 

@@ -1,0 +1,91 @@
+<header>
+	<!-- 	<meta charset="utf-8">
+ -->
+	<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="collpase navbar-collapse" id="button" style="text-align: center;">
+		<div>
+		<img src="frontEndUtilisateur/images/logo.png" class=" hidden-xs hidden-sm image"
+						alt="Cinque Terre">
+				<h5 class="titre-accueil" style="margin-top: 40px;">Administration des demandes</h5>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</header>
+<br>
+<br>
+<br><br>
+<br><br>
+<br><br>
+	<div class="container">
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title">Se connecter</h1>
+				</div>
+
+<br>
+				<form class="form-horizontal" name="connexionForm"
+					ng-submit="connexionForm.$valid && connexion()" novalidate>
+					<div class="panel-body">
+						<div class="field-message" ng-show="erreur">
+							<div style="text-align: center;">{{msg.msgErreurConnexion}}</div>
+						</div>
+						<div class="form-group">
+							<label for="inputfirstname" class="col-md-2 control-label">
+							</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="login" name="login"
+									placeholder="E-mail" ng-model="login" required="required" />
+								<div class="field-message"
+									ng-messages="connexionForm.login.$error"
+									ng-if='connexionForm.$submitted' ng-cloak>
+									<div ng-message="required">{{msg.msgRequired}}</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputlastname" class="col-md-2 control-label">
+							</label>
+							<div class="col-md-8">
+								<input type="password" class="form-control" id="password"
+									name="password" placeholder="Mot de passe" ng-model="password"
+									required />
+								<div class="field-message"
+									ng-messages="connexionForm.password.$error"
+									ng-if='connexionForm.$submitted' ng-cloak>
+									<div ng-message="required">{{msg.msgRequired}}</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="panel-footer">
+						<div class="form-group">
+							<div class="espaceMarginA" style="text-align: center;">
+								<input type="submit" name="valider" value="Connexion"
+									class=" btn-primary btn btn-default ">
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<footer class="hidden-xs">
+
+	<div class="navbar-bottom navbar navbar-default  navbar-inverse">
+	</div>
+
+</footer>

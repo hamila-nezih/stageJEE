@@ -8,16 +8,15 @@ app.controller('historiqueDemandeCtrl', [
 		'fileUpload',
 		'$location',
 		'$window',
-		'$http',
-		'ClientProperties',
+		'$http','$cookieStore',
 		function($scope, historiqueDemandeFactory, historiquePrerequisFactory,
 				historiqueDocumentsFactory, ListeDemandeDisponibleFactory, $routeParams, fileUpload,
-				$location, $window, $http,ClientProperties) {
+				$location, $window, $http, $cookieStore) {
 			
 			/* recuperation nom et prenom*/
 			$scope.ClientConnecterProperties ={
-					nom : ClientProperties.getNom(),
-					prenom : ClientProperties.getPrenom()
+					nom : $cookieStore.get('nom'),
+					prenom : $cookieStore.get('prenom')
 			};
 			
 			$scope.listeDemandeDisponible = ListeDemandeDisponibleFactory
@@ -78,7 +77,7 @@ app.controller('historiqueDemandeCtrl', [
 			 * Download //
 			 */
 			$scope.download = function(idDocument, nameFile) {
-				var url = 'http://localhost:8081/stage/demande/downloadFile/'
+				var url = 'http://localhost:8081/stage/rest/demande/downloadFile/'
 						+ idDocument;
 				$http.get(url, {
 					responseType : 'arraybuffer'

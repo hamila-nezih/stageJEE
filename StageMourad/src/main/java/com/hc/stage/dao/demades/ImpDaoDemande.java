@@ -68,6 +68,16 @@ public class ImpDaoDemande extends GenericJpaDao<Demande, Long> implements Inter
 				+ " where (d.etat='En attente' or d.etat='En cours de traitement')");
 		return req.getResultList();
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Demande> getDemandeHistoriqueEncours(Long idDemande) {
+		Query req = em.createQuery("select d.typeDemande.titre, d.dateCreation"
+	                                        + " from Demande d  "
+	                                        + " where d.id=:x");
+		req.setParameter("x", idDemande);
+				
+		return req.getResultList();
+	}
 	
 	
 	

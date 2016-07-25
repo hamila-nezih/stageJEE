@@ -52,4 +52,6 @@ public interface InterfaceMetierClient {
 	
 	public void deleteTypeDemande(Long id);
 	public List<Demande> getTousDemandesEnAttente();
+	public List<Demande> getDemandeHistoriqueEncours(Long idDemande);
+	public List<HistoriqueDemande> getHistoriqueDEmandeEncours(Long id);
 }

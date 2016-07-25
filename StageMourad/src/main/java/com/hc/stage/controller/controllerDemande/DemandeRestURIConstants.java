@@ -24,13 +24,17 @@ public class DemandeRestURIConstants {
 	public static final String GET_DOCUMENT = "/demande/downloadFile/{idDocument}";
 	
 	public static final String GET_DEMANDES_PAR_TYPE = "/demande/getDemandeParType/{id}";
-
 	
 	 public static final String GET_TYPE_PREREQUIS_DEMANDE = "/client/getTPDmd/{id}";
 	 public static final String GET_TOUS_TYPE_DEMANDE = "/client/getTTDmd";
 	 
      public static final String UPDATE_DEMANDE = "/demande/update";
      public static final String DELETE_TYPE_DEMANDE = "/demande/deleteTypeDemande/{id}";
+     
+     public static final String GET_DEMANDE_HISTORIQUE_ENCOURS= "/demande/getHistoriqueDemandeEncours/{id}";
+     public static final String GET_HISTORIQUE_DEMANDE_ENCOURS= "/demande/getDemandeEncoursHistorique/{id}";
+
+     
 	 
 
 
